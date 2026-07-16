@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="meta.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grace Community Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark" aria-hidden="true">G</span>
+        <span class="logo-text" data-i18n="brand.name"></span>
+      </a>
+      <nav>
+        <ul class="nav" id="main-nav">
+          <li><a href="#about" data-i18n="nav.about"></a></li>
+          <li><a href="#worship" data-i18n="nav.worship"></a></li>
+          <li><a href="#ministries" data-i18n="nav.ministries"></a></li>
+          <li><a href="#contact" data-i18n="nav.contact"></a></li>
+        </ul>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang-toggle="en">EN</button>
+        <button type="button" data-lang-toggle="es">ES</button>
+      </div>
+      <button class="mobile-menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <span class="hero-badge" data-i18n="hero.badge"></span>
+        <h1 data-i18n="hero.title"></h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle"></p>
+        <div class="hero-actions">
+          <a href="#worship" class="btn-primary" data-i18n="hero.cta"></a>
+          <a href="#about" class="btn-secondary" data-i18n="hero.cta2"></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="about.label"></span>
+          <h2 data-i18n="about.heading"></h2>
+        </div>
+        <div class="about-grid">
+          <p class="about-text" data-i18n="about.text"></p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="number" data-i18n="about.stat1.number"></div>
+              <div class="label" data-i18n="about.stat1.label"></div>
+            </div>
+            <div class="stat-card">
+              <div class="number" data-i18n="about.stat2.number"></div>
+              <div class="label" data-i18n="about.stat2.label"></div>
+            </div>
+            <div class="stat-card">
+              <div class="number" data-i18n="about.stat3.number"></div>
+              <div class="label" data-i18n="about.stat3.label"></div>
+            </div>
+            <div class="stat-card">
+              <div class="number" data-i18n="about.stat4.number"></div>
+              <div class="label" data-i18n="about.stat4.label"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="worship">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="worship.label"></span>
+          <h2 data-i18n="worship.heading"></h2>
+        </div>
+        <div class="worship-cards">
+          <div class="worship-card">
+            <div class="day" data-i18n="worship.sunday.day"></div>
+            <h3 data-i18n="worship.sunday.title"></h3>
+            <p class="time" data-i18n="worship.sunday.time"></p>
+            <p data-i18n="worship.sunday.desc"></p>
+          </div>
+          <div class="worship-card">
+            <div class="day" data-i18n="worship.wednesday.day"></div>
+            <h3 data-i18n="worship.wednesday.title"></h3>
+            <p class="time" data-i18n="worship.wednesday.time"></p>
+            <p data-i18n="worship.wednesday.desc"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ministries">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="ministries.label"></span>
+          <h2 data-i18n="ministries.heading"></h2>
+        </div>
+        <div class="ministries-grid">
+          <div class="ministry-card">
+            <div class="ministry-icon" aria-hidden="true">&#9733;</div>
+            <h3 data-i18n="ministries.youth.title"></h3>
+            <p data-i18n="ministries.youth.desc"></p>
+          </div>
+          <div class="ministry-card">
+            <div class="ministry-icon" aria-hidden="true">&#9829;</div>
+            <h3 data-i18n="ministries.outreach.title"></h3>
+            <p data-i18n="ministries.outreach.desc"></p>
+          </div>
+          <div class="ministry-card">
+            <div class="ministry-icon" aria-hidden="true">&#9835;</div>
+            <h3 data-i18n="ministries.music.title"></h3>
+            <p data-i18n="ministries.music.desc"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-i18n="contact.label"></span>
+          <h2 data-i18n="contact.heading"></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3 data-i18n="contact.address.label"></h3>
+            <p data-i18n="contact.address.value"></p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.phone.label"></h3>
+            <p><a href="tel:+15551234567" data-i18n="contact.phone.value"></a></p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.email.label"></h3>
+            <p><a href="mailto:info@gracecommunity.org" data-i18n="contact.email.value"></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer.text"></p>
+    </div>
+  </footer>
+
+  <script src="../shared/i18n.js"></script>
+  <script>
+    var TRANSLATIONS = {
+      en: {
+        'meta.title': 'Grace Community Church',
+        'brand.name': 'Grace Community',
+        'nav.about': 'About',
+        'nav.worship': 'Worship',
+        'nav.ministries': 'Ministries',
+        'nav.contact': 'Contact',
+        'hero.badge': 'Est. 1920 \u00B7 Springfield, IL',
+        'hero.title': 'Faith for the Modern World',
+        'hero.subtitle': 'A vibrant community where ancient truth meets contemporary life. Everyone belongs here.',
+        'hero.cta': 'Plan Your Visit',
+        'hero.cta2': 'Learn More',
+        'about.label': 'Who We Are',
+        'about.heading': 'Built on Grace, Moving Forward',
+        'about.text': 'Grace Community Church is a forward-thinking congregation rooted in timeless faith. We believe church should feel alive — relevant, inclusive, and deeply connected to the world around us.',
+        'about.stat1.number': '100+',
+        'about.stat1.label': 'Years of faith',
+        'about.stat2.number': '500+',
+        'about.stat2.label': 'Active members',
+        'about.stat3.number': '12',
+        'about.stat3.label': 'Ministries',
+        'about.stat4.number': '24/7',
+        'about.stat4.label': 'Online community',
+        'worship.label': 'Join Us',
+        'worship.heading': 'Service Times',
+        'worship.sunday.day': 'Every Sunday',
+        'worship.sunday.title': 'Main Gathering',
+        'worship.sunday.time': '10:00 AM',
+        'worship.sunday.desc': 'Contemporary worship, live music, and a message that speaks to today.',
+        'worship.wednesday.day': 'Every Wednesday',
+        'worship.wednesday.title': 'Midweek Flow',
+        'worship.wednesday.time': '7:00 PM',
+        'worship.wednesday.desc': 'Intimate worship, open dialogue, and space for reflection.',
+        'ministries.label': 'Get Involved',
+        'ministries.heading': 'Ministries',
+        'ministries.youth.title': 'Next Gen',
+        'ministries.youth.desc': 'Dynamic programs for kids and students — building faith through community, creativity, and connection.',
+        'ministries.outreach.title': 'City Impact',
+        'ministries.outreach.desc': 'Partnering with local organizations to fight hunger, homelessness, and isolation in our city.',
+        'ministries.music.title': 'Worship Arts',
+        'ministries.music.desc': 'Band, vocals, production, and creative arts — shaping the sound and feel of our gatherings.',
+        'contact.label': 'Connect',
+        'contact.heading': 'Get in Touch',
+        'contact.address.label': 'Location',
+        'contact.address.value': '123 Faith Avenue, Springfield, IL 62701',
+        'contact.phone.label': 'Phone',
+        'contact.phone.value': '(555) 123-4567',
+        'contact.email.label': 'Email',
+        'contact.email.value': 'info@gracecommunity.org',
+        'footer.text': '\u00A9 2026 Grace Community Church. All rights reserved.'
+      },
+      es: {
+        'meta.title': 'Iglesia Comunidad de Gracia',
+        'brand.name': 'Comunidad de Gracia',
+        'nav.about': 'Nosotros',
+        'nav.worship': 'Culto',
+        'nav.ministries': 'Ministerios',
+        'nav.contact': 'Contacto',
+        'hero.badge': 'Est. 1920 \u00B7 Springfield, IL',
+        'hero.title': 'Fe para el Mundo Moderno',
+        'hero.subtitle': 'Una comunidad vibrante donde la verdad eterna se encuentra con la vida contemporánea. Todos pertenecen aquí.',
+        'hero.cta': 'Planifique Su Visita',
+        'hero.cta2': 'Conozca Más',
+        'about.label': 'Quiénes Somos',
+        'about.heading': 'Fundados en Gracia, Avanzando',
+        'about.text': 'La Iglesia Comunidad de Gracia es una congregación visionaria arraigada en una fe atemporal. Creemos que la iglesia debe sentirse viva — relevante, inclusiva y profundamente conectada con el mundo que nos rodea.',
+        'about.stat1.number': '100+',
+        'about.stat1.label': 'Años de fe',
+        'about.stat2.number': '500+',
+        'about.stat2.label': 'Miembros activos',
+        'about.stat3.number': '12',
+        'about.stat3.label': 'Ministerios',
+        'about.stat4.number': '24/7',
+        'about.stat4.label': 'Comunidad en línea',
+        'worship.label': 'Únase',
+        'worship.heading': 'Horarios de Servicio',
+        'worship.sunday.day': 'Cada Domingo',
+        'worship.sunday.title': 'Reunión Principal',
+        'worship.sunday.time': '10:00 AM',
+        'worship.sunday.desc': 'Adoración contemporánea, música en vivo y un mensaje que habla al presente.',
+        'worship.wednesday.day': 'Cada Miércoles',
+        'worship.wednesday.title': 'Flujo Entresemana',
+        'worship.wednesday.time': '7:00 PM',
+        'worship.wednesday.desc': 'Adoración íntima, diálogo abierto y espacio para la reflexión.',
+        'ministries.label': 'Participe',
+        'ministries.heading': 'Ministerios',
+        'ministries.youth.title': 'Próxima Generación',
+        'ministries.youth.desc': 'Programas dinámicos para niños y jóvenes — construyendo fe a través de comunidad, creatividad y conexión.',
+        'ministries.outreach.title': 'Impacto Urbano',
+        'ministries.outreach.desc': 'Colaborando con organizaciones locales para combatir el hambre, la falta de vivienda y el aislamiento en nuestra ciudad.',
+        'ministries.music.title': 'Artes de Adoración',
+        'ministries.music.desc': 'Banda, voces, producción y artes creativas — dando forma al sonido y la atmósfera de nuestras reuniones.',
+        'contact.label': 'Conecte',
+        'contact.heading': 'Póngase en Contacto',
+        'contact.address.label': 'Ubicación',
+        'contact.address.value': '123 Avenida de la Fe, Springfield, IL 62701',
+        'contact.phone.label': 'Teléfono',
+        'contact.phone.value': '(555) 123-4567',
+        'contact.email.label': 'Correo',
+        'contact.email.value': 'info@gracecommunity.org',
+        'footer.text': '\u00A9 2026 Iglesia Comunidad de Gracia. Todos los derechos reservados.'
+      }
+    };
+
+    ChurchI18n.initI18n(TRANSLATIONS);
+
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      var nav = document.getElementById('main-nav');
+      var open = nav.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+</body>
+</html>

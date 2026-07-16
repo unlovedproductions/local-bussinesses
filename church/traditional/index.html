@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="meta.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grace Community Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-cross" aria-hidden="true"></span>
+        <span class="logo-text" data-i18n="brand.name"></span>
+      </a>
+      <nav>
+        <ul class="nav" id="main-nav">
+          <li><a href="#about" data-i18n="nav.about"></a></li>
+          <li><a href="#worship" data-i18n="nav.worship"></a></li>
+          <li><a href="#ministries" data-i18n="nav.ministries"></a></li>
+          <li><a href="#contact" data-i18n="nav.contact"></a></li>
+        </ul>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang-toggle="en">EN</button>
+        <button type="button" data-lang-toggle="es">ES</button>
+      </div>
+      <button class="mobile-menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-window" aria-hidden="true"></div>
+      <h1 data-i18n="hero.title"></h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle"></p>
+      <a href="#worship" class="hero-cta" data-i18n="hero.cta"></a>
+    </section>
+
+    <div class="ornament" aria-hidden="true">&#10013; &#10013; &#10013;</div>
+
+    <section id="about">
+      <div class="container">
+        <span class="section-label" data-i18n="about.label"></span>
+        <h2 data-i18n="about.heading"></h2>
+        <div class="section-divider"></div>
+        <p class="about-text" data-i18n="about.text"></p>
+      </div>
+    </section>
+
+    <section id="worship">
+      <div class="container">
+        <span class="section-label" data-i18n="worship.label"></span>
+        <h2 data-i18n="worship.heading"></h2>
+        <div class="section-divider"></div>
+        <div class="worship-grid">
+          <div class="worship-card">
+            <h3 data-i18n="worship.sunday.title"></h3>
+            <p class="time" data-i18n="worship.sunday.time"></p>
+            <p data-i18n="worship.sunday.desc"></p>
+          </div>
+          <div class="worship-card">
+            <h3 data-i18n="worship.wednesday.title"></h3>
+            <p class="time" data-i18n="worship.wednesday.time"></p>
+            <p data-i18n="worship.wednesday.desc"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ministries">
+      <div class="container">
+        <span class="section-label" data-i18n="ministries.label"></span>
+        <h2 data-i18n="ministries.heading"></h2>
+        <div class="section-divider"></div>
+        <div class="ministries-grid">
+          <div class="ministry-card">
+            <h3 data-i18n="ministries.youth.title"></h3>
+            <p data-i18n="ministries.youth.desc"></p>
+          </div>
+          <div class="ministry-card">
+            <h3 data-i18n="ministries.outreach.title"></h3>
+            <p data-i18n="ministries.outreach.desc"></p>
+          </div>
+          <div class="ministry-card">
+            <h3 data-i18n="ministries.music.title"></h3>
+            <p data-i18n="ministries.music.desc"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <span class="section-label" data-i18n="contact.label"></span>
+        <h2 data-i18n="contact.heading"></h2>
+        <div class="section-divider"></div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3 data-i18n="contact.address.label"></h3>
+            <p data-i18n="contact.address.value"></p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.phone.label"></h3>
+            <p><a href="tel:+15551234567" data-i18n="contact.phone.value"></a></p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.email.label"></h3>
+            <p><a href="mailto:info@gracecommunity.org" data-i18n="contact.email.value"></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer.text"></p>
+    </div>
+  </footer>
+
+  <script src="../shared/i18n.js"></script>
+  <script>
+    var TRANSLATIONS = {
+      en: {
+        'meta.title': 'Grace Community Church',
+        'brand.name': 'Grace Community Church',
+        'nav.about': 'About',
+        'nav.worship': 'Worship',
+        'nav.ministries': 'Ministries',
+        'nav.contact': 'Contact',
+        'hero.title': 'Welcome Home',
+        'hero.subtitle': 'A place of faith, fellowship, and hope for all who seek the light of Christ.',
+        'hero.cta': 'Join Us Sunday',
+        'about.label': 'Our Story',
+        'about.heading': 'About Our Church',
+        'about.text': 'For over a century, Grace Community Church has been a beacon of faith in our neighborhood. We are a welcoming congregation dedicated to worship, service, and growing together in the love of God. All are welcome at our table.',
+        'worship.label': 'Gather With Us',
+        'worship.heading': 'Worship Services',
+        'worship.sunday.title': 'Sunday Worship',
+        'worship.sunday.time': '10:00 AM',
+        'worship.sunday.desc': 'Traditional service with hymns, scripture, and communion on the first Sunday of each month.',
+        'worship.wednesday.title': 'Midweek Prayer',
+        'worship.wednesday.time': '7:00 PM',
+        'worship.wednesday.desc': 'An evening of prayer, reflection, and community in our chapel.',
+        'ministries.label': 'Serve & Grow',
+        'ministries.heading': 'Our Ministries',
+        'ministries.youth.title': 'Youth Fellowship',
+        'ministries.youth.desc': 'Programs for children and teens every Sunday and Wednesday, nurturing faith from a young age.',
+        'ministries.outreach.title': 'Community Outreach',
+        'ministries.outreach.desc': 'Food pantry, shelter support, and neighborhood care — serving those in need with open hearts.',
+        'ministries.music.title': 'Choir & Music',
+        'ministries.music.desc': 'Our choir leads worship with timeless hymns and sacred music. New voices always welcome.',
+        'contact.label': 'Reach Out',
+        'contact.heading': 'Contact Us',
+        'contact.address.label': 'Address',
+        'contact.address.value': '123 Faith Avenue, Springfield, IL 62701',
+        'contact.phone.label': 'Phone',
+        'contact.phone.value': '(555) 123-4567',
+        'contact.email.label': 'Email',
+        'contact.email.value': 'info@gracecommunity.org',
+        'footer.text': '\u00A9 2026 Grace Community Church. All rights reserved.'
+      },
+      es: {
+        'meta.title': 'Iglesia Comunidad de Gracia',
+        'brand.name': 'Iglesia Comunidad de Gracia',
+        'nav.about': 'Nosotros',
+        'nav.worship': 'Culto',
+        'nav.ministries': 'Ministerios',
+        'nav.contact': 'Contacto',
+        'hero.title': 'Bienvenidos a Casa',
+        'hero.subtitle': 'Un lugar de fe, compañerismo y esperanza para todos los que buscan la luz de Cristo.',
+        'hero.cta': 'Únase el Domingo',
+        'about.label': 'Nuestra Historia',
+        'about.heading': 'Sobre Nuestra Iglesia',
+        'about.text': 'Durante más de un siglo, la Iglesia Comunidad de Gracia ha sido un faro de fe en nuestro vecindario. Somos una congregación acogedora dedicada a la adoración, el servicio y crecer juntos en el amor de Dios. Todos son bienvenidos a nuestra mesa.',
+        'worship.label': 'Reúnase Con Nosotros',
+        'worship.heading': 'Horarios de Culto',
+        'worship.sunday.title': 'Culto Dominical',
+        'worship.sunday.time': '10:00 AM',
+        'worship.sunday.desc': 'Servicio tradicional con himnos, escritura y comunión el primer domingo de cada mes.',
+        'worship.wednesday.title': 'Oración Entresemana',
+        'worship.wednesday.time': '7:00 PM',
+        'worship.wednesday.desc': 'Una velada de oración, reflexión y comunidad en nuestra capilla.',
+        'ministries.label': 'Sirva y Crezca',
+        'ministries.heading': 'Nuestros Ministerios',
+        'ministries.youth.title': 'Comunidad Juvenil',
+        'ministries.youth.desc': 'Programas para niños y jóvenes cada domingo y miércoles, cultivando la fe desde temprana edad.',
+        'ministries.outreach.title': 'Alcance Comunitario',
+        'ministries.outreach.desc': 'Despensa de alimentos, apoyo a refugios y cuidado vecinal — sirviendo a quienes lo necesitan con corazones abiertos.',
+        'ministries.music.title': 'Coro y Música',
+        'ministries.music.desc': 'Nuestro coro guía la adoración con himnos atemporales y música sagrada. Siempre damos la bienvenida a nuevas voces.',
+        'contact.label': 'Contáctenos',
+        'contact.heading': 'Contáctenos',
+        'contact.address.label': 'Dirección',
+        'contact.address.value': '123 Avenida de la Fe, Springfield, IL 62701',
+        'contact.phone.label': 'Teléfono',
+        'contact.phone.value': '(555) 123-4567',
+        'contact.email.label': 'Correo',
+        'contact.email.value': 'info@gracecommunity.org',
+        'footer.text': '\u00A9 2026 Iglesia Comunidad de Gracia. Todos los derechos reservados.'
+      }
+    };
+
+    ChurchI18n.initI18n(TRANSLATIONS);
+
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      var nav = document.getElementById('main-nav');
+      var open = nav.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+</body>
+</html>
