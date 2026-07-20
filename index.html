@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Proposal</title>
+<style>
+  :root{
+    --ink:#1c2b26;
+    --paper:#f7f4ee;
+    --panel:#ffffff;
+    --line:#dcd6c8;
+    --deep:#1f3b34;
+    --accent:#a8722f;
+    --muted:#6b6659;
+    --recommend:#eef3ee;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: 'Iowan Old Style', 'Georgia', 'Times New Roman', serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px;}
+
+  /* --- language toggle --- */
+  .lang-toggle{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:50;
+    display:flex;
+    background:rgba(0,0,0,.25);
+    border-radius:20px;
+    padding:3px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .lang-toggle button{
+    border:none;
+    background:transparent;
+    color:#f3efe4;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.04em;
+    padding:6px 12px;
+    border-radius:16px;
+    cursor:pointer;
+  }
+  .lang-toggle button.active{
+    background:#f3efe4;
+    color:var(--deep);
+  }
+
+  /* --- language visibility --- */
+  html[data-lang="en"] .es-only{display:none !important;}
+  html[data-lang="es"] .en-only{display:none !important;}
+
+  header.hero{
+    background:var(--deep);
+    color:#f3efe4;
+    padding:56px 20px 44px;
+    text-align:center;
+    border-bottom:4px solid var(--accent);
+  }
+  header.hero .eyebrow{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:#c9b98a;
+    margin-bottom:14px;
+  }
+  header.hero h1{
+    font-size:32px;
+    margin:0 0 10px;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  header.hero p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color:#d8d2c2;
+    font-size:15px;
+    max-width:460px;
+    margin:0 auto;
+  }
+
+  section{padding:44px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  h2{
+    font-size:13px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--accent);
+    margin:0 0 6px;
+  }
+  h3{font-size:24px;margin:0 0 18px;font-weight:600;}
+  p.lead{color:var(--muted);font-size:16px;max-width:60ch;}
+
+  .designs{display:grid;gap:16px;margin-top:24px;}
+  @media(min-width:640px){.designs{grid-template-columns:1fr 1fr;}}
+  .design-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:22px 20px;
+    text-align:center;
+  }
+  .design-card .tag{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+    display:block;
+  }
+  .design-card h4{margin:0 0 6px;font-size:19px;}
+  .design-card p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13.5px;
+    color:var(--muted);
+    margin:0 0 16px;
+  }
+  .btn{
+    display:inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.02em;
+    text-decoration:none;
+    color:#fff;
+    background:var(--deep);
+    padding:10px 22px;
+    border-radius:2px;
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--accent);}
+
+  .cards{display:grid;gap:16px;margin-top:24px;}
+  @media(min-width:640px){.cards{grid-template-columns:repeat(3,1fr);}}
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:22px 20px;
+    position:relative;
+  }
+  .card.recommend{
+    background:var(--recommend);
+    border-color:var(--deep);
+  }
+  .card .tag{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--deep);
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:2px;
+    margin-bottom:10px;
+  }
+  .card h4{margin:0 0 4px;font-size:19px;}
+  .card .price{
+    font-size:26px;
+    font-weight:600;
+    color:var(--deep);
+    margin:2px 0 14px;
+  }
+  .card ul{
+    margin:0;padding:0;list-style:none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13.5px;
+    color:#4a463c;
+  }
+  .card li{
+    padding:6px 0 6px 18px;
+    position:relative;
+    border-top:1px solid var(--line);
+  }
+  .card li:first-child{border-top:none;}
+  .card li::before{
+    content:"—";
+    position:absolute;left:0;color:var(--accent);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:22px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:14px;
+  }
+  th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#f3efe4;
+    background:var(--deep);
+    padding:12px 12px;
+    font-weight:600;
+  }
+  td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    color:#3c392f;
+  }
+  tr:nth-child(even) td{background:#fbf9f4;}
+  td.label{font-weight:600;color:var(--deep);white-space:nowrap;}
+
+  .two-col{display:grid;gap:32px;margin-top:20px;}
+  @media(min-width:640px){.two-col{grid-template-columns:1fr 1fr;}}
+  .box{background:var(--panel);border:1px solid var(--line);padding:20px;}
+  .box h4{
+    margin:0 0 12px;
+    font-size:15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--deep);
+  }
+  .box ul{margin:0;padding-left:18px;font-size:14.5px;color:#4a463c;}
+  .box li{margin-bottom:8px;}
+
+  .note{
+    background:var(--recommend);
+    border-left:3px solid var(--deep);
+    padding:16px 18px;
+    font-size:14.5px;
+    color:#33392f;
+    margin-top:20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 20px 60px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color:var(--muted);
+    font-size:13.5px;
+  }
+  footer a{color:var(--deep);}
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+  <button id="btn-es" onclick="setLang('es')">ES</button>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">
+    <span class="en-only">Prepared for your congregation</span>
+    <span class="es-only">Preparado para su congregación</span>
+  </div>
+  <h1>
+    <span class="en-only">Website Design Proposal</span>
+    <span class="es-only">Propuesta de Diseño del Sitio Web</span>
+  </h1>
+  <p>
+    <span class="en-only">A bilingual site built for how your congregation actually communicates — review this whenever works for you, and reach out with any questions.</span>
+    <span class="es-only">Un sitio bilingüe diseñado para la forma en que su congregación realmente se comunica. Revíselo cuando le convenga y contácteme si tiene alguna pregunta.</span>
+  </p>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="en-only">Overview</span><span class="es-only">Resumen</span></h2>
+    <h3><span class="en-only">What this covers</span><span class="es-only">Qué incluye esta propuesta</span></h3>
+    <p class="lead">
+      <span class="en-only">A custom-coded, bilingual website (English and Spanish, shown automatically based on each visitor's device settings), built from two design directions already prepared — one traditional, one modern. Below are three scope options and several ways to structure payment, so you can choose what fits best right now.</span>
+      <span class="es-only">Un sitio web bilingüe, programado a medida (inglés y español, mostrado automáticamente según la configuración del dispositivo de cada visitante), construido a partir de dos estilos de diseño ya preparados: uno tradicional y uno moderno. A continuación encontrará tres opciones de alcance y varias formas de estructurar el pago, para que elija lo que mejor le convenga en este momento.</span>
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="en-only">See It For Yourself</span><span class="es-only">Véalo Usted Mismo</span></h2>
+    <h3><span class="en-only">View the Designs</span><span class="es-only">Ver los Diseños</span></h3>
+    <p class="lead">
+      <span class="en-only">Two directions are ready to preview right now. Click either one to look around — this is what your congregation will actually see.</span>
+      <span class="es-only">Dos estilos están listos para previsualizar ahora mismo. Haga clic en cualquiera de ellos para explorar; esto es lo que su congregación realmente verá.</span>
+    </p>
+    <div class="designs">
+      <div class="design-card">
+        <span class="tag"><span class="en-only">Direction One</span><span class="es-only">Opción Uno</span></span>
+        <h4><span class="en-only">Traditional</span><span class="es-only">Tradicional</span></h4>
+        <p><span class="en-only">Classic, familiar, reverent styling</span><span class="es-only">Estilo clásico, familiar y reverente</span></p>
+        <a class="btn" href="/traditional"><span class="en-only">View Traditional →</span><span class="es-only">Ver Tradicional →</span></a>
+      </div>
+      <div class="design-card">
+        <span class="tag"><span class="en-only">Direction Two</span><span class="es-only">Opción Dos</span></span>
+        <h4><span class="en-only">Modern</span><span class="es-only">Moderno</span></h4>
+        <p><span class="en-only">Clean, contemporary, simplified layout</span><span class="es-only">Diseño limpio, contemporáneo y simplificado</span></p>
+        <a class="btn" href="/modern"><span class="en-only">View Modern →</span><span class="es-only">Ver Moderno →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="en-only">Choose a Scope</span><span class="es-only">Elija un Alcance</span></h2>
+    <h3><span class="en-only">Package Options</span><span class="es-only">Opciones de Paquete</span></h3>
+    <div class="cards">
+      <div class="card">
+        <div class="tag"><span class="en-only">Launch Sooner</span><span class="es-only">Lanzamiento Más Rápido</span></div>
+        <h4><span class="en-only">Essential</span><span class="es-only">Esencial</span></h4>
+        <div class="price">$1,300</div>
+        <ul>
+          <li><span class="en-only">Home, About, Sermons, Contact</span><span class="es-only">Inicio, Nosotros, Sermones, Contacto</span></li>
+          <li><span class="en-only">Bilingual auto-detect</span><span class="es-only">Detección automática de idioma</span></li>
+          <li><span class="en-only">One design direction</span><span class="es-only">Un estilo de diseño</span></li>
+          <li><span class="en-only">1 revision round</span><span class="es-only">1 ronda de revisión</span></li>
+        </ul>
+      </div>
+      <div class="card recommend">
+        <div class="tag"><span class="en-only">Recommended</span><span class="es-only">Recomendado</span></div>
+        <h4><span class="en-only">Standard</span><span class="es-only">Estándar</span></h4>
+        <div class="price">$2,100</div>
+        <ul>
+          <li><span class="en-only">Everything in Essential</span><span class="es-only">Todo lo incluido en Esencial</span></li>
+          <li><span class="en-only">Events calendar</span><span class="es-only">Calendario de eventos</span></li>
+          <li><span class="en-only">Member resources page</span><span class="es-only">Página de recursos para miembros</span></li>
+          <li><span class="en-only">Prayer request form</span><span class="es-only">Formulario de peticiones de oración</span></li>
+          <li><span class="en-only">2 revision rounds</span><span class="es-only">2 rondas de revisión</span></li>
+          <li><span class="en-only">2-week support window after launch</span><span class="es-only">2 semanas de soporte después del lanzamiento</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tag"><span class="en-only">Two Phases</span><span class="es-only">Dos Fases</span></div>
+        <h4><span class="en-only">Full Scope</span><span class="es-only">Alcance Completo</span></h4>
+        <div class="price">$1,300 + $800</div>
+        <ul>
+          <li><span class="en-only">Phase 1 now: Essential site</span><span class="es-only">Fase 1 ahora: sitio Esencial</span></li>
+          <li><span class="en-only">Phase 2 later: calendar &amp; resources</span><span class="es-only">Fase 2 después: calendario y recursos</span></li>
+          <li><span class="en-only">Both design versions kept on file</span><span class="es-only">Ambas versiones de diseño se conservan</span></li>
+          <li><span class="en-only">Move to Phase 2 whenever ready</span><span class="es-only">Avance a la Fase 2 cuando esté listo</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="en-only">Choose a Payment Rhythm</span><span class="es-only">Elija un Plan de Pago</span></h2>
+    <h3><span class="en-only">Payment Options</span><span class="es-only">Opciones de Pago</span></h3>
+    <p class="lead">
+      <span class="en-only">All options deliver the same scope for the same total — spreading payments out doesn't change what's owed, only when it's due.</span>
+      <span class="es-only">Todas las opciones entregan el mismo alcance por el mismo total; distribuir los pagos no cambia lo que se debe, solo cuándo se vence.</span>
+    </p>
+    <table>
+      <tr>
+        <th><span class="en-only">Option</span><span class="es-only">Opción</span></th>
+        <th><span class="en-only">Total</span><span class="es-only">Total</span></th>
+        <th><span class="en-only">Structure</span><span class="es-only">Estructura</span></th>
+      </tr>
+      <tr>
+        <td class="label">A · <span class="en-only">Lump Split</span><span class="es-only">División en Dos</span></td>
+        <td>$2,100</td>
+        <td><span class="en-only">50% at start ($1,050), 50% at launch ($1,050)</span><span class="es-only">50% al inicio ($1,050), 50% al lanzamiento ($1,050)</span></td>
+      </tr>
+      <tr>
+        <td class="label">B · <span class="en-only">4 Payments</span><span class="es-only">4 Pagos</span></td>
+        <td>$2,100</td>
+        <td><span class="en-only">$525 × 4 — at signing, midpoint, pre-launch, +30 days after launch</span><span class="es-only">$525 × 4 — al firmar, a mitad de camino, antes del lanzamiento, +30 días después</span></td>
+      </tr>
+      <tr>
+        <td class="label">C · <span class="en-only">6 Payments</span><span class="es-only">6 Pagos</span></td>
+        <td>$2,205</td>
+        <td><span class="en-only">$367.50 × 6, monthly from signing</span><span class="es-only">$367.50 × 6, mensual desde la firma</span></td>
+      </tr>
+      <tr>
+        <td class="label">D · <span class="en-only">Phased</span><span class="es-only">Por Fases</span></td>
+        <td>$1,300 + $800</td>
+        <td><span class="en-only">Phase 1 now, Phase 2 in 3–6 months</span><span class="es-only">Fase 1 ahora, Fase 2 en 3–6 meses</span></td>
+      </tr>
+      <tr>
+        <td class="label">E · <span class="en-only">Phased + Payments</span><span class="es-only">Por Fases + Pagos</span></td>
+        <td>$1,300 + $800</td>
+        <td><span class="en-only">Phase 1: $325 × 4. Phase 2: $400 × 2, whenever ready</span><span class="es-only">Fase 1: $325 × 4. Fase 2: $400 × 2, cuando esté listo</span></td>
+      </tr>
+      <tr>
+        <td class="label">F · <span class="en-only">Essential Only</span><span class="es-only">Solo Esencial</span></td>
+        <td>$1,300</td>
+        <td><span class="en-only">50/50, or $325 × 4</span><span class="es-only">50/50, o $325 × 4</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="en-only">Details</span><span class="es-only">Detalles</span></h2>
+    <div class="two-col">
+      <div class="box">
+        <h4><span class="en-only">Included</span><span class="es-only">Incluido</span></h4>
+        <ul>
+          <li><span class="en-only">Custom-coded, mobile-responsive site</span><span class="es-only">Sitio programado a medida y adaptado a móviles</span></li>
+          <li><span class="en-only">Automatic bilingual display (EN/ES)</span><span class="es-only">Visualización bilingüe automática (EN/ES)</span></li>
+          <li><span class="en-only">Choice of two completed designs</span><span class="es-only">Elección entre dos diseños completos</span></li>
+          <li><span class="en-only">Sermon library &amp; contact page</span><span class="es-only">Biblioteca de sermones y página de contacto</span></li>
+          <li><span class="en-only">Prayer request form</span><span class="es-only">Formulario de peticiones de oración</span></li>
+          <li><span class="en-only">Revisions per selected package</span><span class="es-only">Revisiones según el paquete elegido</span></li>
+          <li><span class="en-only">Training walkthrough after launch</span><span class="es-only">Capacitación guiada después del lanzamiento</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4><span class="en-only">Not Included</span><span class="es-only">No Incluido</span></h4>
+        <ul>
+          <li><span class="en-only">Online giving — available later, if wanted</span><span class="es-only">Donaciones en línea — disponible más adelante, si se desea</span></li>
+          <li><span class="en-only">Hosting: $25–35/month</span><span class="es-only">Alojamiento (hosting): $25–35/mes</span></li>
+          <li><span class="en-only">Domain: cost of registration + $10 setup</span><span class="es-only">Dominio: costo de registro + $10 de configuración</span></li>
+          <li><span class="en-only">Maintenance after support window: $60–90/month</span><span class="es-only">Mantenimiento después del período de soporte: $60–90/mes</span></li>
+          <li><span class="en-only">Extra content edits: $50/hour</span><span class="es-only">Ediciones de contenido adicionales: $50/hora</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <span class="en-only">This proposal covers the website itself. Online giving isn't included here, but it's something we can talk through separately whenever you're ready to explore it.</span>
+      <span class="es-only">Esta propuesta cubre el sitio web en sí. Las donaciones en línea no están incluidas aquí, pero es algo que podemos conversar por separado cuando esté listo para explorarlo.</span>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span class="en-only">Questions or want to talk through an option? Reach out anytime — happy to walk through this together.</span>
+  <span class="es-only">¿Tiene preguntas o quiere conversar sobre alguna opción? Contácteme cuando quiera; con gusto lo repasamos juntos.</span>
+  <br>
+  <a href="tel:"><span class="en-only">Call or text</span><span class="es-only">Llame o envíe un mensaje</span></a>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    localStorage.setItem('preferredLang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  }
+
+  (function initLang(){
+    var saved = localStorage.getItem('preferredLang');
+    var detected = (navigator.language || navigator.userLanguage || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
+    setLang(saved || detected);
+  })();
+</script>
+
+</body>
+</html>

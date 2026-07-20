@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'church-lang';
+  var STORAGE_KEY = 'preferredLang';
 
   function detectLang() {
     var langs = navigator.languages && navigator.languages.length
