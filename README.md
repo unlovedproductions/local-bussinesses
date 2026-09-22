@@ -2,7 +2,7 @@
 
 Bilingual (English / Spanish) proposal site for Grace Community Church with two design mockups.
 
-**Live site:** [church.unlovedproductions.com](https://church.unlovedproductions.com) (DNS pending — interim: [church-site-gules.vercel.app](https://church-site-gules.vercel.app))
+**Live site:** [church.unlovedproductions.com](https://church.unlovedproductions.com)
 
 ## Routes
 
