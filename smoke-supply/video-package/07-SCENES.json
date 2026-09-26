@@ -1,0 +1,95 @@
+{
+  "title": "How POS & Inventory Integration Could Work",
+  "durationTargetSeconds": 90,
+  "durationRangeSeconds": [60, 120],
+  "disclaimer": "Demo concept only — not a live POS recording. Simulated data.",
+  "brand": {
+    "name": "Smoke & Supply",
+    "fictional": true,
+    "colors": {
+      "paper": "#f6f1e8",
+      "ink": "#1a1f1c",
+      "forest": "#2f4a3c",
+      "ember": "#b54a2a",
+      "demo": "#5c4d7a"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "title": "Customer Orders",
+      "caption": "A customer visits the website and orders products for pickup.",
+      "narration": "A customer opens the Smoke and Supply website, browses the catalog, and places an order for in-store pickup.",
+      "suggestedSeconds": 10,
+      "visual": "Storefront → catalog → cart → pickup checkout → confirmation"
+    },
+    {
+      "id": 2,
+      "title": "Order Reaches Store",
+      "caption": "The website sends the order into an integration layer.",
+      "narration": "Instead of stopping at the website, the order is handed to an integration layer that can talk to the store's existing systems.",
+      "suggestedSeconds": 8,
+      "visual": "Flow: Customer → Website → Online Order → Integration Layer"
+    },
+    {
+      "id": 3,
+      "title": "POS",
+      "caption": "The simulated POS receives the order.",
+      "narration": "The point-of-sale system receives the online order so staff can prepare it alongside normal counter activity.",
+      "suggestedSeconds": 8,
+      "visual": "Generic POS ticket mockup — no real vendor logos"
+    },
+    {
+      "id": 4,
+      "title": "Inventory",
+      "caption": "Inventory updates automatically in the simulation.",
+      "narration": "Inventory counts adjust when the online order is accepted, reducing the risk of showing items that are no longer available.",
+      "suggestedSeconds": 8,
+      "visual": "Inventory qty ticks down"
+    },
+    {
+      "id": 5,
+      "title": "In-Store Sale",
+      "caption": "A simulated in-store sale also reduces inventory.",
+      "narration": "When a walk-in customer buys the same product at the counter, the POS inventory drops again.",
+      "suggestedSeconds": 8,
+      "visual": "In-store sale chip; qty drops again"
+    },
+    {
+      "id": 6,
+      "title": "Website Updates",
+      "caption": "After sync, the website reflects the updated inventory.",
+      "narration": "A synchronization step copies the latest POS inventory back to the website so online shoppers see current availability.",
+      "suggestedSeconds": 10,
+      "visual": "POS → Integration → Website sync animation"
+    },
+    {
+      "id": 7,
+      "title": "Low Stock",
+      "caption": "The system detects a product approaching its reorder threshold.",
+      "narration": "When stock falls near the minimum threshold, the demo flags the product so the owner can review it.",
+      "suggestedSeconds": 8,
+      "visual": "Red/amber low-stock badge"
+    },
+    {
+      "id": 8,
+      "title": "Reorder Recommendation",
+      "caption": "Current 8 · Minimum 10 · Velocity 4/day · Suggested 30",
+      "narration": "For example, Product X shows eight units on hand, a minimum of ten, average daily sales of four, and a suggested reorder of thirty. Actual calculations would follow the store's business rules and supplier data.",
+      "suggestedSeconds": 12,
+      "visual": "Reorder card with numbers; footnote demo formula"
+    },
+    {
+      "id": 9,
+      "title": "Owner Benefit",
+      "caption": "One connected view of sales, stock, online orders, and reorders.",
+      "narration": "The owner sees what is selling, what is running low, what customers are ordering online, what needs reordering, and how inventory is moving across online and in-store sales. One connected system can give the owner a clearer picture of inventory and sales.",
+      "suggestedSeconds": 12,
+      "visual": "Simple owner dashboard tiles"
+    }
+  ],
+  "endCard": {
+    "headline": "One connected system can give the owner a clearer picture of inventory and sales.",
+    "sub": "This demonstration uses simulated data. Connecting a real store requires identifying the POS and inventory software first."
+  }
+}

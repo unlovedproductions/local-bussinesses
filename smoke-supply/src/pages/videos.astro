@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const videos = [
+  {
+    id: 'pos',
+    title: 'How POS & Inventory Integration Could Work',
+    file: '/videos/01-pos-inventory-integration.mp4',
+    duration: '~103s',
+    blurb:
+      'Follow Product X from online pickup order through POS, inventory updates, website sync, low stock, and reorder.',
+    related: { href: '/how-it-works/', label: 'Interactive walkthrough' },
+  },
+  {
+    id: 'dashboard',
+    title: 'What the Owner Can See From One Dashboard',
+    file: '/videos/02-owner-dashboard.mp4',
+    duration: '~95s',
+    blurb:
+      'Owner view: online vs in-store sales, order status, top sellers, low stock, and what needs attention today.',
+    related: { href: '/admin/', label: 'Owner demo screens' },
+  },
+  {
+    id: 'seo',
+    title: 'How Local SEO Could Help Your Store',
+    file: '/videos/03-local-seo.mp4',
+    duration: '~95s',
+    blurb:
+      'Practical local visibility: Google Business Profile, local search, website clarity, reviews, and NAP consistency.',
+    related: { href: '/local-seo/', label: 'Local SEO checklist' },
+  },
+];
+---
+
+<BaseLayout
+  title="Sales Demo Videos"
+  description="Simulated Smoke & Supply sales demos: POS & inventory integration, owner dashboard, and local SEO."
+  canonicalPath="/videos/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Demo · Simulated</span>
+    <h1>Sales demo videos</h1>
+    <p class="lead" style="max-width:42rem;">
+      Short concept videos for a local store owner. Same fictional Smoke &amp; Supply brand as the interactive demo —
+      not a live POS recording and not guaranteed search results.
+    </p>
+
+    <div class="video-list">
+      {
+        videos.map((v) => (
+          <article class="card video-card" id={v.id}>
+            <div class="video-meta">
+              <h2>{v.title}</h2>
+              <p>{v.blurb}</p>
+              <p class="video-duration">
+                <span class="badge badge-demo">DEMO · SIMULATED</span> {v.duration}
+              </p>
+            </div>
+            <video controls preload="metadata" playsinline>
+              <source src={v.file} type="video/mp4" />
+              <a href={v.file}>Download MP4</a>
+            </video>
+            <p class="video-links">
+              <a href={v.file} download>
+                Download MP4
+              </a>
+              {' · '}
+              <a href={v.related.href}>{v.related.label}</a>
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="notice" style="margin-top:2rem;">
+      Actual POS, inventory, integrations, and local search results depend on the systems and listings selected for a real
+      store. Smoke &amp; Supply is a fictional demo brand.
+    </p>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<style>
+  .video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 1.5rem;
+  }
+  .video-card video {
+    width: 100%;
+    border-radius: 12px;
+    background: #1a1f1c;
+    margin-top: 1rem;
+    aspect-ratio: 16 / 9;
+  }
+  .video-meta h2 {
+    font-family: Georgia, 'Noto Serif', serif;
+    font-size: 1.45rem;
+    color: var(--forest, #2f4a3c);
+    margin: 0 0 0.5rem;
+  }
+  .video-duration {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--muted, #6b726c);
+  }
+  .video-links {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+  }
+</style>

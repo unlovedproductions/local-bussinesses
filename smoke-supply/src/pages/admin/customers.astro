@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import { AdminCustomers } from '../../components/admin/AdminTables';
+---
+
+<BaseLayout title="Demo Customers" description="Fictional customer list for the owner demo." canonicalPath="/admin/customers/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Customers" current="customers">
+    <AdminCustomers client:load />
+  </AdminShell>
+</BaseLayout>

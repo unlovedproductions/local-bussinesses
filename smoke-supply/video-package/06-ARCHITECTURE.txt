@@ -1,0 +1,26 @@
+ARCHITECTURE DIAGRAM (for Scenes 2–6)
+
+Full flow:
+
+CUSTOMER
+   ↓
+WEBSITE
+   ↓
+ONLINE ORDER
+   ↓
+INTEGRATION / API LAYER
+  ↙                    ↘
+POS                    INVENTORY SYSTEM
+   ↓
+ORDER / INVENTORY / SALES DATA
+
+
+Sync animation (Scene 6):
+
+  [ POS ]  →  [ Integration Layer ]  →  [ Website ]
+   qty:5              syncing               qty:5
+
+
+Note on screen:
+"Exact architecture depends on the real store's POS and inventory software."
+"SIMULATED POS INTEGRATION"

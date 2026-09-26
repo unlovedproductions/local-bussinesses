@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShopCatalog from '../../components/ShopCatalog';
+---
+
+<BaseLayout
+  title="Shop Products"
+  description="Browse the Smoke & Supply demo catalog — cigarettes, cigars, tobacco, nicotine pouches, vapes, accessories, and lighters. Fictional products only."
+  canonicalPath="/shop/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Demo catalog</span>
+    <h1>Shop products</h1>
+    <p class="notice">All products, brands, prices, and stock levels are fictional example data.</p>
+    <ShopCatalog client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

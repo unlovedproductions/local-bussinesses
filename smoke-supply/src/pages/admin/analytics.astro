@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import AdminAnalytics from '../../components/admin/AdminAnalytics';
+---
+
+<BaseLayout title="Demo Analytics" description="Fictional sales and inventory analytics charts." canonicalPath="/admin/analytics/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Analytics" current="analytics">
+    <AdminAnalytics client:load />
+  </AdminShell>
+</BaseLayout>

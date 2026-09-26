@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  current: string;
+}
+const { title, current } = Astro.props;
+const links = [
+  { href: '/admin/', id: 'dashboard', label: 'Dashboard' },
+  { href: '/admin/orders/', id: 'orders', label: 'Orders' },
+  { href: '/admin/products/', id: 'products', label: 'Products' },
+  { href: '/admin/inventory/', id: 'inventory', label: 'Inventory' },
+  { href: '/admin/pos/', id: 'pos', label: 'POS Integration' },
+  { href: '/admin/reorder/', id: 'reorder', label: 'Reorder Suggestions' },
+  { href: '/admin/customers/', id: 'customers', label: 'Customers' },
+  { href: '/admin/analytics/', id: 'analytics', label: 'Analytics' },
+  { href: '/admin/settings/', id: 'settings', label: 'Settings' },
+];
+---
+
+<div class="admin-shell">
+  <nav class="admin-nav" aria-label="Demo admin">
+    <p style="padding:0.35rem 0.75rem;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;opacity:0.7;">
+      Demo Admin · Simulated
+    </p>
+    {
+      links.map((l) => (
+        <a href={l.href} aria-current={current === l.id ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))
+    }
+    <a href="/" style="margin-top:1rem;">← Storefront</a>
+  </nav>
+  <div class="admin-main">
+    <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
+      <div>
+        <span class="badge badge-demo">SIMULATED POS / EXAMPLE DATA</span>
+        <h1 style="margin:0.4rem 0 0;">{title}</h1>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="/tour">Demo Tour</a>
+    </div>
+    <slot />
+  </div>
+</div>

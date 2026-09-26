@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CheckoutForm from '../components/CheckoutForm';
+---
+
+<BaseLayout
+  title="Demo Checkout — In-Store Pickup"
+  description="Place a demo pickup order. Pay at pickup or pay online (simulated — no real charge)."
+  canonicalPath="/checkout/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <h1>Demo checkout</h1>
+    <CheckoutForm client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

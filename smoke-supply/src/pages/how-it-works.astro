@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ScenePlayer from '../components/ScenePlayer';
+---
+
+<BaseLayout
+  title="How POS & Inventory Integration Could Work"
+  description="Interactive demo presentation explaining how a website could sync with POS and inventory systems."
+  canonicalPath="/how-it-works/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <ScenePlayer client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

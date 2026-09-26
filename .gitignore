@@ -1,2 +1,14 @@
 .vercel
 .env*
+node_modules/
+**/node_modules/
+**/dist/
+**/.astro/
+output/work/audio/
+output/work/frames/
+output/work/qc/
+output/work/.venv/
+output/work/__pycache__/
+*.pyc
+.DS_Store
+smoke-supply-video-package.zip

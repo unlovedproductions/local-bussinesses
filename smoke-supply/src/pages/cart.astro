@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CartView from '../components/CartView';
+---
+
+<BaseLayout title="Cart" description="Review your Smoke & Supply demo cart before checkout." canonicalPath="/cart/">
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <h1>Your cart</h1>
+    <CartView client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import { AdminSettings } from '../../components/admin/AdminTables';
+---
+
+<BaseLayout title="Demo Settings" description="Reset and configuration for the simulated demo environment." canonicalPath="/admin/settings/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Settings" current="settings">
+    <AdminSettings client:load />
+  </AdminShell>
+</BaseLayout>

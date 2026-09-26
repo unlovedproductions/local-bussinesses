@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import AdminPosIntegration from '../../components/admin/AdminPosIntegration';
+---
+
+<BaseLayout title="POS Integration Demo" description="Simulated POS and inventory synchronization demonstration." canonicalPath="/admin/pos/">
+  <SiteHeader slot="header" />
+  <AdminShell title="POS Integration" current="pos">
+    <AdminPosIntegration client:load />
+  </AdminShell>
+</BaseLayout>

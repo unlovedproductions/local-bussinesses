@@ -1,0 +1,33 @@
+---
+import { STORE } from '../lib/store-info';
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h3>{STORE.name}</h3>
+      <p>{STORE.demoNotice}</p>
+      <p style="margin-top:0.75rem;font-size:0.9rem;">{STORE.ageNotice}</p>
+    </div>
+    <div>
+      <h3>Visit (Demo)</h3>
+      <ul>
+        <li>{STORE.address.full}</li>
+        <li><a href={STORE.phoneHref}>{STORE.phone}</a></li>
+        <li>{STORE.email}</li>
+        <li><a href="/visit">Hours &amp; directions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="/shop">Product catalog</a></li>
+        <li><a href="/pickup">Pickup instructions</a></li>
+        <li><a href="/why-connect">Why connect POS</a></li>
+        <li><a href="/connect">Connect your system</a></li>
+        <li><a href="/local-seo">Local SEO checklist</a></li>
+        <li><a href="/admin">Demo admin</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

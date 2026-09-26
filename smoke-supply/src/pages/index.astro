@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ProductArt from '../components/ProductArt';
+import { STORE, CATEGORIES } from '../lib/store-info';
+import { getFeaturedProducts } from '../lib/products';
+import { formatMoney } from '../lib/inventory-math';
+import { faqJsonLd, localBusinessJsonLd } from '../lib/seo';
+
+const featured = getFeaturedProducts().slice(0, 8);
+const jsonLd = [localBusinessJsonLd(), faqJsonLd()];
+---
+
+<BaseLayout
+  title="Smoke & Supply — Demo Neighborhood Smoke Shop"
+  description="Fictional demo storefront for Smoke & Supply: browse products, order for in-store pickup, and see a simulated POS & inventory integration."
+  canonicalPath="/"
+  jsonLd={jsonLd}
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Fictional demo store · Riverbend, OR</span>
+        <h1 id="hero-title">{STORE.name}</h1>
+        <p class="lead">{STORE.tagline}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/shop">Shop Products</a>
+          <a class="btn btn-secondary" href="/videos">Watch Demo Videos</a>
+          <a class="btn btn-ghost" href="/checkout">Order for Pickup</a>
+          <a class="btn btn-ghost" href="/visit">Get Directions</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>Location:</strong> {STORE.address.full}</div>
+          <div><strong>Phone:</strong> {STORE.phone}</div>
+          <div><strong>Hours:</strong> See Visit page for full demo schedule</div>
+          <div><span class="badge badge-demo">EXAMPLE DATA</span> Not a real business</div>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="How pickup works">
+        <div>
+          <h2>Order online. Pick up in store.</h2>
+          <ol>
+            <li>Browse the demo catalog</li>
+            <li>Place a pickup order (pay online or at pickup)</li>
+            <li>Store prepares your order</li>
+            <li>Pick up with ID as required</li>
+          </ol>
+        </div>
+        <a class="btn btn-primary" href="/tour">Show Me How It Works</a>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="cat-title">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Categories</span>
+          <h2 id="cat-title">Featured categories</h2>
+        </div>
+        <a href="/shop">View all products</a>
+      </div>
+      <div class="grid-3">
+        {
+          CATEGORIES.map((c) => (
+            <a class="card category-card" href={`/shop/${c.id}/`}>
+              <span class="badge badge-demo">Demo</span>
+              <h3>{c.name}</h3>
+              <p>{c.description}</p>
+              {c.complianceNote ? <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--muted);">{c.complianceNote}</p> : null}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Pickup</span>
+          <h2 id="how-title">How pickup works</h2>
+        </div>
+        <a href="/pickup">Full instructions</a>
+      </div>
+      <div class="steps">
+        <div class="card step"><h3>Browse</h3><p>Find products in the demo catalog.</p></div>
+        <div class="card step"><h3>Place order</h3><p>Submit an in-store pickup demo order.</p></div>
+        <div class="card step"><h3>We prepare</h3><p>Staff receive the order and stage items.</p></div>
+        <div class="card step"><h3>Pick up</h3><p>Visit during open hours with your order number.</p></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="feat-title">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Catalog</span>
+          <h2 id="feat-title">Featured products</h2>
+        </div>
+        <a href="/shop">Shop all</a>
+      </div>
+      <div class="grid-4">
+        {
+          featured.map((product) => (
+            <a class="card product-card" href={`/products/${product.slug}/`}>
+              <div class="product-art" style={`background:hsl(${product.imageHue} 25% 92%)`}>
+                <ProductArt product={product} size={160} />
+              </div>
+              <div class="product-body">
+                <span class="brand-label">{product.brand}</span>
+                <h3>{product.name}</h3>
+                <div class="price">{formatMoney(product.price)}</div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section grid-2" aria-labelledby="store-title">
+      <div class="card">
+        <span class="eyebrow">Visit</span>
+        <h2 id="store-title">Store information</h2>
+        <p><strong>{STORE.address.full}</strong></p>
+        <p><a href={STORE.phoneHref}>{STORE.phone}</a></p>
+        <ul>
+          {STORE.hours.map((h) => <li>{h.day}: {h.open} – {h.close}</li>)}
+        </ul>
+        <p>{STORE.pickupHoursNote}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+          <a class="btn btn-secondary" href="/visit">Get Directions</a>
+          <a class="btn btn-ghost" href={STORE.phoneHref}>Call the Store</a>
+        </div>
+      </div>
+      <div class="card" style="display:grid;place-items:center;min-height:280px;background:var(--paper-2);">
+        <div style="text-align:center;padding:1rem;">
+          <strong>{STORE.mapEmbedLabel}</strong>
+          <p style="color:var(--muted);margin-top:0.5rem;">Interactive map would use the real store address in production.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="why-title">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Customers</span>
+          <h2 id="why-title">Why shop with us</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>Local & convenient</h3><p>Browse ahead and pick up when you’re nearby.</p></div>
+        <div class="card"><h3>Clear product info</h3><p>See categories, prices, and demo availability before you visit.</p></div>
+        <div class="card"><h3>Straightforward pickup</h3><p>Order number, prep time, and store hours in one place.</p></div>
+      </div>
+    </section>
+
+    <section class="section faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">AEO / FAQ</span>
+          <h2 id="faq-title">Common questions</h2>
+        </div>
+        <a href="/faq">All FAQs</a>
+      </div>
+      <details open>
+        <summary>Does the store offer in-store pickup?</summary>
+        <p>Yes — this demo store offers online ordering for in-store pickup during open hours.</p>
+      </details>
+      <details>
+        <summary>Where is the store located?</summary>
+        <p>{STORE.address.full} (fictional demo address).</p>
+      </details>
+      <details>
+        <summary>How does online pickup work?</summary>
+        <p>Browse products, place a demo order, wait for preparation, then pick up at the store with your order number and ID as required.</p>
+      </details>
+    </section>
+
+    <section class="section card">
+      <span class="badge badge-demo">For store owners</span>
+      <h2 style="margin-top:0.5rem;">See the POS & inventory demo</h2>
+      <p>Explore a simulated admin dashboard showing how website orders and inventory could sync with an existing POS.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+        <a class="btn btn-demo" href="/admin">Open demo admin</a>
+        <a class="btn btn-ghost" href="/how-it-works">Watch integration story</a>
+        <a class="btn btn-ghost" href="/connect">Connect your system</a>
+      </div>
+    </section>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

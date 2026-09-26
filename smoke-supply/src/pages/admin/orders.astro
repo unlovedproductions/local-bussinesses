@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import { AdminOrders } from '../../components/admin/AdminTables';
+---
+
+<BaseLayout title="Demo Orders" description="Simulated online and in-store orders." canonicalPath="/admin/orders/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Orders" current="orders">
+    <AdminOrders client:load />
+  </AdminShell>
+</BaseLayout>

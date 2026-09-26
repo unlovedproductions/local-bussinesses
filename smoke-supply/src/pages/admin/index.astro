@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import AdminDashboard from '../../components/admin/AdminDashboard';
+---
+
+<BaseLayout title="Demo Admin Dashboard" description="Simulated owner dashboard for Smoke & Supply demo." canonicalPath="/admin/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Dashboard" current="dashboard">
+    <AdminDashboard client:load />
+  </AdminShell>
+</BaseLayout>

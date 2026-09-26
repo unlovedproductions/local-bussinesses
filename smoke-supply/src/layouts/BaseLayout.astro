@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import { STORE } from '../lib/store-info';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  bodyClass?: string;
+}
+
+const { title, description = STORE.tagline, canonicalPath = '/', jsonLd, bodyClass = '' } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site).toString();
+const fullTitle = title.includes('Smoke & Supply') ? title : `${title} | Smoke & Supply Demo`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#2f4a3c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {
+      jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-banner" role="status">
+      <strong>DEMO</strong> — Fictional store · Example data · No real payments · Simulated POS
+    </div>
+    <div class="age-banner" role="note">
+      21+ only. This demo shows an eligibility notice; it does not verify age or satisfy tobacco sale laws.
+    </div>
+    <slot name="header" />
+    <main id="main">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

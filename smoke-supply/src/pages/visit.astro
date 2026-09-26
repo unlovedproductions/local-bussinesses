@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { STORE } from '../lib/store-info';
+import { localBusinessJsonLd } from '../lib/seo';
+---
+
+<BaseLayout
+  title="Visit the Store"
+  description={`Visit Smoke & Supply demo location at ${STORE.address.full}. Hours, phone, and directions placeholders.`}
+  canonicalPath="/visit/"
+  jsonLd={localBusinessJsonLd()}
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Local info</span>
+    <h1>Visit Smoke & Supply</h1>
+    <p class="notice">{STORE.demoNotice}</p>
+    <div class="grid-2" style="margin-top:1.25rem;">
+      <div class="card">
+        <h2>Address & contact</h2>
+        <p><strong>{STORE.address.street}</strong><br />{STORE.address.city}, {STORE.address.state} {STORE.address.zip}</p>
+        <p>Phone: <a href={STORE.phoneHref}>{STORE.phone}</a></p>
+        <p>Email: {STORE.email}</p>
+        <p>Service area (placeholder): {STORE.serviceArea}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+          <a class="btn btn-secondary" href={`https://maps.google.com/?q=${encodeURIComponent(STORE.address.full)}`} rel="noopener noreferrer" target="_blank">Get Directions</a>
+          <a class="btn btn-primary" href={STORE.phoneHref}>Call the Store</a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Hours (demo)</h2>
+        <ul>
+          {STORE.hours.map((h) => <li><strong>{h.day}:</strong> {h.open} – {h.close}</li>)}
+        </ul>
+        <p style="margin-top:0.75rem;">{STORE.pickupHoursNote}</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;min-height:220px;display:grid;place-items:center;background:var(--paper-2);">
+      <p><strong>{STORE.mapEmbedLabel}</strong></p>
+    </div>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

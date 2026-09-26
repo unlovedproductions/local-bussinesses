@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smoke-supply-demo.example.com/sitemap-index.xml

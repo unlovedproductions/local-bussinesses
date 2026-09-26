@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import OrderConfirmation from '../../components/OrderConfirmation';
+---
+
+<BaseLayout
+  title="Order Confirmation"
+  description="Demo order confirmation for in-store pickup."
+  canonicalPath="/orders/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <OrderConfirmation client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

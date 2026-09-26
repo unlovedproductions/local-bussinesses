@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Why Connect Your POS & Inventory?"
+  description="Plain-English benefits of connecting a local store website to existing POS and inventory systems."
+  canonicalPath="/why-connect/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Owner benefits</span>
+    <h1>Why connect your POS & inventory?</h1>
+    <p class="notice">
+      Actual benefits depend on the capabilities and quality of the store’s existing POS/inventory system and the final
+      integration. This page explains the potential — not guarantees of savings or profit.
+    </p>
+    <div class="grid-2" style="margin-top:1.25rem;">
+      <article class="card"><h2>Less manual data entry</h2><p>Orders and inventory information can potentially move between systems automatically.</p></article>
+      <article class="card"><h2>Better inventory visibility</h2><p>The owner can see inventory levels more easily in one place.</p></article>
+      <article class="card"><h2>Fewer stock surprises</h2><p>Low-stock thresholds can trigger alerts when configured.</p></article>
+      <article class="card"><h2>Better purchasing decisions</h2><p>Sales history can help inform reorder decisions.</p></article>
+      <article class="card"><h2>Online + in-store visibility</h2><p>The owner can potentially view online and in-store sales activity together.</p></article>
+      <article class="card"><h2>Reduced overselling risk</h2><p>Inventory synchronization can help prevent the website from showing unavailable products, subject to sync accuracy and system limits.</p></article>
+      <article class="card"><h2>Easier business management</h2><p>Spend less time manually comparing different systems.</p></article>
+      <article class="card"><h2>Next step</h2><p>Identify the POS and inventory tools you already use — we won’t ask you to replace them unnecessarily.</p><a class="btn btn-demo" href="/connect/" style="margin-top:0.75rem;">Let’s connect your system</a></article>
+    </div>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import { AdminInventory } from '../../components/admin/AdminTables';
+---
+
+<BaseLayout title="Demo Inventory" description="Simulated inventory dashboard with low-stock indicators." canonicalPath="/admin/inventory/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Inventory" current="inventory">
+    <AdminInventory client:load />
+  </AdminShell>
+</BaseLayout>

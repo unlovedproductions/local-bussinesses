@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { STORE } from '../lib/store-info';
+---
+
+<BaseLayout
+  title="Local SEO Checklist"
+  description="Local SEO, GEO, and AEO foundation checklist for customizing the Smoke & Supply demo to a real store."
+  canonicalPath="/local-seo/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">SEO · GEO · AEO</span>
+    <h1>Local SEO implementation checklist</h1>
+    <p class="notice">
+      Placeholders below use fictional demo NAP. GEO/AEO structure helps AI systems understand the business; it does not
+      guarantee visibility in any AI search system.
+    </p>
+
+    <div class="card" style="margin:1rem 0;">
+      <h2>NAP placeholders (customize later)</h2>
+      <ul>
+        <li>Business name: {STORE.name}</li>
+        <li>Address: {STORE.address.full}</li>
+        <li>Phone: {STORE.phone}</li>
+        <li>City / State / ZIP: {STORE.address.city}, {STORE.address.state} {STORE.address.zip}</li>
+        <li>Hours: see Visit page</li>
+        <li>Service area: {STORE.serviceArea}</li>
+      </ul>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <h2>Local SEO checklist</h2>
+        <ul>
+          <li>Google Business Profile claimed and accurate</li>
+          <li>NAP consistency across site and directories</li>
+          <li>Local citations</li>
+          <li>Review generation and response process</li>
+          <li>Location / visit page</li>
+          <li>Local links and partnerships</li>
+          <li>Local content (hours, pickup, neighborhood)</li>
+          <li>Store photos (real store, later)</li>
+          <li>Products/services clearly described</li>
+          <li>Technical SEO: titles, sitemap, robots, mobile, speed</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>GEO / AEO foundations in this demo</h2>
+        <ul>
+          <li>Clear statements of who, what, where, when</li>
+          <li>Pickup workflow explained in plain language</li>
+          <li>FAQ answers suitable for answer engines</li>
+          <li>LocalBusiness + FAQPage structured data (demo NAP)</li>
+          <li>Internal links between shop, visit, pickup, FAQ</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

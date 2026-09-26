@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { STORE } from '../lib/store-info';
+---
+
+<BaseLayout
+  title="In-Store Pickup Instructions"
+  description="How online pickup works at Smoke & Supply (demo): order, confirmation, preparation, pickup, and ID verification."
+  canonicalPath="/pickup/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Customer workflow</span>
+    <h1>Pickup instructions</h1>
+    <p class="notice">Demonstration content — not legal advice. Production rules depend on jurisdiction and store policy.</p>
+
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <article class="card"><h2>1. Place your order</h2><p>Choose products online and submit your pickup order. At checkout you can pay online (demo simulation) or pay at pickup. No real card charge is processed in this demo.</p></article>
+      <article class="card"><h2>2. Order confirmation</h2><p>Receive your order number and estimated preparation time.</p></article>
+      <article class="card"><h2>3. Store preparation</h2><p>Store staff receive the order and prepare the items.</p></article>
+      <article class="card"><h2>4. Pickup</h2><p>Visit {STORE.address.full} during open hours. {STORE.pickupHoursNote}</p></article>
+      <article class="card"><h2>5. Verification</h2><p>Complete any identification/age verification required by applicable law and store policy. This demo does not verify age.</p></article>
+      <article class="card"><h2>Need help?</h2><p>Call <a href={STORE.phoneHref}>{STORE.phone}</a> (demo number).</p><a class="btn btn-primary" href="/shop" style="margin-top:0.75rem;">Start shopping</a></article>
+    </div>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

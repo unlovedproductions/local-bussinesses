@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import AdminShell from '../../components/AdminShell.astro';
+import AdminReorder from '../../components/admin/AdminReorder';
+---
+
+<BaseLayout title="Reorder Suggestions" description="Demo reorder recommendation engine with visible assumptions." canonicalPath="/admin/reorder/">
+  <SiteHeader slot="header" />
+  <AdminShell title="Reorder Suggestions" current="reorder">
+    <AdminReorder client:load />
+  </AdminShell>
+</BaseLayout>

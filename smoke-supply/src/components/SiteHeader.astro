@@ -1,0 +1,36 @@
+---
+import { STORE } from '../lib/store-info';
+import CartBadge from '../components/CartBadge';
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span class="brand-text">
+        <strong>{STORE.name}</strong>
+        <span>Demo Storefront</span>
+      </span>
+    </a>
+    <nav class="nav nav-desktop" aria-label="Primary">
+      <a href="/shop">Shop</a>
+      <a href="/pickup">Pickup</a>
+      <a href="/visit">Visit</a>
+      <a href="/faq">FAQ</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/videos">Videos</a>
+      <a href="/tour">Demo Tour</a>
+      <a href="/admin">Owner Demo</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm" href={STORE.phoneHref}>Call</a>
+      <CartBadge client:load />
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-bar" aria-label="Quick actions">
+  <a class="btn btn-secondary btn-sm" href="/shop">Shop</a>
+  <a class="btn btn-primary btn-sm" href="/checkout">Pickup Order</a>
+  <a class="btn btn-ghost btn-sm" href={STORE.phoneHref}>Call</a>
+</nav>

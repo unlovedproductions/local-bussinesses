@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { STORE } from '../lib/store-info';
+import { faqJsonLd } from '../lib/seo';
+
+const faqs = [
+  {
+    q: 'Does the store offer in-store pickup?',
+    a: 'Yes. This demo store offers online ordering for in-store pickup during open hours.',
+  },
+  {
+    q: 'What are the store hours?',
+    a: 'See the Visit page. Demo weekday hours are typically 10:00 AM–8:00 PM, with extended Friday–Saturday hours and shorter Sunday hours.',
+  },
+  {
+    q: 'Where is the store located?',
+    a: `The fictional demo address is ${STORE.address.full}.`,
+  },
+  {
+    q: 'How does online pickup work?',
+    a: 'Browse products, place a demo order, wait for preparation, then pick up in store with your order number.',
+  },
+  {
+    q: 'What should I bring when picking up my order?',
+    a: 'Bring your order number, a valid photo ID for age verification as required, and payment if you chose pay at pickup. If you paid online in the demo, bring your order number and ID. This demo does not process real payments.',
+  },
+  {
+    q: 'Can I pay online for pickup orders?',
+    a: 'Yes in this demo: choose Pay online now at checkout, or Pay at pickup. Online payment is simulated only. A production site would use the store’s real payment processor.',
+  },
+  {
+    q: 'Do you deliver?',
+    a: 'This demo focuses on in-store pickup only. Delivery would be a separate production decision.',
+  },
+  {
+    q: 'Is this a real store?',
+    a: 'No. Smoke & Supply is a fictional demonstration brand with example data.',
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Answers about pickup, hours, location, and the Smoke & Supply demo experience."
+  canonicalPath="/faq/"
+  jsonLd={faqJsonLd()}
+>
+  <SiteHeader slot="header" />
+  <div class="wrap faq">
+    <span class="eyebrow">AEO foundation</span>
+    <h1>Frequently asked questions</h1>
+    <p>Answers use fictional demo-store facts. This is not legal advice.</p>
+    {
+      faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))
+    }
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

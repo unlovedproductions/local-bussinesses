@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Let’s Connect Your Existing System"
+  description="POS discovery process for converting the Smoke & Supply demo into a real integration."
+  canonicalPath="/connect/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">POS discovery</span>
+    <h1>Let’s connect your existing system</h1>
+    <p>
+      We’ll first identify the POS and inventory software you already use. We won’t ask you to replace systems
+      unnecessarily.
+    </p>
+    <div class="notice notice-danger">
+      <strong>Do not submit passwords, API keys, credit-card information, or other secrets through this demo.</strong>
+      Share only non-sensitive identifiers (product names, screenshots without credentials, vendor names).
+    </div>
+
+    <div class="steps" style="margin:1.5rem 0;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));">
+      <div class="card step"><h3>Identify POS</h3></div>
+      <div class="card step"><h3>Identify inventory</h3></div>
+      <div class="card step"><h3>Check APIs</h3></div>
+      <div class="card step"><h3>Map SKUs</h3></div>
+      <div class="card step"><h3>Connect</h3></div>
+      <div class="card step"><h3>Test sync</h3></div>
+      <div class="card step"><h3>Launch</h3></div>
+    </div>
+
+    <div class="card">
+      <h2>What the store owner can provide</h2>
+      <ul>
+        <li>POS name (and version if known)</li>
+        <li>Inventory software name (if separate from POS)</li>
+        <li>Photo of a receipt (no card numbers)</li>
+        <li>Software screenshot with secrets blurred</li>
+        <li>Vendor or reseller contact information</li>
+        <li>Any existing online ordering platform</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h2>Demo contact form (does not send data)</h2>
+      <p class="notice">This form is visual only — it does not transmit information anywhere.</p>
+      <form class="form-grid" id="demo-connect-form">
+        <label>Your name<input name="name" autocomplete="name" /></label>
+        <label>Business name<input name="business" /></label>
+        <label>POS name<input name="pos" placeholder="e.g. brand on the login screen" /></label>
+        <label>Inventory software<input name="inventory" placeholder="Same as POS, or separate" /></label>
+        <label>Notes<textarea name="notes" rows="3" placeholder="No passwords or API keys"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send (demo — no submit)</button>
+      </form>
+    </div>
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<script>
+  document.getElementById('demo-connect-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    alert('Demo only — nothing was submitted.');
+  });
+</script>

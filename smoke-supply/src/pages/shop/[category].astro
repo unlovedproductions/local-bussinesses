@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShopCatalog from '../../components/ShopCatalog';
+import { CATEGORIES, categoryById } from '../../lib/store-info';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { category: c.id } }));
+}
+
+const { category } = Astro.params;
+const cat = categoryById(category!);
+if (!cat) throw new Error('Unknown category');
+---
+
+<BaseLayout
+  title={`${cat.name} — Shop`}
+  description={`Demo ${cat.name} products from Smoke & Supply. Fictional catalog data.`}
+  canonicalPath={`/shop/${cat.id}/`}
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <span class="eyebrow">Category</span>
+    <h1>{cat.name}</h1>
+    <p>{cat.description}</p>
+    {cat.complianceNote ? <p class="notice notice-warn">{cat.complianceNote}</p> : null}
+    <ShopCatalog client:load initialCategory={cat.id} />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

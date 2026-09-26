@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import DemoTour from '../components/DemoTour';
+---
+
+<BaseLayout
+  title="Demo Tour"
+  description="Guided walkthrough of the Smoke & Supply customer and owner demo experience."
+  canonicalPath="/tour/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <DemoTour client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>

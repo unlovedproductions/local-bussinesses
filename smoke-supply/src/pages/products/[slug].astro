@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ProductArt from '../../components/ProductArt';
+import AddToCart from '../../components/AddToCart';
+import LiveStock from '../../components/LiveStock';
+import { PRODUCTS, getProductBySlug, getRelatedProducts } from '../../lib/products';
+import { categoryById } from '../../lib/store-info';
+import { formatMoney } from '../../lib/inventory-math';
+
+export function getStaticPaths() {
+  return PRODUCTS.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug!);
+if (!product) throw new Error('Product not found');
+const cat = categoryById(product.category);
+const related = getRelatedProducts(product);
+---
+
+<BaseLayout
+  title={product.name}
+  description={`${product.name} by ${product.brand} — demo product at Smoke & Supply. Fictional SKU ${product.sku}.`}
+  canonicalPath={`/products/${product.slug}/`}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    brand: product.brand,
+    sku: product.sku,
+    description: product.description + ' (Demo / fictional product data.)',
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+    },
+  }}
+>
+  <SiteHeader slot="header" />
+  <div class="wrap">
+    <p><a href="/shop">Shop</a> / <a href={`/shop/${product.category}/`}>{cat?.name}</a></p>
+    <div class="grid-2" style="align-items:start;margin-top:1rem;">
+      <div class="card" style={`background:hsl(${product.imageHue} 25% 92%);display:grid;place-items:center;`}>
+        <ProductArt product={product} size={280} />
+      </div>
+      <div>
+        <span class="badge badge-demo">DEMO PRODUCT</span>
+        <p class="brand-label" style="margin-top:0.75rem;">{product.brand}</p>
+        <h1 style="margin:0.25rem 0;">{product.name}</h1>
+        <p class="price" style="font-size:1.4rem;">{formatMoney(product.price)}</p>
+        <p style="margin:0.75rem 0;"><LiveStock client:load productId={product.id} /></p>
+        <p>{product.description}</p>
+        {product.complianceNote ? <p class="notice notice-warn">{product.complianceNote}</p> : null}
+        <dl style="display:grid;grid-template-columns:auto 1fr;gap:0.35rem 1rem;margin:1rem 0;">
+          <dt><strong>SKU</strong></dt><dd>{product.sku}</dd>
+          <dt><strong>UPC</strong></dt><dd>{product.upc}</dd>
+          {Object.entries(product.attributes).map(([k, v]) => (
+            <><dt><strong>{k}</strong></dt><dd>{v}</dd></>
+          ))}
+        </dl>
+        <AddToCart client:load productId={product.id} />
+      </div>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="section">
+          <h2>Related products</h2>
+          <div class="grid-4">
+            {related.map((p) => (
+              <a class="card product-card" href={`/products/${p.slug}/`}>
+                <div class="product-art" style={`background:hsl(${p.imageHue} 25% 92%)`}>
+                  <ProductArt product={p} size={140} />
+                </div>
+                <div class="product-body">
+                  <span class="brand-label">{p.brand}</span>
+                  <h3>{p.name}</h3>
+                  <div class="price">{formatMoney(p.price)}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>
