@@ -1,0 +1,87 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "-5%",
+  "total_s": 95.394,
+  "scenes": [
+    {
+      "id": "title",
+      "text": "Here's a simple look at how local SEO could help a store like Smoke and Supply show up when nearby customers are searching.",
+      "audio": "audio/v3/title.mp3",
+      "speech_s": 7.128,
+      "start_s": 0.0,
+      "duration_s": 7.578
+    },
+    {
+      "id": "s1",
+      "text": "Local SEO is about being findable when someone nearby searches for what you sell \u2014 on Google Search, Maps, and related results.",
+      "audio": "audio/v3/s1.mp3",
+      "speech_s": 8.952,
+      "start_s": 7.578,
+      "duration_s": 9.402
+    },
+    {
+      "id": "s2",
+      "text": "A strong Google Business Profile can be a starting point: your name, address, hours, categories, photos, and how customers can contact you.",
+      "audio": "audio/v3/s2.mp3",
+      "speech_s": 9.792,
+      "start_s": 16.98,
+      "duration_s": 10.242
+    },
+    {
+      "id": "s3",
+      "text": "When someone searches for a product or service near them, your store could appear in the local pack or on the map \u2014 alongside other nearby options.",
+      "audio": "audio/v3/s3.mp3",
+      "speech_s": 8.904,
+      "start_s": 27.222,
+      "duration_s": 9.354
+    },
+    {
+      "id": "s4",
+      "text": "Your website can support that by making it clear where you are, what you offer, and which areas you serve \u2014 without promising a specific ranking.",
+      "audio": "audio/v3/s4.mp3",
+      "speech_s": 8.568,
+      "start_s": 36.576,
+      "duration_s": 9.018
+    },
+    {
+      "id": "s5",
+      "text": "Reviews and ratings matter to many shoppers. Encouraging honest customer feedback, when appropriate, can help build trust over time.",
+      "audio": "audio/v3/s5.mp3",
+      "speech_s": 8.784,
+      "start_s": 45.594,
+      "duration_s": 9.234
+    },
+    {
+      "id": "s6",
+      "text": "Consistent business information \u2014 the same name, address, and phone number across your profile, website, and directories \u2014 helps search systems understand your store.",
+      "audio": "audio/v3/s6.mp3",
+      "speech_s": 10.872,
+      "start_s": 54.828,
+      "duration_s": 11.322
+    },
+    {
+      "id": "s7",
+      "text": "For the owner, the practical benefit is visibility: more chances to be seen by people already looking for a local option.",
+      "audio": "audio/v3/s7.mp3",
+      "speech_s": 7.824,
+      "start_s": 66.15,
+      "duration_s": 8.274
+    },
+    {
+      "id": "s8",
+      "text": "Local SEO doesn't replace good service or a clear offer. It can make it easier for the right nearby customers to find you in the first place.",
+      "audio": "audio/v3/s8.mp3",
+      "speech_s": 8.832,
+      "start_s": 74.424,
+      "duration_s": 9.282
+    },
+    {
+      "id": "end",
+      "text": "This is a simulated concept. Actual local search results depend on competition, Google's systems, your category, and how the store's listings and website are set up.",
+      "audio": "audio/v3/end.mp3",
+      "speech_s": 10.488,
+      "start_s": 83.706,
+      "duration_s": 11.688
+    }
+  ]
+}

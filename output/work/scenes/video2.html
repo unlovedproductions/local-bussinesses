@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>What the Owner Can See From One Dashboard</title>
+<link rel="stylesheet" href="shared.css" />
+<style>
+  #s2 .sales-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 28px;
+  }
+  #s2 .sales-card {
+    text-align: center;
+    padding: 36px 24px;
+  }
+  #s2 .sales-card .amt {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--forest);
+    margin-top: 12px;
+  }
+  #s2 .sales-card.total .amt { color: var(--ember); }
+  #s3 .pipeline {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+    justify-content: center;
+  }
+  #s3 .pipe {
+    flex: 1;
+    max-width: 280px;
+    text-align: center;
+    padding: 28px 16px;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    transition: border-color .4s var(--ease), transform .4s var(--ease);
+  }
+  #s3 .pipe.active {
+    border-color: var(--ember);
+    transform: translateY(-6px);
+    background: #fff8f4;
+  }
+  #s3 .pipe .count {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--forest);
+    margin-top: 10px;
+  }
+  #s4 .rank { margin-top: 20px; }
+  #s4 .rank-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: 24px;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity .45s var(--ease), transform .45s var(--ease);
+  }
+  #s4 .rank-row.show { opacity: 1; transform: none; }
+  #s4 .rank-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  #s4 .bar {
+    flex: 1;
+    height: 12px;
+    background: var(--paper-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  #s4 .bar i {
+    display: block;
+    height: 100%;
+    background: var(--ember);
+    width: 0;
+    transition: width .7s var(--ease);
+  }
+  #s7 .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 24px;
+  }
+  #s7 .link-line {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    width: 80px;
+    margin-left: -40px;
+    height: 3px;
+    background: var(--ember);
+    opacity: 0;
+    transition: opacity .5s;
+  }
+  #s8 .attn {
+    max-width: 820px;
+    margin: 28px auto 0;
+  }
+  #s8 .attn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8px;
+    border-bottom: 1px solid var(--line);
+    font-size: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .4s var(--ease), transform .4s var(--ease);
+  }
+  #s8 .attn-row.show { opacity: 1; transform: none; }
+  #s8 .attn-row .n {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--ember);
+    font-weight: 600;
+  }
+  #s9 .chain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  #s9 .chain .flow-node {
+    min-width: 320px;
+  }
+  #s9 .summary {
+    margin-top: 28px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--forest);
+    opacity: 0;
+    transition: opacity .5s;
+  }
+  #s9 .summary.show { opacity: 1; }
+  #s6 .row-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 32px;
+    margin-top: 20px;
+    align-items: start;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="demo-badge" id="badge">DEMO · SIMULATED</div>
+
+  <section class="scene title-scene" id="title">
+    <div class="kicker">Smoke &amp; Supply · Concept demo</div>
+    <h1>What the Owner Can See From One Dashboard</h1>
+    <div class="sub">Concept demo · Not a live POS recording</div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="scene" id="s1">
+    <div class="label">Owner Dashboard</div>
+    <h2 class="scene-title">A quick overview across the store</h2>
+    <div class="card-grid" id="s1-cards">
+      <div class="metric-card" data-i="0">
+        <div class="m-label">Online Orders Today</div>
+        <div class="m-value">12</div>
+      </div>
+      <div class="metric-card" data-i="1">
+        <div class="m-label">In-Store Sales Today</div>
+        <div class="m-value">47</div>
+      </div>
+      <div class="metric-card" data-i="2">
+        <div class="m-label">Low-Stock Items</div>
+        <div class="m-value">8</div>
+      </div>
+      <div class="metric-card" data-i="3">
+        <div class="m-label">Top Sellers</div>
+        <div class="m-value" style="font-size:34px;">Product X</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="label">Online + In-Store Sales</div>
+    <h2 class="scene-title">Today’s Sales</h2>
+    <div class="sales-split" id="s2-sales">
+      <div class="panel sales-card">
+        <div style="font-size:16px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Online</div>
+        <div class="amt" id="s2-online">$0</div>
+      </div>
+      <div class="panel sales-card">
+        <div style="font-size:16px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">In-store</div>
+        <div class="amt" id="s2-instore">$0</div>
+      </div>
+      <div class="panel sales-card total">
+        <div style="font-size:16px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Total</div>
+        <div class="amt" id="s2-total">$0</div>
+      </div>
+    </div>
+    <p class="footnote" style="text-align:center;margin-top:28px;">Demo figures only · Fictional Smoke &amp; Supply data</p>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="label">Online Order Activity</div>
+    <h2 class="scene-title">Pickup order status</h2>
+    <div class="pipeline" id="s3-pipe">
+      <div class="pipe" data-i="0"><div>Pending</div><div class="count">3</div></div>
+      <div class="pipe" data-i="1"><div>Preparing</div><div class="count">4</div></div>
+      <div class="pipe" data-i="2"><div>Ready</div><div class="count">2</div></div>
+      <div class="pipe" data-i="3"><div>Completed</div><div class="count">3</div></div>
+    </div>
+    <div class="panel" style="max-width:640px;margin:36px auto 0;" id="s3-ex">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Highlighted order</div>
+          <div style="font-size:26px;font-weight:600;margin-top:4px;">SS-10055 · Product X × 1</div>
+        </div>
+        <span class="pill warn" id="s3-status">Preparing</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="label">Top Sellers</div>
+    <h2 class="scene-title">What’s moving today</h2>
+    <div class="panel rank" style="max-width:900px;">
+      <div class="rank-row" data-i="0">
+        <div class="rank-num">1</div>
+        <div class="product-mark" style="width:48px;height:48px;font-size:20px;">X</div>
+        <div style="width:220px;font-weight:600;">Product X</div>
+        <div class="bar"><i data-w="100%"></i></div>
+        <div style="width:110px;text-align:right;font-weight:600;">16 sold</div>
+      </div>
+      <div class="rank-row" data-i="1">
+        <div class="rank-num">2</div>
+        <div class="product-mark" style="width:48px;height:48px;font-size:20px;background:linear-gradient(145deg,#5c6b62,#3d4a43);">Y</div>
+        <div style="width:220px;font-weight:600;">Product Y</div>
+        <div class="bar"><i data-w="69%"></i></div>
+        <div style="width:110px;text-align:right;font-weight:600;">11 sold</div>
+      </div>
+      <div class="rank-row" data-i="2">
+        <div class="rank-num">3</div>
+        <div class="product-mark" style="width:48px;height:48px;font-size:20px;background:linear-gradient(145deg,#7a6548,#5a4a36);">Z</div>
+        <div style="width:220px;font-weight:600;">Product Z</div>
+        <div class="bar"><i data-w="50%"></i></div>
+        <div style="width:110px;text-align:right;font-weight:600;">8 sold</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="label">Inventory Requiring Attention</div>
+    <h2 class="scene-title">Inventory overview</h2>
+    <div class="panel" style="max-width:920px;">
+      <table class="table">
+        <thead>
+          <tr><th>Product</th><th>On hand</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight" id="s5-x">
+            <td><strong>Product X</strong></td>
+            <td>8</td>
+            <td><span class="pill low">LOW</span></td>
+          </tr>
+          <tr>
+            <td>Product Y</td>
+            <td>42</td>
+            <td><span class="pill ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Product Z</td>
+            <td>15</td>
+            <td><span class="pill warn">REVIEW</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="label">Low-stock notification</div>
+    <h2 class="scene-title">When supported by the selected system</h2>
+    <div class="row-layout">
+      <div class="panel" id="s6-inv">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div style="display:flex;gap:16px;align-items:center;">
+            <div class="product-mark">X</div>
+            <div>
+              <div style="font-size:28px;font-weight:600;">Product X</div>
+              <div style="color:var(--muted);">8 available · Minimum 10</div>
+            </div>
+          </div>
+          <span class="pill low">LOW STOCK</span>
+        </div>
+      </div>
+      <div class="phone" id="s6-phone" style="opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;">
+        <div class="notch"></div>
+        <div class="from">Simulated notification</div>
+        <div class="bubble">
+          Smoke &amp; Supply: Product X is below its minimum stock level. Review inventory.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="label">Sales + Inventory</div>
+    <h2 class="scene-title">Product X — activity and stock together</h2>
+    <div class="split" style="position:relative;">
+      <div class="panel">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Sales Activity</div>
+        <div style="font-size:28px;font-weight:600;margin-bottom:20px;">Product X</div>
+        <div style="display:flex;justify-content:space-between;font-size:24px;padding:12px 0;border-bottom:1px solid var(--line);">
+          <span>Online</span><strong id="s7-on">0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:24px;padding:12px 0;">
+          <span>In-store</span><strong id="s7-in">0</strong>
+        </div>
+      </div>
+      <div class="panel">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Inventory</div>
+        <div style="font-size:28px;font-weight:600;margin-bottom:20px;">Product X</div>
+        <div style="display:flex;gap:40px;">
+          <div>
+            <div style="font-size:14px;color:var(--muted);">Current</div>
+            <div class="qty danger" style="font-size:56px;" id="s7-cur">—</div>
+          </div>
+          <div>
+            <div style="font-size:14px;color:var(--muted);">Minimum</div>
+            <div class="qty" style="font-size:56px;color:var(--ink-soft);" id="s7-min">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s8">
+    <div class="label">What needs attention today?</div>
+    <h2 class="scene-title">Today’s Attention</h2>
+    <div class="panel attn">
+      <div class="attn-row" data-i="0">
+        <span>Low-stock products</span>
+        <span class="n">8</span>
+      </div>
+      <div class="attn-row" data-i="1">
+        <span>Online orders to prepare</span>
+        <span class="n">3</span>
+      </div>
+      <div class="attn-row" data-i="2">
+        <span>Reorder recommendations</span>
+        <span class="n">5</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s9">
+    <div class="label">Sales + Inventory → One Clearer View</div>
+    <h2 class="scene-title">Connected owner view</h2>
+    <div class="chain" id="s9-chain">
+      <div class="flow-node">Website</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">Online Orders</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">POS</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">Inventory</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node hot">Owner Dashboard</div>
+    </div>
+    <div class="summary" id="s9-sum">Sales + Inventory → One Clearer View</div>
+  </section>
+
+  <section class="scene end-scene" id="end">
+    <div class="badge">DEMO · SIMULATED</div>
+    <h2>One connected system can give the owner a clearer picture of inventory and sales.</h2>
+    <div class="rule"></div>
+    <p>This demonstration uses simulated data.</p>
+    <p>Connecting a real store requires identifying the POS and inventory software first.</p>
+    <p class="fine">Actual dashboard functionality, POS integration, inventory synchronization, and notifications depend on the systems selected for the store.</p>
+    <p class="fine" style="margin-top:20px;">Smoke &amp; Supply · Fictional demo brand</p>
+  </section>
+
+  <div class="caption-bar"><span id="caption"></span></div>
+</div>
+
+<script>
+const TIMELINE = [{"id":"title","text":"Once your sales and inventory are connected, here's the kind of information you could have available from the owner's dashboard.","speech_s":7.392,"start_s":0.0,"duration_s":7.842},{"id":"s1","text":"Instead of starting with individual transactions, the owner can start with a quick overview of what's happening across the store.","speech_s":7.536,"start_s":7.842,"duration_s":7.986},{"id":"s2","text":"Sales can be separated into online and in-store activity, making it easier to see where today's transactions are coming from.","speech_s":7.992,"start_s":15.828,"duration_s":8.442},{"id":"s3","text":"The owner can also see online orders and their status, giving them a quick way to monitor the pickup side of the business.","speech_s":7.152,"start_s":24.27,"duration_s":7.602},{"id":"s4","text":"A top-sellers view can show which products are moving, giving the owner another piece of information to consider when managing inventory and placing orders.","speech_s":9.552,"start_s":31.872,"duration_s":10.002},{"id":"s5","text":"The inventory view brings attention to products that may need attention, rather than making the owner search through every item manually.","speech_s":8.016,"start_s":41.874,"duration_s":8.466},{"id":"s6","text":"When supported by the selected system, low-stock alerts could notify the owner when an item reaches a defined threshold.","speech_s":7.128,"start_s":50.34,"duration_s":7.578},{"id":"s7","text":"Now the owner can look at sales activity alongside inventory information and see how products are moving through the store.","speech_s":7.2,"start_s":57.918,"duration_s":7.65},{"id":"s8","text":"Instead of digging through different systems to figure out what needs attention, the dashboard can bring those items into one place.","speech_s":7.704,"start_s":65.568,"duration_s":8.154},{"id":"s9","text":"The goal isn't simply to give the owner another dashboard. It's to make the information from the store's different sales channels easier to understand and act on. This is what a connected setup could look like.","speech_s":11.808,"start_s":73.722,"duration_s":12.258},{"id":"end","text":"This is a simulated concept. Actual dashboard features and integrations depend on the systems selected for the store.","speech_s":7.392,"start_s":85.98,"duration_s":8.592}];
+
+const CAPTIONS = {
+  title: "What the Owner Can See From One Dashboard",
+  s1: "A quick overview of what's happening across the store.",
+  s2: "Sales separated into online and in-store activity.",
+  s3: "Online orders and their pickup status.",
+  s4: "Top sellers — which products are moving.",
+  s5: "Inventory that may need attention.",
+  s6: "Low-stock alerts when supported by the system.",
+  s7: "Sales activity alongside inventory information.",
+  s8: "What needs attention — in one place.",
+  s9: "A connected setup the owner can act on.",
+  end: "Simulated concept · Depends on selected systems"
+};
+
+let current = null;
+
+function showScene(id) {
+  if (current !== id) {
+    document.querySelectorAll(".scene").forEach((el) => el.classList.remove("active"));
+    const el = document.getElementById(id);
+    if (el) el.classList.add("active");
+    document.getElementById("caption").textContent = CAPTIONS[id] || "";
+    document.getElementById("badge").style.display = (id === "title" || id === "end") ? "none" : "block";
+    current = id;
+  }
+}
+
+function applyLocal(id, local) {
+  if (id === "s1") {
+    document.querySelectorAll("#s1-cards .metric-card").forEach((c, i) => {
+      c.classList.toggle("show", local >= 0.3 + i * 0.4);
+    });
+  }
+  if (id === "s2") {
+    document.getElementById("s2-online").textContent = local >= 0.6 ? "$342" : "$0";
+    document.getElementById("s2-instore").textContent = local >= 1.4 ? "$1,847" : "$0";
+    document.getElementById("s2-total").textContent = local >= 2.2 ? "$2,189" : "$0";
+  }
+  if (id === "s3") {
+    const pipes = [...document.querySelectorAll("#s3-pipe .pipe")];
+    const statuses = ["Pending", "Preparing", "Ready", "Completed"];
+    const idx = Math.min(3, Math.floor(Math.max(0, local - 0.4) / 1.2));
+    pipes.forEach((p, i) => p.classList.toggle("active", i === idx));
+    document.getElementById("s3-status").textContent = statuses[idx];
+  }
+  if (id === "s4") {
+    document.querySelectorAll("#s4 .rank-row").forEach((r, i) => {
+      const on = local >= 0.4 + i * 0.7;
+      r.classList.toggle("show", on);
+      const bar = r.querySelector(".bar i");
+      bar.style.width = on ? bar.getAttribute("data-w") : "0";
+      bar.style.transition = "none";
+    });
+  }
+  if (id === "s5") {
+    document.getElementById("s5-x").classList.toggle("pulse", local >= 0.8);
+  }
+  if (id === "s6") {
+    const phone = document.getElementById("s6-phone");
+    const on = local >= 1.8;
+    phone.style.opacity = on ? "1" : "0";
+    phone.style.transform = on ? "none" : "translateY(16px)";
+    phone.style.transition = "none";
+  }
+  if (id === "s7") {
+    document.getElementById("s7-on").textContent = local >= 0.6 ? "4" : "0";
+    document.getElementById("s7-in").textContent = local >= 1.2 ? "12" : "0";
+    document.getElementById("s7-cur").textContent = local >= 1.8 ? "8" : "—";
+    document.getElementById("s7-min").textContent = local >= 1.8 ? "10" : "—";
+  }
+  if (id === "s8") {
+    document.querySelectorAll("#s8 .attn-row").forEach((r, i) => {
+      r.classList.toggle("show", local >= 0.4 + i * 0.6);
+    });
+  }
+  if (id === "s9") {
+    const nodes = [...document.querySelectorAll("#s9-chain .flow-node")];
+    const idx = Math.min(nodes.length - 1, Math.floor(Math.max(0, local - 0.4) / 0.9));
+    nodes.forEach((n, i) => n.classList.toggle("hot", i === idx || (i === nodes.length - 1 && local >= 4.0)));
+    document.getElementById("s9-sum").classList.toggle("show", local >= 5.2);
+  }
+}
+
+function tick(t) {
+  let scene = TIMELINE[0];
+  for (const s of TIMELINE) {
+    if (t >= s.start_s) scene = s;
+  }
+  showScene(scene.id);
+  applyLocal(scene.id, t - scene.start_s);
+}
+
+window.__demo = {
+  timeline: TIMELINE,
+  total: TIMELINE[TIMELINE.length - 1].start_s + TIMELINE[TIMELINE.length - 1].duration_s,
+  seek(t) { tick(t); },
+  start() {
+    const t0 = performance.now();
+    function loop(now) {
+      const t = (now - t0) / 1000;
+      tick(t);
+      if (t < window.__demo.total + 0.2) requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+};
+
+tick(0);
+</script>
+</body>
+</html>

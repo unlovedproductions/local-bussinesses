@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>How Local SEO Could Help Your Store</title>
+<link rel="stylesheet" href="shared.css" />
+<style>
+  #s1 .concept {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 28px;
+  }
+  #s1 .concept .panel { text-align: center; padding: 36px 24px; }
+  #s1 .icon {
+    width: 64px; height: 64px; margin: 0 auto 16px;
+    border-radius: 14px; background: var(--forest); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 700;
+  }
+  #s2 .gbp {
+    max-width: 920px; margin: 20px auto 0;
+    display: grid; grid-template-columns: 280px 1fr; gap: 28px;
+  }
+  #s2 .map-block {
+    height: 280px; border-radius: 14px;
+    background:
+      linear-gradient(135deg, #dfe8e2 0%, #c5d4cb 40%, #e8efe9 100%);
+    position: relative; overflow: hidden;
+  }
+  #s2 .pin {
+    position: absolute; left: 48%; top: 42%;
+    width: 28px; height: 28px; border-radius: 50% 50% 50% 0;
+    background: var(--ember); transform: rotate(-45deg);
+    box-shadow: 0 6px 16px rgba(181,74,42,.35);
+  }
+  #s2 .pin::after {
+    content: ""; position: absolute; inset: 7px;
+    background: #fff; border-radius: 50%;
+  }
+  #s2 .field {
+    display: flex; justify-content: space-between;
+    padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 20px;
+  }
+  #s2 .field span:last-child { font-weight: 600; color: var(--forest); }
+  #s3 .search-ui { max-width: 980px; margin: 24px auto 0; }
+  #s3 .search-bar {
+    background: #fff; border: 1px solid var(--line); border-radius: 28px;
+    padding: 16px 28px; font-size: 24px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 14px;
+  }
+  #s3 .local-pack {
+    margin-top: 24px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 16px; padding: 8px 0;
+    box-shadow: var(--shadow);
+  }
+  #s3 .pack-row {
+    display: flex; align-items: center; gap: 18px;
+    padding: 18px 24px; border-bottom: 1px solid var(--line);
+    opacity: 0; transform: translateY(10px);
+  }
+  #s3 .pack-row.show { opacity: 1; transform: none; }
+  #s3 .pack-row:last-child { border-bottom: none; }
+  #s3 .pack-row.ours { background: #fff8f4; }
+  #s3 .rank {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--forest); color: var(--paper);
+    display: flex; align-items: center; justify-content: center; font-weight: 700;
+  }
+  #s3 .pack-row.ours .rank { background: var(--ember); }
+  #s4 .site-mock {
+    max-width: 1000px; margin: 20px auto 0;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
+  }
+  #s4 .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  #s4 .chip {
+    padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
+    background: #fff; font-size: 16px; color: var(--ink-soft);
+  }
+  #s4 .chip.on { background: var(--forest); color: var(--paper); border-color: var(--forest); }
+  #s5 .reviews {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;
+  }
+  #s5 .stars { color: var(--ember); letter-spacing: 4px; font-size: 28px; margin: 8px 0; }
+  #s6 .nap {
+    max-width: 900px; margin: 28px auto 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  #s6 .nap .panel { text-align: center; padding: 28px 18px; }
+  #s6 .nap .match {
+    margin-top: 14px; font-size: 15px; font-weight: 700;
+    color: var(--ok); letter-spacing: 0.04em;
+  }
+  #s6 .check-line {
+    text-align: center; margin-top: 32px; font-size: 24px; color: var(--forest);
+    font-family: var(--font-display);
+  }
+  #s7 .benefit-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px;
+  }
+  #s7 .benefit-grid .panel { padding: 32px 24px; }
+  #s7 .big {
+    font-family: var(--font-display); font-size: 40px; color: var(--forest);
+    margin-bottom: 12px; line-height: 1.15;
+  }
+  #s8 .closer {
+    max-width: 1000px; margin: 40px auto 0; text-align: center;
+  }
+  #s8 .closer h3 {
+    font-family: var(--font-display); font-size: 42px; color: var(--forest);
+    line-height: 1.25; margin-bottom: 24px;
+  }
+  #s8 .flow { margin-top: 36px; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="demo-badge" id="badge">DEMO · SIMULATED</div>
+
+  <section class="scene title-scene" id="title">
+    <div class="kicker">Smoke &amp; Supply · Concept demo</div>
+    <h1>How Local SEO Could Help Your Store</h1>
+    <div class="sub">Concept demo · Not a live Google ranking or traffic report</div>
+    <div class="rule"></div>
+  </section>
+
+  <section class="scene" id="s1">
+    <div class="label">What local SEO is</div>
+    <h2 class="scene-title">Being findable nearby</h2>
+    <div class="concept" id="s1-cards">
+      <div class="panel metric-card" data-i="0">
+        <div class="icon">G</div>
+        <div style="font-size:22px;font-weight:600;color:var(--forest);">Search</div>
+        <div style="margin-top:10px;color:var(--ink-soft);font-size:18px;">Nearby people looking for what you sell</div>
+      </div>
+      <div class="panel metric-card" data-i="1">
+        <div class="icon">M</div>
+        <div style="font-size:22px;font-weight:600;color:var(--forest);">Maps</div>
+        <div style="margin-top:10px;color:var(--ink-soft);font-size:18px;">Directions and “near me” discovery</div>
+      </div>
+      <div class="panel metric-card" data-i="2">
+        <div class="icon">S</div>
+        <div style="font-size:22px;font-weight:600;color:var(--forest);">Your store</div>
+        <div style="margin-top:10px;color:var(--ink-soft);font-size:18px;">A clearer local presence</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="label">Google Business Profile</div>
+    <h2 class="scene-title">A clear starting point for local visibility</h2>
+    <div class="gbp panel" id="s2-card">
+      <div>
+        <div class="map-block"><div class="pin" id="s2-pin" style="opacity:0;"></div></div>
+        <div style="margin-top:12px;font-size:14px;color:var(--muted);text-align:center;">Simulated map · Riverbend, OR (demo)</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:32px;color:var(--forest);">Smoke &amp; Supply</div>
+        <div style="color:var(--muted);margin:6px 0 18px;">Independent retail · Fictional demo store</div>
+        <div class="field"><span>Address</span><span id="s2-a">—</span></div>
+        <div class="field"><span>Hours</span><span id="s2-b">—</span></div>
+        <div class="field"><span>Category</span><span id="s2-c">—</span></div>
+        <div class="field"><span>Phone</span><span id="s2-d">—</span></div>
+        <div style="margin-top:16px;"><span class="pill demo">DEMO · SIMULATED PROFILE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="label">Local search results</div>
+    <h2 class="scene-title">Showing up when customers search nearby</h2>
+    <div class="search-ui">
+      <div class="search-bar">
+        <span style="color:var(--muted);">🔍</span>
+        <span id="s3-q">smoke shop near me</span>
+      </div>
+      <div class="local-pack" id="s3-pack">
+        <div class="pack-row" data-i="0">
+          <div class="rank">1</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:22px;">Other Local Shop A</div>
+            <div style="color:var(--muted);">0.8 mi · Example competitor</div>
+          </div>
+          <span class="pill ok">Maps</span>
+        </div>
+        <div class="pack-row ours" data-i="1">
+          <div class="rank">2</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:22px;">Smoke &amp; Supply</div>
+            <div style="color:var(--muted);">1.2 mi · Riverbend, OR (demo)</div>
+          </div>
+          <span class="pill warn">Example placement</span>
+        </div>
+        <div class="pack-row" data-i="2">
+          <div class="rank">3</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:22px;">Other Local Shop B</div>
+            <div style="color:var(--muted);">1.9 mi · Example competitor</div>
+          </div>
+          <span class="pill ok">Maps</span>
+        </div>
+      </div>
+      <p class="footnote" style="text-align:center;margin-top:18px;">Illustrative only — actual rankings vary and are not guaranteed.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="label">Website support</div>
+    <h2 class="scene-title">Clear location and what you offer</h2>
+    <div class="site-mock">
+      <div class="panel">
+        <div class="ui-chrome"><i></i><i></i><i></i></div>
+        <div style="font-size:14px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;">Website · Smoke &amp; Supply</div>
+        <div style="font-family:var(--font-display);font-size:36px;color:var(--forest);margin-top:8px;">Visit us in Riverbend</div>
+        <div style="font-size:20px;color:var(--ink-soft);margin-top:12px;line-height:1.45;">
+          Hours, address, and what customers can find in-store — written so search systems and shoppers both understand the business.
+        </div>
+        <div class="chip-row" id="s4-chips">
+          <span class="chip" data-i="0">Address &amp; hours</span>
+          <span class="chip" data-i="1">Local service area</span>
+          <span class="chip" data-i="2">Product categories</span>
+          <span class="chip" data-i="3">Contact / directions</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Does not claim</div>
+        <div style="margin-top:16px;font-size:22px;line-height:1.4;color:var(--ink-soft);">
+          A specific #1 ranking<br/>
+          Guaranteed traffic<br/>
+          Guaranteed sales
+        </div>
+        <div style="margin-top:24px;"><span class="pill low">CLAIM-SAFE DEMO</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="label">Reviews &amp; trust</div>
+    <h2 class="scene-title">Honest feedback builds confidence</h2>
+    <div class="reviews">
+      <div class="panel" id="s5-a" style="opacity:0;">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Simulated review</div>
+        <div class="stars">★★★★★</div>
+        <div style="font-size:20px;line-height:1.45;">“Knew what I needed and had it ready for pickup.”</div>
+        <div style="margin-top:14px;color:var(--muted);">— Local customer (demo)</div>
+      </div>
+      <div class="panel" id="s5-b" style="opacity:0;">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Owner action</div>
+        <div style="font-size:26px;font-weight:600;color:var(--forest);margin:16px 0 12px;">Ask for reviews when it fits</div>
+        <div style="font-size:20px;line-height:1.45;color:var(--ink-soft);">
+          After a good visit or pickup, a simple request for honest feedback can help the profile look active and trustworthy over time.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s6">
+    <div class="label">Name · Address · Phone</div>
+    <h2 class="scene-title">Consistency across listings</h2>
+    <div class="nap" id="s6-nap">
+      <div class="panel metric-card" data-i="0">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;">Business Profile</div>
+        <div style="font-size:22px;font-weight:600;margin-top:12px;">Smoke &amp; Supply</div>
+        <div style="margin-top:8px;color:var(--ink-soft);">100 Demo St<br/>Riverbend, OR</div>
+        <div class="match" id="s6-m0" style="opacity:0;">MATCHES</div>
+      </div>
+      <div class="panel metric-card" data-i="1">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;">Website</div>
+        <div style="font-size:22px;font-weight:600;margin-top:12px;">Smoke &amp; Supply</div>
+        <div style="margin-top:8px;color:var(--ink-soft);">100 Demo St<br/>Riverbend, OR</div>
+        <div class="match" id="s6-m1" style="opacity:0;">MATCHES</div>
+      </div>
+      <div class="panel metric-card" data-i="2">
+        <div style="font-size:14px;color:var(--muted);text-transform:uppercase;">Directories</div>
+        <div style="font-size:22px;font-weight:600;margin-top:12px;">Smoke &amp; Supply</div>
+        <div style="margin-top:8px;color:var(--ink-soft);">100 Demo St<br/>Riverbend, OR</div>
+        <div class="match" id="s6-m2" style="opacity:0;">MATCHES</div>
+      </div>
+    </div>
+    <div class="check-line" id="s6-line" style="opacity:0;">Same details → clearer signal to search systems</div>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="label">Owner benefit</div>
+    <h2 class="scene-title">What this could mean in practice</h2>
+    <div class="benefit-grid" id="s7-grid">
+      <div class="panel metric-card" data-i="0">
+        <div class="big">Be seen</div>
+        <div style="font-size:20px;color:var(--ink-soft);line-height:1.4;">By people already searching nearby for what you sell</div>
+      </div>
+      <div class="panel metric-card" data-i="1">
+        <div class="big">Be clear</div>
+        <div style="font-size:20px;color:var(--ink-soft);line-height:1.4;">Hours, location, and offer presented consistently</div>
+      </div>
+      <div class="panel metric-card" data-i="2">
+        <div class="big">Build trust</div>
+        <div style="font-size:20px;color:var(--ink-soft);line-height:1.4;">Through a complete profile and genuine reviews</div>
+      </div>
+    </div>
+    <p class="footnote" style="text-align:center;margin-top:28px;">Results depend on competition, category, and how listings and the website are maintained.</p>
+  </section>
+
+  <section class="scene" id="s8">
+    <div class="label">The practical takeaway</div>
+    <div class="closer">
+      <h3 id="s8-h" style="opacity:0;">Local SEO doesn’t replace good service — it can help the right nearby customers find you first.</h3>
+      <div class="flow" id="s8-flow">
+        <div class="flow-node" data-n="0">Profile</div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-node" data-n="1">Website</div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-node" data-n="2">Reviews</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node hot" data-n="3">Local visibility</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene end-scene" id="end">
+    <div class="badge">DEMO · SIMULATED</div>
+    <h2>Local visibility can make it easier for nearby customers to find the store.</h2>
+    <div class="rule"></div>
+    <p>This demonstration uses simulated search and listing examples.</p>
+    <p>Connecting a real store requires identifying current listings, the website, and competitive local search conditions first.</p>
+    <p class="fine">Actual local search results depend on competition, Google’s systems, your category, and how the store’s listings and website are set up. Rankings and traffic are not guaranteed.</p>
+    <p class="fine" style="margin-top:20px;">Smoke &amp; Supply · Fictional demo brand</p>
+  </section>
+
+  <div class="caption-bar"><span id="caption"></span></div>
+</div>
+
+<script src="video3-timeline.js"></script>
+<script>
+const CAPTIONS = {
+  title: "How Local SEO Could Help Your Store",
+  s1: "Being findable when nearby customers search.",
+  s2: "A clear Google Business Profile as a starting point.",
+  s3: "Showing up in local search and map results.",
+  s4: "Website clarity on location and what you offer.",
+  s5: "Honest reviews help build trust over time.",
+  s6: "Consistent name, address, and phone across listings.",
+  s7: "More chances to be seen by local searchers.",
+  s8: "Help the right nearby customers find you first.",
+  end: "Simulated concept · Rankings not guaranteed"
+};
+
+let current = null;
+
+function showScene(id) {
+  if (current !== id) {
+    document.querySelectorAll(".scene").forEach((el) => el.classList.remove("active"));
+    const el = document.getElementById(id);
+    if (el) el.classList.add("active");
+    document.getElementById("caption").textContent = CAPTIONS[id] || "";
+    document.getElementById("badge").style.display = (id === "title" || id === "end") ? "none" : "block";
+    current = id;
+  }
+}
+
+function applyLocal(id, local) {
+  if (id === "s1") {
+    document.querySelectorAll("#s1-cards .metric-card").forEach((c, i) => {
+      c.classList.toggle("show", local >= 0.3 + i * 0.45);
+    });
+  }
+  if (id === "s2") {
+    document.getElementById("s2-pin").style.opacity = local >= 0.5 ? "1" : "0";
+    const fields = [
+      ["s2-a", "100 Demo St", 0.8],
+      ["s2-b", "10am – 8pm", 1.4],
+      ["s2-c", "Specialty retail", 2.0],
+      ["s2-d", "(555) 010-2099", 2.6],
+    ];
+    fields.forEach(([eid, v, at]) => {
+      document.getElementById(eid).textContent = local >= at ? v : "—";
+    });
+  }
+  if (id === "s3") {
+    document.querySelectorAll("#s3-pack .pack-row").forEach((r, i) => {
+      r.classList.toggle("show", local >= 0.6 + i * 0.7);
+    });
+  }
+  if (id === "s4") {
+    document.querySelectorAll("#s4-chips .chip").forEach((c, i) => {
+      c.classList.toggle("on", local >= 0.5 + i * 0.55);
+    });
+  }
+  if (id === "s5") {
+    const a = document.getElementById("s5-a");
+    const b = document.getElementById("s5-b");
+    a.style.opacity = local >= 0.5 ? "1" : "0";
+    b.style.opacity = local >= 1.8 ? "1" : "0";
+  }
+  if (id === "s6") {
+    document.querySelectorAll("#s6-nap .metric-card").forEach((c, i) => {
+      c.classList.toggle("show", local >= 0.3 + i * 0.5);
+    });
+    ["s6-m0", "s6-m1", "s6-m2"].forEach((idm, i) => {
+      document.getElementById(idm).style.opacity = local >= 2.0 + i * 0.35 ? "1" : "0";
+    });
+    document.getElementById("s6-line").style.opacity = local >= 3.2 ? "1" : "0";
+  }
+  if (id === "s7") {
+    document.querySelectorAll("#s7-grid .metric-card").forEach((c, i) => {
+      c.classList.toggle("show", local >= 0.4 + i * 0.5);
+    });
+  }
+  if (id === "s8") {
+    document.getElementById("s8-h").style.opacity = local >= 0.4 ? "1" : "0";
+    const nodes = [...document.querySelectorAll("#s8-flow .flow-node")];
+    const idx = Math.min(nodes.length - 1, Math.floor(Math.max(0, local - 1.2) / 0.9));
+    nodes.forEach((n, i) => n.classList.toggle("hot", i === idx || (i === nodes.length - 1 && local >= 4.0)));
+  }
+}
+
+function tick(t) {
+  let scene = TIMELINE[0];
+  for (const s of TIMELINE) {
+    if (t >= s.start_s) scene = s;
+  }
+  showScene(scene.id);
+  applyLocal(scene.id, t - scene.start_s);
+}
+
+window.__demo = {
+  timeline: TIMELINE,
+  total: TIMELINE[TIMELINE.length - 1].start_s + TIMELINE[TIMELINE.length - 1].duration_s,
+  seek(t) { tick(t); },
+  start() {
+    const t0 = performance.now();
+    function loop(now) {
+      const t = (now - t0) / 1000;
+      tick(t);
+      if (t < window.__demo.total + 0.2) requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+};
+
+tick(0);
+</script>
+</body>
+</html>

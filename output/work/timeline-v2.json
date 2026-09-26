@@ -1,0 +1,95 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "-5%",
+  "total_s": 94.572,
+  "scenes": [
+    {
+      "id": "title",
+      "text": "Once your sales and inventory are connected, here's the kind of information you could have available from the owner's dashboard.",
+      "audio": "audio/v2/title.mp3",
+      "speech_s": 7.392,
+      "start_s": 0.0,
+      "duration_s": 7.842
+    },
+    {
+      "id": "s1",
+      "text": "Instead of starting with individual transactions, the owner can start with a quick overview of what's happening across the store.",
+      "audio": "audio/v2/s1.mp3",
+      "speech_s": 7.536,
+      "start_s": 7.842,
+      "duration_s": 7.986
+    },
+    {
+      "id": "s2",
+      "text": "Sales can be separated into online and in-store activity, making it easier to see where today's transactions are coming from.",
+      "audio": "audio/v2/s2.mp3",
+      "speech_s": 7.992,
+      "start_s": 15.828,
+      "duration_s": 8.442
+    },
+    {
+      "id": "s3",
+      "text": "The owner can also see online orders and their status, giving them a quick way to monitor the pickup side of the business.",
+      "audio": "audio/v2/s3.mp3",
+      "speech_s": 7.152,
+      "start_s": 24.27,
+      "duration_s": 7.602
+    },
+    {
+      "id": "s4",
+      "text": "A top-sellers view can show which products are moving, giving the owner another piece of information to consider when managing inventory and placing orders.",
+      "audio": "audio/v2/s4.mp3",
+      "speech_s": 9.552,
+      "start_s": 31.872,
+      "duration_s": 10.002
+    },
+    {
+      "id": "s5",
+      "text": "The inventory view brings attention to products that may need attention, rather than making the owner search through every item manually.",
+      "audio": "audio/v2/s5.mp3",
+      "speech_s": 8.016,
+      "start_s": 41.874,
+      "duration_s": 8.466
+    },
+    {
+      "id": "s6",
+      "text": "When supported by the selected system, low-stock alerts could notify the owner when an item reaches a defined threshold.",
+      "audio": "audio/v2/s6.mp3",
+      "speech_s": 7.128,
+      "start_s": 50.34,
+      "duration_s": 7.578
+    },
+    {
+      "id": "s7",
+      "text": "Now the owner can look at sales activity alongside inventory information and see how products are moving through the store.",
+      "audio": "audio/v2/s7.mp3",
+      "speech_s": 7.2,
+      "start_s": 57.918,
+      "duration_s": 7.65
+    },
+    {
+      "id": "s8",
+      "text": "Instead of digging through different systems to figure out what needs attention, the dashboard can bring those items into one place.",
+      "audio": "audio/v2/s8.mp3",
+      "speech_s": 7.704,
+      "start_s": 65.568,
+      "duration_s": 8.154
+    },
+    {
+      "id": "s9",
+      "text": "The goal isn't simply to give the owner another dashboard. It's to make the information from the store's different sales channels easier to understand and act on. This is what a connected setup could look like.",
+      "audio": "audio/v2/s9.mp3",
+      "speech_s": 11.808,
+      "start_s": 73.722,
+      "duration_s": 12.258
+    },
+    {
+      "id": "end",
+      "text": "This is a simulated concept. Actual dashboard features and integrations depend on the systems selected for the store.",
+      "audio": "audio/v2/end.mp3",
+      "speech_s": 7.392,
+      "start_s": 85.98,
+      "duration_s": 8.592
+    }
+  ]
+}

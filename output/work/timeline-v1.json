@@ -1,0 +1,95 @@
+{
+  "voice": "en-US-AndrewNeural",
+  "rate": "-5%",
+  "total_s": 103.164,
+  "scenes": [
+    {
+      "id": "title",
+      "text": "Here's an example of how online ordering, your POS, and inventory could work together.",
+      "audio": "audio/v1/title.mp3",
+      "speech_s": 5.592,
+      "start_s": 0.0,
+      "duration_s": 6.042
+    },
+    {
+      "id": "s1",
+      "text": "A customer visits the Smoke and Supply website, finds a product, and places an order for in-store pickup.",
+      "audio": "audio/v1/s1.mp3",
+      "speech_s": 6.672,
+      "start_s": 6.042,
+      "duration_s": 7.122
+    },
+    {
+      "id": "s2",
+      "text": "That order can then move from the website into the store's connected systems, so it doesn't have to remain separate from the rest of the store's sales.",
+      "audio": "audio/v1/s2.mp3",
+      "speech_s": 8.4,
+      "start_s": 13.164,
+      "duration_s": 8.85
+    },
+    {
+      "id": "s3",
+      "text": "The order can appear for store staff, showing what was ordered and that it's ready to be prepared for pickup.",
+      "audio": "audio/v1/s3.mp3",
+      "speech_s": 6.12,
+      "start_s": 22.014,
+      "duration_s": 6.57
+    },
+    {
+      "id": "s4",
+      "text": "Now let's follow that same product. We start with 25 units. After the online purchase, the connected inventory could reflect 24.",
+      "audio": "audio/v1/s4.mp3",
+      "speech_s": 9.024,
+      "start_s": 28.584,
+      "duration_s": 9.474
+    },
+    {
+      "id": "s5",
+      "text": "Later, two more units are sold at the counter. The POS records the sale, and the inventory could change from 24 to 22.",
+      "audio": "audio/v1/s5.mp3",
+      "speech_s": 8.496,
+      "start_s": 38.058,
+      "duration_s": 8.946
+    },
+    {
+      "id": "s6",
+      "text": "That updated quantity can then be synchronized back to the website, so the online availability reflects the connected inventory.",
+      "audio": "audio/v1/s6.mp3",
+      "speech_s": 8.112,
+      "start_s": 47.004,
+      "duration_s": 8.562
+    },
+    {
+      "id": "s7",
+      "text": "As that inventory continues to fall, the system can flag a product when it reaches the store's minimum stock level.",
+      "audio": "audio/v1/s7.mp3",
+      "speech_s": 7.056,
+      "start_s": 55.566,
+      "duration_s": 7.506
+    },
+    {
+      "id": "s8",
+      "text": "For example, this product has eight units available, a minimum of ten, and average daily sales of four. Based on the store's own rules and supplier information, the system could suggest a reorder quantity.",
+      "audio": "audio/v1/s8.mp3",
+      "speech_s": 13.464,
+      "start_s": 63.072,
+      "duration_s": 13.914
+    },
+    {
+      "id": "s9",
+      "text": "The goal is to connect the pieces: online orders, in-store sales, and inventory information. That gives the owner a clearer view of what's selling, what's running low, and what may need attention\u2014without treating each part as a completely separate process.",
+      "audio": "audio/v1/s9.mp3",
+      "speech_s": 16.272,
+      "start_s": 76.986,
+      "duration_s": 16.722
+    },
+    {
+      "id": "end",
+      "text": "This is a simulated concept. The actual setup would depend on the store's POS, inventory system, and available integrations.",
+      "audio": "audio/v1/end.mp3",
+      "speech_s": 8.256,
+      "start_s": 93.708,
+      "duration_s": 9.456
+    }
+  ]
+}
