@@ -4,6 +4,8 @@ Bilingual (English / Spanish) proposal site for Grace Community Church with two 
 
 **Live site:** [church.unlovedproductions.com](https://church.unlovedproductions.com)
 
+**Smoke & Supply demo:** [smoke.unlovedproductions.com](https://smoke.unlovedproductions.com) · [videos](https://smoke.unlovedproductions.com/videos) · (alias: [smoke-supply-demo.vercel.app](https://smoke-supply-demo.vercel.app))
+
 ## Routes
 
 | Path | Content |
@@ -11,6 +13,9 @@ Bilingual (English / Spanish) proposal site for Grace Community Church with two 
 | `/` | Client proposal page |
 | `/traditional` | Traditional design mockup |
 | `/modern` | Modern design mockup |
+
+Smoke & Supply (separate Vercel project under `smoke-supply/`): `/`, `/videos`, `/how-it-works`, `/admin`, `/local-seo`.
+
 
 ## Preview Locally
 

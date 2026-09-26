@@ -4,6 +4,28 @@ Fictional neighborhood smoke shop demo for presenting a storefront + simulated P
 
 **Not a real business. No real payments. No real POS connection.**
 
+## Live URLs
+
+| What | URL |
+|------|-----|
+| Demo storefront | [https://smoke.unlovedproductions.com](https://smoke.unlovedproductions.com) |
+| Sales videos | [https://smoke.unlovedproductions.com/videos](https://smoke.unlovedproductions.com/videos) |
+| Vercel alias (works now) | [https://smoke-supply-demo.vercel.app](https://smoke-supply-demo.vercel.app) |
+
+Easy paths: `/` · `/videos` · `/how-it-works` · `/admin` · `/local-seo`
+
+### DNS (registrar)
+
+Nameservers are `dns1.registrar-servers.com` (not Vercel). Add:
+
+```
+Type:  A
+Host:  smoke
+Value: 76.76.21.21
+```
+
+The domain is already attached and verified on Vercel project `smoke-supply-demo`. SSL follows after the A record propagates.
+
 This app lives in `smoke-supply/` so it does not replace the church proposal site in the repo root.
 
 ## Run locally
@@ -18,13 +40,14 @@ Open the URL printed by Astro (usually `http://localhost:4321`).
 
 ## Demonstrate to a store owner
 
-1. Open `/tour` and walk the guided steps, **or**
-2. Homepage → Shop → add to cart → Checkout (demo) → confirmation
-3. `/admin/orders` — show the new order
-4. `/admin/pos` — click **Simulate: customer buys 2 in store → Sync**
-5. `/admin/inventory` and `/admin/reorder` — low stock + suggestions
-6. `/how-it-works` — 9-scene integration story
-7. `/connect` — discovery conversation (no secrets)
+1. Open `/videos` — three sales demos (POS/inventory, owner dashboard, local SEO), **or**
+2. Open `/tour` and walk the guided steps, **or**
+3. Homepage → Shop → add to cart → Checkout (demo) → confirmation
+4. `/admin/orders` — show the new order
+5. `/admin/pos` — click **Simulate: customer buys 2 in store → Sync**
+6. `/admin/inventory` and `/admin/reorder` — low stock + suggestions
+7. `/how-it-works` — 9-scene integration story
+8. `/connect` — discovery conversation (no secrets)
 
 ## What is simulated
 
@@ -47,4 +70,9 @@ Open the URL printed by Astro (usually `http://localhost:4321`).
 
 ## Deploy
 
-Deploy `smoke-supply` as its **own** project. Do not publish it on the church domain. Root `.vercelignore` excludes `smoke-supply` from the church static deploy.
+```bash
+cd smoke-supply
+pnpm dlx vercel --prod --yes
+```
+
+Own Vercel project: `smoke-supply-demo`. Root `.vercelignore` excludes `smoke-supply` from the church static deploy.
