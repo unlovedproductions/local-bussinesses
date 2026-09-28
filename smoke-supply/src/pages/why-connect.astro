@@ -13,6 +13,16 @@ import SiteFooter from '../components/SiteFooter.astro';
   <div class="wrap">
     <span class="eyebrow">Owner benefits</span>
     <h1>Why connect your POS & inventory?</h1>
+    <figure class="owner-video">
+      <video controls preload="metadata" playsinline>
+        <source src="/videos/01-pos-inventory-integration.mp4" type="video/mp4" />
+        <a href="/videos/01-pos-inventory-integration.mp4">Download the POS video</a>
+      </video>
+      <figcaption>
+        <span class="badge badge-demo">DEMO · SIMULATED</span>
+        How POS and inventory integration could work. Not a live register recording.
+      </figcaption>
+    </figure>
     <p class="notice">
       Actual benefits depend on the capabilities and quality of the store’s existing POS/inventory system and the final
       integration. This page explains the potential — not guarantees of savings or profit.
@@ -30,3 +40,20 @@ import SiteFooter from '../components/SiteFooter.astro';
   </div>
   <SiteFooter slot="footer" />
 </BaseLayout>
+
+<style>
+  .owner-video {
+    margin: 1rem 0 1.25rem;
+  }
+  .owner-video video {
+    width: 100%;
+    border-radius: 12px;
+    background: #1a1f1c;
+    aspect-ratio: 16 / 9;
+  }
+  .owner-video figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+</style>

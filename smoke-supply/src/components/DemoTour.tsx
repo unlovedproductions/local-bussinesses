@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const STEPS = [
   {
@@ -51,18 +51,6 @@ const STEPS = [
 export default function DemoTour() {
   const [step, setStep] = useState(0);
   const [open, setOpen] = useState(true);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('tour') === '1') setOpen(true);
-    const saved = sessionStorage.getItem('demo-tour-step');
-    if (saved) setStep(Number(saved) || 0);
-  }, []);
-
-  useEffect(() => {
-    sessionStorage.setItem('demo-tour-step', String(step));
-  }, [step]);
-
   const current = STEPS[step];
 
   if (!open) {

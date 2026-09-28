@@ -8,6 +8,33 @@ import AdminDashboard from '../../components/admin/AdminDashboard';
 <BaseLayout title="Demo Admin Dashboard" description="Simulated owner dashboard for Smoke & Supply demo." canonicalPath="/admin/">
   <SiteHeader slot="header" />
   <AdminShell title="Dashboard" current="dashboard">
+    <figure class="owner-video">
+      <video controls preload="metadata" playsinline>
+        <source src="/videos/02-owner-dashboard.mp4" type="video/mp4" />
+        <a href="/videos/02-owner-dashboard.mp4">Download the dashboard video</a>
+      </video>
+      <figcaption>
+        <span class="badge badge-demo">DEMO · SIMULATED</span>
+        What the owner can see from one dashboard. Not a live register recording.
+      </figcaption>
+    </figure>
     <AdminDashboard client:load />
   </AdminShell>
 </BaseLayout>
+
+<style>
+  .owner-video {
+    margin: 0 0 1.25rem;
+  }
+  .owner-video video {
+    width: 100%;
+    border-radius: 12px;
+    background: #1a1f1c;
+    aspect-ratio: 16 / 9;
+  }
+  .owner-video figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+</style>
