@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import OrderForm from '../components/OrderForm';
+---
+
+<BaseLayout
+  title="Order form — Ali’s C Store"
+  description="Choose a website or retail package, add-ons, and a domain. The total updates on the screen."
+  canonicalPath="/order/"
+>
+  <SiteHeader slot="header" />
+  <div class="wrap order-page">
+    <span class="eyebrow">Ali’s C Store</span>
+    <h1>Build your order</h1>
+    <p class="lead">
+      Pick one package, then any add-ons. The bar at the bottom keeps the total. This form does not take a card.
+    </p>
+    <OrderForm client:load />
+  </div>
+  <SiteFooter slot="footer" />
+</BaseLayout>
+
+<style is:global>
+  .order-page {
+    padding-bottom: 7.5rem;
+  }
+  .order-form fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+    margin: 1rem 0;
+    padding: 0.85rem;
+  }
+  .order-form legend {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    padding: 0 0.35rem;
+  }
+  .order-form h2 {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.85rem 0 0.35rem;
+  }
+  .order-form label {
+    display: grid;
+    gap: 0.35rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+  }
+  .order-help {
+    color: var(--muted);
+    margin: 0.25rem 0 0.5rem;
+  }
+  .choice {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
+    font-weight: 500;
+  }
+  .choice.on {
+    border-color: var(--forest);
+    background: #f3f7f4;
+  }
+  .choice input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.15rem;
+    flex: 0 0 auto;
+  }
+  .choice span {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .choice small,
+  .order-lines small {
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .order-lines {
+    margin: 1rem 0 2rem;
+  }
+  .order-lines ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .order-lines li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .order-lines li small {
+    grid-column: 1 / -1;
+  }
+  .order-lines .btn {
+    margin: 0.75rem 0.5rem 0 0;
+  }
+  .order-dock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 0.35rem;
+    padding: 0.7rem 0.85rem calc(0.7rem + env(safe-area-inset-bottom));
+    background: var(--forest);
+    color: white;
+    box-shadow: 0 -8px 24px rgba(26, 31, 28, 0.18);
+  }
+  .order-dock span {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .order-dock strong {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+  @media (max-width: 900px) {
+    .order-page {
+      padding-bottom: 11rem;
+    }
+    .order-dock {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+    .order-dock div {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .order-dock strong {
+      font-size: 1.25rem;
+    }
+  }
+</style>
