@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-type Plan = 'half' | 'four' | 'six' | 'forty' | 'phased';
+type Plan = 'half' | 'six' | 'forty' | 'phased';
 
 type PackageOpt = {
   id: string;
@@ -189,8 +189,10 @@ export default function OrderForm() {
       if (typeof saved.promo === 'boolean') setPromo(saved.promo);
       if (typeof saved.hosting === 'number') setHosting(saved.hosting);
       if (typeof saved.maintenance === 'number') setMaintenance(saved.maintenance);
-      if (saved.plan === 'half' || saved.plan === 'four' || saved.plan === 'six' || saved.plan === 'forty' || saved.plan === 'phased') {
+      if (saved.plan === 'half' || saved.plan === 'six' || saved.plan === 'forty' || saved.plan === 'phased') {
         setPlan(saved.plan);
+      } else if (saved.plan === 'four') {
+        setPlan('half');
       }
       if (typeof saved.cleanup === 'boolean') setCleanup(saved.cleanup);
       if (typeof saved.redesign === 'boolean') setRedesign(saved.redesign);
@@ -336,10 +338,7 @@ export default function OrderForm() {
     let schedule = 'Due in full to start.';
     if (plan === 'half') {
       dueToday = payable / 2;
-      schedule = `Half today (${money(dueToday)}), half at launch (${money(payable - dueToday)}).`;
-    } else if (plan === 'four') {
-      dueToday = payable / 4;
-      schedule = `${money(dueToday)} today, then three more payments of the same amount.`;
+      schedule = `Half before work starts (${money(dueToday)}), half the day it launches (${money(payable - dueToday)}).`;
     } else if (plan === 'six') {
       dueToday = payable / 6;
       schedule = `${money(dueToday)} today, then five monthly payments. Total with the 5% fee is ${money(payable)}.`;
@@ -682,15 +681,8 @@ export default function OrderForm() {
         <label className={plan === 'half' ? 'choice on' : 'choice'}>
           <input type="radio" name="plan" checked={plan === 'half'} onChange={() => setPlan('half')} />
           <span>
-            <strong>Half at the start, half at launch</strong>
-            <small>No extra fee.</small>
-          </span>
-        </label>
-        <label className={plan === 'four' ? 'choice on' : 'choice'}>
-          <input type="radio" name="plan" checked={plan === 'four'} onChange={() => setPlan('four')} />
-          <span>
-            <strong>Four equal payments</strong>
-            <small>Signing, midpoint, pre-launch, and 30 days after launch. No extra fee.</small>
+            <strong>Half before work starts, half the day it launches</strong>
+            <small>No extra fee. Nothing on the setup is due after launch.</small>
           </span>
         </label>
         <label className={plan === 'six' ? 'choice on' : 'choice'}>
