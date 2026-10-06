@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local Search &amp; SEO Audit — Ali's C Store (Technical)</title>
+<style>
+  @page { size: Letter; margin: 1.5cm; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.45; font-size: 10.5pt; margin: 0; }
+  h1 { font-size: 20pt; color: #0f172a; border-bottom: 2px solid #2563eb; padding-bottom: 6px; margin: 0 0 12px; }
+  h2 { font-size: 14pt; color: #1e293b; border-bottom: 1px solid #cbd5e1; padding-bottom: 3px; margin-top: 22px; }
+  h3 { font-size: 11pt; color: #334155; margin: 14px 0 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #cbd5e1; padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; font-weight: 600; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .box { background: #f8fafc; border-left: 4px solid #2563eb; padding: 8px 12px; margin: 10px 0; page-break-inside: avoid; }
+  .warn { background: #fff7ed; border-left: 4px solid #ea580c; padding: 8px 12px; margin: 10px 0; page-break-inside: avoid; }
+  .p0, .p1, .p2 { padding: 1px 5px; font-weight: 700; border-radius: 3px; font-size: 8.5pt; }
+  .p0 { background: #fee2e2; color: #991b1b; } .p1 { background: #ffedd5; color: #9a3412; } .p2 { background: #fef9c3; color: #854d0e; }
+  .break { page-break-before: always; }
+  .muted { color: #64748b; font-size: 9pt; }
+  code { font-size: 9pt; }
+  ul, ol { margin: 6px 0; padding-left: 20px; }
+</style>
+</head>
+<body>
+
+<h1>Local Search, SEO, GBP, AEO &amp; GEO Audit — Technical</h1>
+<p><strong>Target:</strong> Ali's C Store · 1048 Kern St, Taft, CA 93268<br>
+<strong>Audit date:</strong> September 2026 · <strong>Version:</strong> reviewed and corrected</p>
+
+<h2>Executive summary</h2>
+<ul>
+  <li><strong>Scope:</strong> tobacco / vape / convenience retail at one location in Taft, CA.</li>
+  <li><strong>Primary finding:</strong> no owned website was found, and no evidence of owner-managed Google Business Profile (GBP) activity. Visibility currently depends on third-party directory listings (SmokeShops.com, Shisha.com) the owner does not control.</li>
+  <li><strong>Positive signal:</strong> the reviews that do exist are strong (5.0 rating across 6 reviews on Shisha.com).</li>
+  <li><strong>Main competitor gap:</strong> Fred's Cigarette Store (1006 6th St, ~0.64 mi) shows 85+ reviews and listed hours on the same directory.</li>
+</ul>
+
+<div class="box"><strong>P0:</strong> Locate the existing Google Maps listing for 1048 Kern St (Google often auto-creates one). Claim it with the owner present, or create it if none exists. Then set categories and verified hours, and add real storefront and interior photos.</div>
+
+<h2>Reviewer notes: verify before presenting</h2>
+<div class="warn">
+<ol>
+  <li><strong>GBP status was not checked on Google directly.</strong> Every source is a third-party directory. Before the meeting, search Google Maps for "Ali's C Store Taft" and record whether a listing exists, whether it shows "Own this business?", its review count, rating, hours, and photos. Update Section 3 with those numbers.</li>
+  <li><strong>The review counts are directory reviews, not Google reviews.</strong> "6 vs 85" comes from Shisha.com and compares the two shops on the same site, which is fair, but do not present it as a Google review count.</li>
+  <li><strong>G&amp;A Mini-Mart and Speed Stop</strong> are listed as competitors without a source in the evidence log. Verify them, or drop them.</li>
+  <li><strong>The scores are heuristic.</strong> The category scores and weights are judgment calls, not a standard measurement. The weighted total (19.25) is arithmetically correct. The priority-score formula is undocumented: for example, 90 / 82.75 / 85 does not average to 85.58. Use the scores for ranking only, and avoid showing decimal precision to the client.</li>
+  <li><strong>Overpromises removed.</strong> The original claimed "will yield immediate map pack visibility" and "will capture voice search answers." Neither can be guaranteed. Map-pack placement depends on proximity, relevance, prominence, and Google's systems.</li>
+  <li><strong>Domain choice.</strong> The original suggested <code>aliscstoretaft.com</code>, while the proposal pricing lists <code>aliscstore.com</code>. Check availability of both and pick one before quoting.</li>
+  <li><strong>California compliance.</strong> California restricts retail sale of most flavored tobacco and vape products, and the minimum sale age is 21. Website and GBP product copy must not advertise restricted products. Have the owner confirm what he legally sells before writing product content.</li>
+</ol>
+</div>
+
+<h2>1. Business input &amp; status</h2>
+<table>
+  <thead><tr><th>Field</th><th>Value / status</th><th>Verification</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Business name</td><td>Ali's C Store</td><td>V3</td><td>E3</td></tr>
+    <tr><td>Website</td><td>None found</td><td>N3</td><td>E3</td></tr>
+    <tr><td>Address</td><td>1048 Kern St, Taft, CA 93268</td><td>V3</td><td>E3</td></tr>
+    <tr><td>Primary category</td><td>Tobacco shop / convenience store</td><td>V3</td><td>E3</td></tr>
+    <tr><td>Products (per directory)</td><td>Cigarettes, vapes, tobacco, glass pipes, accessories. Confirm against CA rules.</td><td>V3</td><td>E3</td></tr>
+    <tr><td>Hours</td><td>Not listed. Get them from the owner.</td><td>N2</td><td>E2</td></tr>
+    <tr><td>Service area</td><td>Taft, West Kern County</td><td>V2</td><td>E2</td></tr>
+    <tr><td>Competitors</td><td>Fred's Cigarette Store (sourced); G&amp;A Mini-Mart, Speed Stop (unsourced)</td><td>V3 / V1</td><td>E3 / E1</td></tr>
+    <tr><td>GBP status</td><td><strong>Not checked on Google.</strong> Check before the meeting.</td><td>—</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h2>2. Scorecard (heuristic)</h2>
+<table>
+  <thead><tr><th>Category</th><th>Score</th><th>Weight</th><th>Weighted</th><th>Coverage</th><th>Confidence</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Google Business Profile</td><td>38</td><td>25%</td><td>9.50</td><td>75%</td><td>75</td><td>Provisional</td></tr>
+    <tr><td>Traditional SEO</td><td>0</td><td>25%</td><td>0.00</td><td>100%</td><td>90</td><td>Confirmed (no site)</td></tr>
+    <tr><td>Local SEO</td><td>30</td><td>20%</td><td>6.00</td><td>65%</td><td>70</td><td>Provisional</td></tr>
+    <tr><td>AEO</td><td>15</td><td>15%</td><td>2.25</td><td>50%</td><td>60</td><td>Provisional</td></tr>
+    <tr><td>GEO</td><td>10</td><td>15%</td><td>1.50</td><td>50%</td><td>60</td><td>Provisional</td></tr>
+    <tr><td><strong>Total</strong></td><td colspan="2"></td><td><strong>19.25 / 100</strong></td><td>68%</td><td>71</td><td>Major gaps</td></tr>
+  </tbody>
+</table>
+<p class="muted">The "Commercial Opportunity" (72.5) and "Growth Opportunity Index" (75.5) scores from the original draft are omitted because their method is undocumented.</p>
+
+<h2>3. Competitor gap</h2>
+<table>
+  <thead><tr><th>Factor</th><th>Ali's C Store</th><th>Fred's Cigarette Store</th><th>Target</th></tr></thead>
+  <tbody>
+    <tr><td>Location</td><td>1048 Kern St</td><td>1006 6th St (~0.64 mi)</td><td>—</td></tr>
+    <tr><td>Directory reviews (Shisha.com)</td><td>6 (5.0 avg)</td><td>85+</td><td>30+ Google reviews in 6 months</td></tr>
+    <tr><td>Google reviews</td><td><em>Check on Maps</em></td><td><em>Check on Maps</em></td><td>—</td></tr>
+    <tr><td>Hours listed</td><td>No</td><td>Yes (7 AM – 11 PM)</td><td>Verified hours on GBP and site</td></tr>
+    <tr><td>Owned website</td><td>No</td><td>No (directory only)</td><td>Mobile site with NAP, products, map</td></tr>
+  </tbody>
+</table>
+<p class="muted">Fred's also appears to have no owned website. A well-built site plus a complete GBP would put Ali's ahead on that factor.</p>
+
+<div class="break"></div>
+<h2>4. Priority matrix</h2>
+<table>
+  <thead><tr><th>Priority</th><th>Opportunity</th><th>Category</th><th>Action</th><th>Package</th></tr></thead>
+  <tbody>
+    <tr><td><span class="p0">P0</span></td><td>Claim &amp; complete GBP</td><td>GBP</td><td>Claim or create the listing; set the primary category (Tobacco shop) and secondary categories (Convenience store, Vape shop, if accurate); add hours, phone, and 15+ real photos.</td><td>Get Found (basic) / Get Chosen (full)</td></tr>
+    <tr><td><span class="p1">P1</span></td><td>Owned mobile website</td><td>Trad. SEO</td><td>Fast site with NAP, hours, product categories, directions, FAQ, and age notice.</td><td>Get Found +</td></tr>
+    <tr><td><span class="p1">P1</span></td><td>Structured data</td><td>AEO / GEO</td><td>JSON-LD for <code>Store</code>/<code>LocalBusiness</code> (NAP, geo, hours) and <code>FAQPage</code>. Improves machine readability; does not guarantee AI or voice answers.</td><td>Get Found +</td></tr>
+    <tr><td><span class="p1">P1</span></td><td>In-store review system</td><td>Local SEO</td><td>QR counter card linking to the GBP review form. Ask every customer; no incentives and no filtering, per Google policy.</td><td>Get Chosen</td></tr>
+    <tr><td><span class="p2">P2</span></td><td>Citation sync</td><td>Local SEO</td><td>Consistent NAP on Apple Business Connect, Bing Places, Yelp, and the main directories; correct SmokeShops.com and Shisha.com.</td><td>Get Chosen</td></tr>
+    <tr><td><span class="p2">P2</span></td><td>Ongoing GBP activity</td><td>GBP</td><td>2 posts per month, photo updates, review responses, and a monthly report.</td><td>Get Chosen care plan</td></tr>
+  </tbody>
+</table>
+
+<h2>5. Timeline (aligned to package delivery)</h2>
+<table>
+  <thead><tr><th>Window</th><th>Work</th></tr></thead>
+  <tbody>
+    <tr><td>Week 1</td><td>Agreement signed. GBP claim/verification started (owner present; video or postcard verification). Photos taken. Hours, products, and compliance confirmed.</td></tr>
+    <tr><td>Weeks 2–3</td><td>Website built on the domain; JSON-LD added; GBP completed; review card printed and placed.</td></tr>
+    <tr><td>Weeks 3–4</td><td>Launch. Citation sync on Apple, Bing, Yelp, and directories. Owner walkthrough.</td></tr>
+    <tr><td>Months 2–3</td><td>Monthly GBP posts, review responses, and a monthly report (calls, direction requests, site visits, reviews). Compare against the baseline recorded before launch.</td></tr>
+  </tbody>
+</table>
+<div class="box"><strong>Baseline to record before launch</strong> (so later reports show real change): Google review count and rating, GBP views, calls, and direction requests if the profile already exists, plus a screenshot of the "smoke shop Taft" results on Maps.</div>
+
+<h2>6. Evidence log</h2>
+<table>
+  <thead><tr><th>Finding</th><th>Source</th><th>Verif.</th><th>Evid.</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Name &amp; address</td><td>SmokeShops.com</td><td>V3</td><td>E3</td><td>1048 Kern St, Taft, CA 93268</td></tr>
+    <tr><td>Product categories</td><td>SmokeShops.com</td><td>V3</td><td>E3</td><td>Tobacco, vapes, glass pipes, cigarettes</td></tr>
+    <tr><td>Reviews</td><td>Shisha.com</td><td>V3</td><td>E3</td><td>5.0 across 6 reviews</td></tr>
+    <tr><td>Competitor</td><td>Shisha.com</td><td>V3</td><td>E3</td><td>Fred's Cigarette Store, 85 reviews</td></tr>
+    <tr><td>Website</td><td>Web search</td><td>N3</td><td>E3</td><td>No owned domain found</td></tr>
+    <tr><td>GBP</td><td>—</td><td>—</td><td>—</td><td><strong>Not yet checked on Google Maps</strong></td></tr>
+  </tbody>
+</table>
+
+</body>
+</html>
