@@ -1,0 +1,13 @@
+---
+description: Development conventions for the QA auditor
+alwaysApply: true
+---
+
+# QA Development
+
+- Keep modules small and surgical.
+- Implement real interfaces with explicit BLOCKED behavior when providers are unconfigured.
+- Expand tests/cases.json carefully; keep exactly 108 unique IDs unless the operator changes scope.
+- Prefer Cal.com adapter for this repo's discovered provider; do not assume Google Calendar.
+- Unit tests must prove sandbox writes cannot proceed with default settings.
+- Package with scripts/create_zip.py; exclude .env and live qa evidence.

@@ -1,0 +1,61 @@
+{
+  "owners": {
+    "alex_reed": {
+      "name": "Alex Reed",
+      "email": "UNRESOLVED \u2014 must be a deliverable inbox for Cal.com (example.com rejected)",
+      "phone": "UNRESOLVED \u2014 assign authorized test number"
+    },
+    "ximena_quintero": {
+      "name": "Ximena Quintero",
+      "email": "UNRESOLVED",
+      "phone": "UNRESOLVED"
+    },
+    "demo_tester": {
+      "name": "Demo Tester",
+      "email": "unlovedproducts@gmail.com",
+      "phone": "UNRESOLVED",
+      "note": "Verified deliverable for Cal.com demo bookings"
+    }
+  },
+  "pets": {
+    "mochi": {
+      "name": "Mochi",
+      "breed": "Labradoodle",
+      "weight_lbs": 28,
+      "note": "Over 25 lbs \u2014 not auto-bookable per policy; use Pepper or under-25 fixture for successful D01"
+    },
+    "luna": {
+      "name": "Luna",
+      "breed": "Poodle",
+      "weight_lbs": 18
+    },
+    "pepper": {
+      "name": "Pepper",
+      "breed": "UNRESOLVED",
+      "weight_lbs": 20,
+      "note": "Used in live Test LLM booking proof"
+    },
+    "bella": {
+      "name": "Bella",
+      "breed": "UNRESOLVED",
+      "weight_lbs": 15,
+      "traits": [
+        "nervous"
+      ]
+    }
+  },
+  "slots": {
+    "open_slot": "COMPUTE_AT_RUNTIME \u2014 query sandbox Cal.com availability",
+    "busy_slot": "COMPUTE_AT_RUNTIME \u2014 seed or identify occupied sandbox slot",
+    "existing_booking": "SEED_AT_RUNTIME \u2014 authorized synthetic booking uid",
+    "reschedule_target": "COMPUTE_AT_RUNTIME"
+  },
+  "timezone": "America/Los_Angeles",
+  "unsupported_service": "teeth cleaning",
+  "service": "Small-Dog Bath and Brush",
+  "notes": [
+    "Do not hardcode dates that expire.",
+    "Cal.com rejects non-deliverable email domains.",
+    "Mochi at 28 lbs should trigger staff-review path, not silent auto-book success."
+  ]
+}

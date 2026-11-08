@@ -1,0 +1,90 @@
+{
+  "business_name": "Taft Grooming Demo",
+  "timezone": "America/Los_Angeles",
+  "address": "Taft, California (fictional demonstration; no public street address)",
+  "phone": "UNRESOLVED \u2014 demo uses Retell web call; phone number not configured",
+  "business_hours": {
+    "timezone": "America/Los_Angeles",
+    "monday": "Closed",
+    "tuesday": "09:00-17:00",
+    "wednesday": "09:00-17:00",
+    "thursday": "09:00-17:00",
+    "friday": "09:00-17:00",
+    "saturday": "09:00-17:00",
+    "sunday": "Closed"
+  },
+  "services": [
+    "Small-Dog Bath and Brush"
+  ],
+  "service_descriptions": {
+    "Small-Dog Bath and Brush": "Dogs 25 pounds or less; 60 minutes; after buffer 15 minutes; demo starting price $45; final price staff-confirmed"
+  },
+  "pricing_rules": {
+    "Small-Dog Bath and Brush": {
+      "starting_price_usd": 45,
+      "weight_limit_lbs": 25,
+      "final_price": "staff_confirmation_required",
+      "payments_in_demo": false
+    }
+  },
+  "appointment_durations": {
+    "Small-Dog Bath and Brush": 60
+  },
+  "accepted_pet_types": [
+    "dog"
+  ],
+  "breed_restrictions": "Severe matting / special handling require staff review; not auto-bookable",
+  "size_restrictions": "Auto-bookable only at or under 25 pounds",
+  "vaccination_policy": "UNRESOLVED \u2014 confirm from approved receptionist knowledge if stated",
+  "matting_policy": "Severe matting requires staff review; do not auto-book; no unsupported comfort guarantees",
+  "aggressive_pet_policy": "Special handling requires staff review; not auto-bookable",
+  "cancellation_policy": "UNRESOLVED for voice-agent cancel tool \u2014 Retell agent has no cancel/reschedule tools attached as of 2026-11-08 verification",
+  "late_arrival_policy": "UNRESOLVED \u2014 confirm from approved knowledge",
+  "human_transfer_policy": "No staffed live transfer in demo; must not invent callbacks",
+  "booking_required_fields": [
+    "owner_name",
+    "attendee_email",
+    "pet_name",
+    "service",
+    "start_time"
+  ],
+  "supported_integrations": {
+    "calendar_provider": "cal.com",
+    "retell_tools": [
+      "check_calcom_availability",
+      "book_calcom_appointment",
+      "list_calcom_bookings",
+      "get_calcom_booking",
+      "end_call"
+    ],
+    "reschedule_tool_attached": false,
+    "cancel_tool_attached": false,
+    "crm": null,
+    "notifications": null
+  },
+  "knowledge_source_references": [
+    "voice-agent/business-facts.md",
+    "voice-agent/system-prompt.md",
+    "voice-agent/verification.md"
+  ],
+  "retell": {
+    "org_id": "org_E3JqVEFvpMgZjo0n",
+    "receptionist_agent_id": "agent_7fd690435a3abdb17cbc4d38c9",
+    "agent_name": "Taft Grooming Demo"
+  },
+  "calcom": {
+    "account": "unloved-productions-zd5ux6",
+    "event_type_id": "1cFQUeczd2cF5ByMEs8E5i",
+    "event_slug": "small-dog-bath-and-brush-demo",
+    "schedule": "Taft Grooming Demo Hours",
+    "timezone": "America/Los_Angeles",
+    "minimum_notice_minutes": 1440,
+    "booking_window_days": 30
+  },
+  "unresolved_fields": [
+    "phone",
+    "vaccination_policy",
+    "late_arrival_policy",
+    "cancellation_policy_voice_path"
+  ]
+}

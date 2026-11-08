@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "approved": false,
+  "approved_by": "",
+  "approved_at": "",
+  "staging_receptionist_agent_id": "",
+  "staging_phone_number": "",
+  "calendar_provider": "cal.com",
+  "sandbox_calendar_id": "",
+  "sandbox_event_type_id": "1cFQUeczd2cF5ByMEs8E5i",
+  "provider_account": "unloved-productions-zd5ux6",
+  "proof_checks": {
+    "staging_agent_confirmed": false,
+    "sandbox_calendar_id_matches": false,
+    "booking_tools_inspected": false,
+    "verification_adapter_configured": false,
+    "synthetic_fixtures_exist": false,
+    "side_effects_isolated": false,
+    "production_calendar_not_targeted": false
+  },
+  "evidence_references": [],
+  "notes": "Fail-closed: ALLOW_SANDBOX_WRITES requires this file with approved=true AND all proof_checks true AND matching IDs."
+}

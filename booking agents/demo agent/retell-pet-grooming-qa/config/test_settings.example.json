@@ -1,0 +1,29 @@
+{
+  "default_mode": "readonly",
+  "smoke_ids": [
+    "A01",
+    "A02",
+    "A05"
+  ],
+  "first_calendar_ids": [
+    "D01",
+    "D06",
+    "D02"
+  ],
+  "concurrency": 1,
+  "poll_interval_seconds": 5,
+  "call_settle_seconds": 8,
+  "max_poll_attempts": 60,
+  "correlation_window_seconds": 120,
+  "retell_call_mode": "phone",
+  "block_audio_without_adapter": true,
+  "block_fault_without_adapter": true,
+  "block_drop_without_adapter": true,
+  "capabilities": {
+    "cancel_via_voice_tools": false,
+    "reschedule_via_voice_tools": false,
+    "crm": false,
+    "notifications": false,
+    "live_transfer": false
+  }
+}

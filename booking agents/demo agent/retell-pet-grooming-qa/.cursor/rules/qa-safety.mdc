@@ -1,0 +1,15 @@
+---
+description: Hard safety rules for Retell pet grooming QA
+alwaysApply: true
+---
+
+# QA Safety
+
+- Fail closed. Prefer BLOCKED over guessed PASS.
+- Never call production booking paths without sandbox proof + ALLOW_SANDBOX_WRITES=YES + ACK_TARGET_NUMBER=YES.
+- Never modify the production receptionist system prompt without explicit operator approval.
+- Never cancel/reschedule/create on calendars that are not the verified sandbox calendar ID.
+- Use synthetic owners/pets only. Do not store real customer PII in qa_runs.
+- Do not log or commit API keys.
+- AUDIO/FAULT/DROP require TEST_ADAPTER_URL; otherwise BLOCKED.
+- Spoken confirmation is not booking evidence.
