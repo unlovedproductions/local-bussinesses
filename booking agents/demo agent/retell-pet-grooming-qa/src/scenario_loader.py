@@ -96,19 +96,27 @@ def render_qa_case(scenario: dict[str, Any], qa_vars: dict[str, Any] | None = No
         "max_duration_seconds": scenario["max_duration_seconds"],
         "synthetic_data": {
             "owner": owners.get("demo_tester") or owners.get("alex_reed"),
+            "primary_pet": (
+                pets.get("pepper")
+                if scenario.get("id") in {"D01", "D07", "D03", "D04", "D08"}
+                else pets.get("mochi")
+            ),
             "pet_mochi": pets.get("mochi"),
             "pet_luna": pets.get("luna"),
             "pet_pepper": pets.get("pepper"),
             "service": qa_vars.get("service"),
             "unsupported_service": qa_vars.get("unsupported_service"),
             "slots": qa_vars.get("slots"),
+            "note_mochi_overweight": "Mochi is 28 lbs — ineligible for auto-book; use Pepper for successful booking scenarios.",
         },
         "rules": [
             "You are the CALLER, not the receptionist.",
             "Do not reveal QA scoring criteria.",
             "Do not invent salon prices or policies.",
+            "Never propose past dates; use relative future days from the live conversation.",
             "If READ_ONLY: decline bookings and external actions.",
             "If SANDBOX: use only approved synthetic fixtures.",
+            "When booking, provide email unlovedproducts@gmail.com if asked.",
         ],
     }
     import json

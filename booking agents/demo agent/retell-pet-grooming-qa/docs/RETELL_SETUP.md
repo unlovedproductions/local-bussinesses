@@ -21,4 +21,7 @@ python scripts/inspect_retell.py
 
 ## Call API
 Uses official `POST /v2/create-phone-call`, `GET /v2/get-call/{call_id}`, `POST /v2/list-calls`.
+
+## Web mode (no phone numbers)
+Set `RETELL_CALL_MODE=web`. VOICE scenarios run via Retell LLM simulation (`create-test-case-definition` + `create-batch-test`). Retell labels these `call_type=web_call`. This does not exercise PSTN audio or the QA caller phone agent.
 Dynamic variables must be strings (`retell_llm_dynamic_variables.qa_case`).

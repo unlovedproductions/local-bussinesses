@@ -21,7 +21,7 @@ Independent AI test caller + orchestrator + judge + Cal.com verifier + Streamlit
 | Business | Taft Grooming Demo |
 | Retell agent | `agent_7fd690435a3abdb17cbc4d38c9` |
 | Calendar | Cal.com event type `1cFQUeczd2cF5ByMEs8E5i` |
-| Phone | Not configured on demo — VOICE phone runs stay BLOCKED until numbers + QA caller exist |
+| Phone | Demo uses `RETELL_CALL_MODE=web` (Retell LLM simulation / web_call). PSTN phone path optional |
 
 ## Quick start
 ```bash

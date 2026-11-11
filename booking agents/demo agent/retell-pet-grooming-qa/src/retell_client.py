@@ -103,6 +103,112 @@ class RetellClient:
             }
         return self._request("POST", "/v2/create-web-call", json=payload)
 
+    def create_test_case_definition(
+        self,
+        *,
+        name: str,
+        llm_id: str,
+        user_prompt: str,
+        metrics: list[str],
+        llm_version: int | None = None,
+    ) -> dict[str, Any]:
+        response_engine: dict[str, Any] = {"type": "retell-llm", "llm_id": llm_id}
+        if llm_version is not None:
+            response_engine["version"] = llm_version
+        return self._request(
+            "POST",
+            "/create-test-case-definition",
+            json={
+                "name": name,
+                "response_engine": response_engine,
+                "user_prompt": user_prompt,
+                "metrics": metrics,
+            },
+        )
+
+    def create_batch_test(self, *, test_case_definition_ids: list[str], llm_id: str) -> dict[str, Any]:
+        return self._request(
+            "POST",
+            "/create-batch-test",
+            json={
+                "test_case_definition_ids": test_case_definition_ids,
+                "response_engine": {"type": "retell-llm", "llm_id": llm_id},
+            },
+        )
+
+    def get_batch_test(self, batch_job_id: str) -> dict[str, Any]:
+        return self._request("GET", f"/get-batch-test/{batch_job_id}")
+
+    def list_test_runs(self, batch_job_id: str) -> dict[str, Any]:
+        return self._request("GET", f"/v2/list-test-runs/{batch_job_id}")
+
+    def get_test_run(self, test_case_job_id: str) -> dict[str, Any]:
+        return self._request("GET", f"/get-test-run/{test_case_job_id}")
+
+    def wait_for_batch_complete(
+        self,
+        batch_job_id: str,
+        *,
+        timeout_seconds: int,
+        poll_interval: float = 3.0,
+    ) -> dict[str, Any]:
+        deadline = time.time() + timeout_seconds
+        last: dict[str, Any] = {}
+        while time.time() < deadline:
+            last = self.get_batch_test(batch_job_id)
+            if (last.get("status") or "").lower() == "complete":
+                return last
+            time.sleep(poll_interval)
+        raise RetellAPIError(f"Timed out waiting for batch {batch_job_id}", body=last)
+
+    def run_web_simulation(
+        self,
+        *,
+        llm_id: str,
+        name: str,
+        user_prompt: str,
+        metrics: list[str],
+        timeout_seconds: int,
+        llm_version: int | None = None,
+    ) -> dict[str, Any]:
+        """Retell LLM simulation (call_type=web_call) — no phone numbers required."""
+        definition = self.create_test_case_definition(
+            name=name,
+            llm_id=llm_id,
+            user_prompt=user_prompt,
+            metrics=metrics,
+            llm_version=llm_version,
+        )
+        definition_id = definition.get("test_case_definition_id")
+        if not definition_id:
+            raise RetellAPIError("create-test-case-definition missing id", body=definition)
+        batch = self.create_batch_test(test_case_definition_ids=[definition_id], llm_id=llm_id)
+        batch_id = batch.get("test_case_batch_job_id")
+        if not batch_id:
+            raise RetellAPIError("create-batch-test missing id", body=batch)
+        batch_final = self.wait_for_batch_complete(batch_id, timeout_seconds=timeout_seconds)
+        runs = self.list_test_runs(batch_id)
+        items = runs.get("items") if isinstance(runs, dict) else None
+        if not isinstance(items, list) or not items:
+            raise RetellAPIError("list-test-runs returned no items", body=runs)
+        job_id = items[0].get("test_case_job_id")
+        run = self.get_test_run(job_id) if job_id else items[0]
+        snapshot = run.get("transcript_snapshot") or {}
+        transcript = snapshot.get("transcript") if isinstance(snapshot, dict) else None
+        if not isinstance(transcript, list):
+            transcript = []
+        return {
+            "definition": definition,
+            "batch": batch_final,
+            "run": run,
+            "transcript": transcript,
+            "tool_events": self.extract_tool_calls({"transcript_with_tool_calls": transcript}),
+            "batch_job_id": batch_id,
+            "test_case_job_id": job_id,
+            "simulation_status": run.get("status"),
+            "result_explanation": run.get("result_explanation"),
+        }
+
     def get_call(self, call_id: str) -> dict[str, Any]:
         return self._request("GET", f"/v2/get-call/{call_id}")
 

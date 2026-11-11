@@ -15,7 +15,9 @@ Independent Retell-to-Retell QA caller + orchestrator + judge + calendar verifie
 - Receptionist: Taft Grooming Demo `agent_7fd690435a3abdb17cbc4d38c9`
 - Calendar: **Cal.com** via Retell native tools (`check_calcom_availability`, `book_calcom_appointment`, `list_calcom_bookings`, `get_calcom_booking`)
 - Cancel/reschedule tools: **not attached** — related scenarios must test honest fallback or stay blocked/N/A until staging tools exist
-- Phone numbers: not configured on the demo (web-call oriented) — VOICE phone tests remain BLOCKED until authorized numbers + QA caller exist
+- Default demo path: `RETELL_CALL_MODE=web` — VOICE runs Retell LLM simulation (no phone numbers). Phone Retell-to-Retell still needs numbers + `ACK_TARGET_NUMBER=YES` (QA caller exists: `agent_2c4935e05f846fecd384ad78d1`)
+- Sandbox calendar proof approved; `ALLOW_SANDBOX_WRITES=YES`; Cal.com verifier uses bookings API with User-Agent
+- Local stub harness (`scripts/run_stub_adapter.py` → `TEST_ADAPTER_URL=http://127.0.0.1:8787`) unblocks AUDIO/FAULT/DROP for **demo only** (synthetic evidence, `stub: true`)
 
 ## Specialist roles
 1. Retell connectivity — inspect, QA caller, calls, correlation, budgets

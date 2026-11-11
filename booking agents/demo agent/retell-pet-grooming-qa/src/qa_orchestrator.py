@@ -179,6 +179,20 @@ class QAOrchestrator:
         except RetellAPIError as exc:
             return self._blocked(scenario, [str(exc)])
 
+        if self.settings.retell_call_mode == "web":
+            return self._run_voice_web(
+                scenario,
+                run_id=run_id,
+                client=client,
+                verifier=verifier,
+                before=before,
+            )
+        if self.settings.retell_call_mode != "phone":
+            return self._blocked(
+                scenario,
+                [f"Unknown RETELL_CALL_MODE={self.settings.retell_call_mode}"],
+            )
+
         qa_case = render_qa_case(scenario, self.qa_vars)
         idem = f"qa-{scenario['id']}-{uuid4().hex[:10]}"
         metadata = {
@@ -188,23 +202,14 @@ class QAOrchestrator:
         }
 
         try:
-            if self.settings.retell_call_mode == "phone":
-                outbound = client.create_phone_call(
-                    from_number=self.settings.qa_outbound_number,
-                    to_number=self.settings.receptionist_phone_number,
-                    override_agent_id=self.settings.qa_caller_agent_id,
-                    metadata=metadata,
-                    retell_llm_dynamic_variables={"qa_case": qa_case},
-                    idempotency_key=idem,
-                )
-            else:
-                return self._blocked(
-                    scenario,
-                    [
-                        "VOICE Retell-to-Retell requires RETELL_CALL_MODE=phone with authorized numbers; "
-                        "web mode is not a substitute for the QA caller agent"
-                    ],
-                )
+            outbound = client.create_phone_call(
+                from_number=self.settings.qa_outbound_number,
+                to_number=self.settings.receptionist_phone_number,
+                override_agent_id=self.settings.qa_caller_agent_id,
+                metadata=metadata,
+                retell_llm_dynamic_variables={"qa_case": qa_case},
+                idempotency_key=idem,
+            )
         except RetellAPIError as exc:
             return self._blocked(scenario, [f"create-phone-call failed: {exc}", str(exc.body)])
 
@@ -248,7 +253,105 @@ class QAOrchestrator:
 
         receptionist_evidence = collect_call_evidence(client, inbound_id)
         outbound_evidence = collect_call_evidence(client, outbound_id)
+        return self._finalize_voice(
+            scenario,
+            run_id=run_id,
+            verifier=verifier,
+            before=before,
+            receptionist_evidence=receptionist_evidence,
+            outbound_evidence=outbound_evidence,
+            outbound_id=outbound_id,
+            inbound_id=inbound_id,
+        )
 
+    def _run_voice_web(
+        self,
+        scenario: dict[str, Any],
+        *,
+        run_id: str,
+        client: RetellClient,
+        verifier: IntegrationVerifier | None,
+        before: dict[str, Any] | None,
+    ) -> dict[str, Any]:
+        """No-phone path: Retell LLM simulation (Retell labels these call_type=web_call)."""
+        try:
+            agent = client.get_agent(self.settings.receptionist_agent_id)
+        except RetellAPIError as exc:
+            return self._blocked(scenario, [f"get-agent failed: {exc}", str(exc.body)])
+        engine = agent.get("response_engine") or {}
+        llm_id = engine.get("llm_id")
+        if not llm_id:
+            return self._blocked(scenario, ["Receptionist agent has no retell-llm response_engine"])
+
+        qa_case = render_qa_case(scenario, self.qa_vars)
+        user_prompt = (
+            "You are the CALLER in a voice booking conversation. Follow this QA case packet exactly. "
+            "Speak as the customer only. End the call when stop conditions are met.\n\n"
+            f"{qa_case}"
+        )
+        expected = (scenario.get("expected_behavior") or "").strip()
+        metrics = [expected[:400]] if expected else ["Agent handles the caller request appropriately"]
+        max_wait = min(
+            int(scenario.get("max_duration_seconds") or self.settings.max_call_duration_seconds) + 120,
+            self.settings.max_call_duration_seconds + 180,
+        )
+        try:
+            sim = client.run_web_simulation(
+                llm_id=llm_id,
+                name=f"qa-{scenario['id']}-{uuid4().hex[:8]}",
+                user_prompt=user_prompt,
+                metrics=metrics,
+                timeout_seconds=max_wait,
+                llm_version=engine.get("version") if isinstance(engine.get("version"), int) else None,
+            )
+        except RetellAPIError as exc:
+            return self._blocked(scenario, [f"web simulation failed: {exc}", str(exc.body)])
+
+        self.call_count += 1
+        job_id = sim.get("test_case_job_id") or sim.get("batch_job_id")
+        receptionist_evidence = {
+            "call_id": job_id,
+            "call_status": "ended",
+            "agent_id": self.settings.receptionist_agent_id,
+            "direction": "web_simulation",
+            "transcript": sim.get("transcript") or [],
+            "tool_events": sim.get("tool_events") or [],
+            "simulation": {
+                "batch_job_id": sim.get("batch_job_id"),
+                "test_case_job_id": sim.get("test_case_job_id"),
+                "simulation_status": sim.get("simulation_status"),
+                "result_explanation": sim.get("result_explanation"),
+            },
+        }
+        outbound_evidence = {
+            "call_id": sim.get("test_case_job_id"),
+            "call_status": sim.get("simulation_status"),
+            "direction": "simulated_caller",
+            "transcript": sim.get("transcript") or [],
+        }
+        return self._finalize_voice(
+            scenario,
+            run_id=run_id,
+            verifier=verifier,
+            before=before,
+            receptionist_evidence=receptionist_evidence,
+            outbound_evidence=outbound_evidence,
+            outbound_id=sim.get("test_case_job_id"),
+            inbound_id=job_id,
+        )
+
+    def _finalize_voice(
+        self,
+        scenario: dict[str, Any],
+        *,
+        run_id: str,
+        verifier: IntegrationVerifier | None,
+        before: dict[str, Any] | None,
+        receptionist_evidence: dict[str, Any],
+        outbound_evidence: dict[str, Any],
+        outbound_id: str | None,
+        inbound_id: str | None,
+    ) -> dict[str, Any]:
         after = None
         verification = None
         if verifier is not None:
@@ -256,7 +359,7 @@ class QAOrchestrator:
             verification = verifier.verify(
                 run_id=run_id,
                 test_id=scenario["id"],
-                receptionist_call_id=inbound_id,
+                receptionist_call_id=inbound_id or "",
                 expected_outcome={},
                 required_oracles=scenario.get("required_oracles") or [],
                 before_snapshot=before,
@@ -287,8 +390,10 @@ class QAOrchestrator:
                         "disconnection_reason",
                         "latency",
                         "recording_url",
+                        "simulation",
                     )
                 },
+                "retell_call_mode": self.settings.retell_call_mode,
             },
             verification=verification,
             deterministic=deterministic,
@@ -306,6 +411,7 @@ class QAOrchestrator:
             "after_snapshot": after,
             "verification": verification,
             "deterministic": deterministic,
+            "retell_call_mode": self.settings.retell_call_mode,
         }
         evidence_path = persist_evidence(self.settings, run_id, scenario["id"], evidence)
 

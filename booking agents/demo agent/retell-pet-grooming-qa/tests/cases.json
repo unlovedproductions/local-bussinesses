@@ -944,12 +944,12 @@
     "mode": "VOICE",
     "safety_level": "SANDBOX",
     "persona": "Booking owner",
-    "caller_goal": "Book approved service for Mochi at available sandbox slot",
-    "opening_statement": "I'd like to book a bath and brush for my dog Mochi.",
-    "caller_behavior": "Provide synthetic owner/pet; complete booking.",
+    "caller_goal": "Book approved Small-Dog Bath and Brush for Pepper (12 lbs, under 25) at the earliest available sandbox slot; provide Demo Tester email unlovedproducts@gmail.com when asked; authorize booking.",
+    "opening_statement": "I'd like to book a bath and brush for my dog Pepper.",
+    "caller_behavior": "Use Pepper (12 lbs). Give name Demo Tester, phone 555-010-2030, email unlovedproducts@gmail.com. Accept the first offered future slot and clearly authorize booking. Do not use past dates.",
     "required_fixtures": [
       "sandbox_open_slot",
-      "synthetic_owner_mochi"
+      "synthetic_owner_pepper"
     ],
     "expected_behavior": "Exactly one matching appointment created.",
     "acceptance_criteria": "Exactly one matching appointment created with correct fields.",
@@ -1131,15 +1131,15 @@
     "mode": "VOICE",
     "safety_level": "SANDBOX",
     "persona": "Earliest-slot seeker",
-    "caller_goal": "Request earliest available slot",
-    "opening_statement": "What's your earliest available grooming slot?",
-    "caller_behavior": "May book if authorized.",
+    "caller_goal": "Ask for earliest available Small-Dog Bath and Brush slot for Pepper (12 lbs); if offered a future slot, provide Demo Tester / unlovedproducts@gmail.com / 555-010-2030 and authorize booking.",
+    "opening_statement": "What's your earliest available grooming slot for my small dog Pepper?",
+    "caller_behavior": "Pepper is 12 lbs. Accept earliest future slot. Provide email unlovedproducts@gmail.com. Authorize booking. Do not give past dates.",
     "required_fixtures": [
       "sandbox_calendar",
-      "synthetic_owner_mochi"
+      "synthetic_owner_pepper"
     ],
-    "expected_behavior": "Correct availability; booking if authorized.",
-    "acceptance_criteria": "Correct availability; booking if authorized.",
+    "expected_behavior": "Correct future availability offered; booking created when authorized.",
+    "acceptance_criteria": "Future slots from tool; booking created when caller authorizes.",
     "required_evidence": [
       "transcript",
       "calendar_before",

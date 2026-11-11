@@ -80,13 +80,6 @@ def assess_scenario(
         elif settings.retell_call_mode == "web":
             if not settings.receptionist_agent_id:
                 reasons.append("RECEPTIONIST_AGENT_ID missing for web call mode")
-            # Web mode cannot drive a separate QA caller conversation end-to-end;
-            # treat as blocked for full VOICE caller simulation unless assert URL provided.
-            if not settings.qa_assert_url and not settings.test_adapter_url:
-                reasons.append(
-                    "RETELL_CALL_MODE=web cannot run Retell-to-Retell caller scenarios without "
-                    "QA_ASSERT_URL/TEST_ADAPTER_URL; configure phone numbers or an authorized adapter"
-                )
         else:
             reasons.append(f"Unknown RETELL_CALL_MODE={settings.retell_call_mode}")
 

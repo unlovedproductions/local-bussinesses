@@ -58,6 +58,14 @@ def run_deterministic_assertions(
             "agent asked a question",
         )
 
+    if scenario.get("id") == "A04":
+        goodbye_hits = len(re.findall(r"\bgood ?bye\b", agent, flags=re.I))
+        add(
+            "no_double_goodbye",
+            goodbye_hits <= 1,
+            f"goodbye utterances={goodbye_hits}",
+        )
+
     if scenario.get("id") == "I10":
         add(
             "truthful_ai_identity",

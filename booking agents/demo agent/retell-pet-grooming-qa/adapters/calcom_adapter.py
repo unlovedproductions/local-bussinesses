@@ -22,6 +22,9 @@ class CalComAdapter(BaseCalendarAdapter):
             "Authorization": f"Bearer {settings.calcom_api_key}",
             "cal-api-version": settings.calcom_api_version,
             "Content-Type": "application/json",
+            "Accept": "application/json",
+            # Cloudflare blocks bare urllib/httpx clients without a UA (error 1010).
+            "User-Agent": "Mozilla/5.0 (compatible; retell-pet-grooming-qa/1.0)",
         }
 
     def _get(self, path: str, params: dict[str, Any] | None = None) -> Any:
