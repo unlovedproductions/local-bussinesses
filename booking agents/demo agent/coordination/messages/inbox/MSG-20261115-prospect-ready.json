@@ -1,0 +1,23 @@
+{
+  "id": "MSG-20261115-prospect-ready",
+  "sender": "market-research",
+  "recipient": "integrations",
+  "created_at": "2026-11-15T16:26:00-08:00",
+  "type": "PROSPECT_READY",
+  "subject": "Synthetic Valley Air Demo HVAC package ready for export",
+  "priority": "P2",
+  "task_id": "TASK-CRM-001",
+  "background": "Prospect package staged for ERPNext-ready export. SYNTHETIC — not a real lead.",
+  "evidence": [
+    "coordination/crm-staging/prospects/PROSPECT-20261115-valley-hvac.json"
+  ],
+  "requested_action": "Run export-erpnext for PROSPECT-20261115-valley-hvac; confirm sync remains BLOCKED.",
+  "dependencies": [],
+  "related_files": [
+    "coordination/crm-staging/field-map.md",
+    "coordination/crm-staging/sync-status.md"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

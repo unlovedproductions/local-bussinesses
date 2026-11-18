@@ -225,3 +225,7 @@ Sources:
 ## Definition of done
 
 The demonstration is ready only when a live browser conversation checks real availability, receives explicit approval, creates a Cal.com booking, and the spoken confirmation matches that booking. File presence alone is not completion.
+
+## Workspace docs
+
+Project-wide documentation and recovery: [`../docs/DOCUMENTATION_INDEX.md`](../docs/DOCUMENTATION_INDEX.md).

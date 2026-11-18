@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination/schemas/message.schema.json",
+  "title": "InterAgentMessage",
+  "type": "object",
+  "required": [
+    "id",
+    "sender",
+    "recipient",
+    "created_at",
+    "type",
+    "subject",
+    "priority",
+    "status",
+    "requested_action"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^MSG-[A-Za-z0-9._-]+$" },
+    "sender": {
+      "type": "string",
+      "enum": [
+        "coordinator",
+        "market-research",
+        "voice-development",
+        "integrations",
+        "testing",
+        "documentation"
+      ]
+    },
+    "recipient": {
+      "type": "string",
+      "enum": [
+        "coordinator",
+        "market-research",
+        "voice-development",
+        "integrations",
+        "testing",
+        "documentation",
+        "all"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DISCOVERY",
+        "FEATURE_REQUEST",
+        "TECHNICAL_REVIEW",
+        "TASK_ASSIGNMENT",
+        "STATUS_UPDATE",
+        "BLOCKER",
+        "TEST_RESULT",
+        "DECISION",
+        "QUESTION",
+        "RESPONSE",
+        "PROSPECT_READY",
+        "CRM_SYNC_REQUEST",
+        "DOCUMENTATION_REQUEST",
+        "DOC_IMPACT"
+      ]
+    },
+    "subject": { "type": "string", "minLength": 1 },
+    "priority": { "type": "string", "enum": ["P0", "P1", "P2", "P3"] },
+    "task_id": { "type": ["string", "null"] },
+    "background": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "requested_action": { "type": "string" },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "related_files": { "type": "array", "items": { "type": "string" } },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "ACKNOWLEDGED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "BLOCKED",
+        "REJECTED",
+        "CANCELLED"
+      ]
+    },
+    "ack": {
+      "type": ["object", "null"],
+      "properties": {
+        "agent": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
+        "note": { "type": "string" }
+      }
+    },
+    "resolution": {
+      "type": ["object", "null"],
+      "properties": {
+        "summary": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
+        "blocker": { "type": "string" },
+        "evidence": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "additionalProperties": true
+}

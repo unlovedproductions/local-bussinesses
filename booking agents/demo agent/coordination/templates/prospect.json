@@ -1,0 +1,37 @@
+{
+  "id": "PROSPECT-YYYYMMDD-slug",
+  "created_at": "2026-11-15T00:00:00-08:00",
+  "updated_at": "2026-11-15T00:00:00-08:00",
+  "created_by": "market-research",
+  "verification_status": "PROPOSED",
+  "sales_stage": "Lead",
+  "lead": {
+    "lead_name": "Contact Name",
+    "organization": "Business Name",
+    "email": null,
+    "phone": null,
+    "source": "local-market-research",
+    "territory": null,
+    "industry": null,
+    "notes": ""
+  },
+  "opportunity": {
+    "title": "AI voice receptionist evaluation",
+    "opportunity_amount": null,
+    "probability": null,
+    "sales_stage": "Lead",
+    "expected_closing": null,
+    "next_action": "Qualify requirement",
+    "items": ["AI voice booking agent"]
+  },
+  "party": null,
+  "communications": [],
+  "product_interest": [],
+  "verified_capabilities": [],
+  "related_files": [],
+  "erpnext_sync": {
+    "status": "NOT_SYNCED",
+    "last_export_at": null,
+    "blocker": "ERPNext site not configured"
+  }
+}

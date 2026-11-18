@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination/schemas/prospect.schema.json",
+  "title": "ERPNextReadyProspectPackage",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "created_by",
+    "verification_status",
+    "sales_stage",
+    "lead",
+    "opportunity"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^PROSPECT-[A-Za-z0-9._-]+$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "created_by": {
+      "type": "string",
+      "enum": [
+        "coordinator",
+        "market-research",
+        "voice-development",
+        "integrations",
+        "testing",
+        "documentation"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["PROPOSED", "INFERRED", "VERIFIED", "STALE", "BLOCKED"]
+    },
+    "sales_stage": {
+      "type": "string",
+      "enum": [
+        "Lead",
+        "Qualified",
+        "Discovery",
+        "Demo",
+        "Proposal",
+        "Negotiation",
+        "Won",
+        "Lost"
+      ]
+    },
+    "lead": {
+      "type": "object",
+      "required": ["lead_name", "organization", "source"],
+      "properties": {
+        "lead_name": { "type": "string" },
+        "organization": { "type": "string" },
+        "email": { "type": ["string", "null"] },
+        "phone": { "type": ["string", "null"] },
+        "source": { "type": "string" },
+        "territory": { "type": ["string", "null"] },
+        "industry": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "required": ["title", "sales_stage"],
+      "properties": {
+        "title": { "type": "string" },
+        "opportunity_amount": { "type": ["number", "null"] },
+        "probability": { "type": ["number", "null"] },
+        "sales_stage": { "type": "string" },
+        "expected_closing": { "type": ["string", "null"] },
+        "next_action": { "type": ["string", "null"] },
+        "items": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "party": {
+      "type": ["object", "null"],
+      "properties": {
+        "customer_name": { "type": "string" },
+        "contact_name": { "type": ["string", "null"] },
+        "address": { "type": ["string", "null"] }
+      }
+    },
+    "communications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["at", "channel", "summary"],
+        "properties": {
+          "at": { "type": "string" },
+          "channel": { "type": "string" },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "product_interest": { "type": "array", "items": { "type": "string" } },
+    "verified_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["capability", "status", "evidence"],
+        "properties": {
+          "capability": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["VERIFIED", "INFERRED", "PROPOSED", "BLOCKED"]
+          },
+          "evidence": { "type": "string" }
+        }
+      }
+    },
+    "related_files": { "type": "array", "items": { "type": "string" } },
+    "erpnext_sync": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["NOT_SYNCED", "EXPORTED", "BLOCKED", "SYNCED"]
+        },
+        "last_export_at": { "type": ["string", "null"] },
+        "blocker": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "additionalProperties": true
+}

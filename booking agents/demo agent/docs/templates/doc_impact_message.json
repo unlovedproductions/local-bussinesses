@@ -1,0 +1,18 @@
+{
+  "id": "MSG-YYYYMMDD-doc-impact-slug",
+  "sender": "testing",
+  "recipient": "documentation",
+  "created_at": "2026-11-18T00:00:00-08:00",
+  "type": "DOC_IMPACT",
+  "subject": "Docs may need update after change",
+  "priority": "P2",
+  "task_id": null,
+  "background": "Describe the change and risk if docs stay stale.",
+  "evidence": ["docs/templates/DOCUMENTATION_IMPACT.md"],
+  "requested_action": "Acknowledge, update canonical docs, verify links/commands.",
+  "dependencies": [],
+  "related_files": [],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

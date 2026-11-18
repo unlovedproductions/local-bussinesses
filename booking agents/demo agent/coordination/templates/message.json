@@ -1,0 +1,18 @@
+{
+  "id": "MSG-YYYYMMDD-slug",
+  "sender": "market-research",
+  "recipient": "voice-development",
+  "created_at": "2026-11-15T00:00:00-08:00",
+  "type": "FEATURE_REQUEST",
+  "subject": "Short subject",
+  "priority": "P2",
+  "task_id": "TASK-...",
+  "background": "Context and why this matters.",
+  "evidence": ["path/or/url"],
+  "requested_action": "What the recipient should do.",
+  "dependencies": [],
+  "related_files": [],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

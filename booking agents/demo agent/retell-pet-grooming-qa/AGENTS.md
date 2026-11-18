@@ -35,3 +35,13 @@ Independent Retell-to-Retell QA caller + orchestrator + judge + calendar verifie
 7. Only after sandbox proof: booking tests D01 → D06 → D02
 8. `streamlit run dashboard/app.py`
 9. `python scripts/create_zip.py`
+
+## Workspace coordination
+
+Cross-agent handoffs for this demo workspace live one level up:
+
+- Root instructions: [`../AGENTS.md`](../AGENTS.md)
+- Bus + CLI: [`../coordination/README.md`](../coordination/README.md)
+- Testing role card: [`../coordination/agents/testing.md`](../coordination/agents/testing.md)
+
+QA safety rules in this file still take precedence for Retell/Cal.com test execution.

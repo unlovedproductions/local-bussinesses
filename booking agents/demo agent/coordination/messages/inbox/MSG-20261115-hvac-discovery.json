@@ -1,0 +1,22 @@
+{
+  "id": "MSG-20261115-hvac-discovery",
+  "sender": "market-research",
+  "recipient": "all",
+  "created_at": "2026-11-15T16:05:00-08:00",
+  "type": "DISCOVERY",
+  "subject": "HVAC after-hours emergency intake opportunity",
+  "priority": "P1",
+  "task_id": "TASK-HVAC-001",
+  "background": "Local HVAC shops miss after-hours emergency calls. Sample commercial discovery for market→product loop. INFERRED hypothesis; not field-survey verified in this session.",
+  "evidence": [
+    "research/local-market-intelligence/findings/2026-11-15-hvac-after-hours.md"
+  ],
+  "requested_action": "Read discovery; voice-development owns technical evaluation via companion FEATURE_REQUEST.",
+  "dependencies": [],
+  "related_files": [
+    "research/local-market-intelligence/findings/2026-11-15-hvac-after-hours.md"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

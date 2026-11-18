@@ -1,0 +1,27 @@
+{
+  "id": "MSG-20261115-hvac-market-feedback",
+  "sender": "market-research",
+  "recipient": "coordinator",
+  "created_at": "2026-11-15T16:30:00-08:00",
+  "type": "RESPONSE",
+  "subject": "Sales positioning updated from tech review",
+  "priority": "P2",
+  "task_id": "TASK-HVAC-001",
+  "background": "Closed the sample feedback loop: commercial language will only claim verified Cal.com booking demo capabilities; HVAC after-hours intake stays PROPOSED.",
+  "evidence": [
+    "MSG-20261115-hvac-tech-review",
+    "MSG-20261115-hvac-decision",
+    "coordination/shared-context/verified-features.md"
+  ],
+  "requested_action": "Acknowledge loop closure for bootstrap sample.",
+  "dependencies": [
+    "MSG-20261115-hvac-decision"
+  ],
+  "related_files": [
+    "coordination/crm-staging/prospects/PROSPECT-20261115-valley-hvac.json",
+    "coordination/crm-staging/exports/PROSPECT-20261115-valley-hvac.json"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

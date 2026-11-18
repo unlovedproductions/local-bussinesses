@@ -1,0 +1,25 @@
+{
+  "id": "MSG-20261115-hvac-integration-q",
+  "sender": "voice-development",
+  "recipient": "integrations",
+  "created_at": "2026-11-15T16:21:00-08:00",
+  "type": "QUESTION",
+  "subject": "Escalation + CRM path for HVAC emergency intake",
+  "priority": "P2",
+  "task_id": "TASK-HVAC-001",
+  "background": "If after-hours intake is built, need escalation (on-call) and where lead/opportunity records land. ERPNext sync currently BLOCKED.",
+  "evidence": [
+    "coordination/crm-staging/sync-status.md",
+    "coordination/shared-context/integrations.md"
+  ],
+  "requested_action": "Document integration options and keep staging as authoritative until ERPNext is live.",
+  "dependencies": [
+    "MSG-20261115-hvac-tech-review"
+  ],
+  "related_files": [
+    "coordination/crm-staging/field-map.md"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

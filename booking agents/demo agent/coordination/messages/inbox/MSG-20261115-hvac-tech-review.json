@@ -1,0 +1,33 @@
+{
+  "id": "MSG-20261115-hvac-tech-review",
+  "sender": "voice-development",
+  "recipient": "market-research",
+  "created_at": "2026-11-15T16:20:00-08:00",
+  "type": "TECHNICAL_REVIEW",
+  "subject": "HVAC after-hours intake — feasibility (sample)",
+  "priority": "P1",
+  "task_id": "TASK-HVAC-001",
+  "background": "Bootstrap sample evaluation against current Retell+Cal.com demo. Not an implementation.",
+  "evidence": [
+    "voice-agent/README.md",
+    "coordination/shared-context/verified-features.md",
+    "coordination/shared-context/limitations.md"
+  ],
+  "requested_action": "Update sales positioning: treat after-hours HVAC intake as PROPOSED; booking path remains VERIFIED for demo Cal.com tools only.",
+  "dependencies": [
+    "MSG-20261115-hvac-feature-request"
+  ],
+  "related_files": [
+    "voice-agent/system-prompt.md"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": {
+    "summary": "Does not exist as a dedicated HVAC emergency workflow today. Feasible as prompt+tooling extension (relative complexity: medium). Depends on escalation channel (SMS/phone transfer), business hours rules, and whether emergency should book vs message-only. Cancel/reschedule still not attached. LIVE IMPLEMENTATION NOT DONE in this bootstrap.",
+    "at": "2026-11-15T16:20:00-08:00",
+    "evidence": [
+      "voice-agent/README.md",
+      "coordination/shared-context/verified-features.md"
+    ]
+  }
+}

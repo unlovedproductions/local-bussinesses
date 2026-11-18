@@ -1,0 +1,18 @@
+{
+  "id": "MSG-YYYYMMDD-doc-impact-slug",
+  "sender": "voice-development",
+  "recipient": "documentation",
+  "created_at": "2026-11-18T00:00:00-08:00",
+  "type": "DOC_IMPACT",
+  "subject": "Documentation impact for change X",
+  "priority": "P2",
+  "task_id": "TASK-...",
+  "background": "What changed and why docs may be affected.",
+  "evidence": ["path/to/diff-or-evidence"],
+  "requested_action": "Update affected docs; refresh registry status; run check_docs.py.",
+  "dependencies": [],
+  "related_files": ["docs/...", "voice-agent/..."],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

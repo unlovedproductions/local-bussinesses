@@ -1,0 +1,24 @@
+{
+  "id": "MSG-20261115-hvac-feature-request",
+  "sender": "market-research",
+  "recipient": "voice-development",
+  "created_at": "2026-11-15T16:06:00-08:00",
+  "type": "FEATURE_REQUEST",
+  "subject": "Evaluate after-hours HVAC emergency call intake",
+  "priority": "P1",
+  "task_id": "TASK-HVAC-001",
+  "background": "Need technical feasibility: triage urgency, capture callback/address, escalate vs schedule, honest limits vs existing Cal.com booking demo.",
+  "evidence": [
+    "research/local-market-intelligence/findings/2026-11-15-hvac-after-hours.md",
+    "coordination/shared-context/verified-features.md"
+  ],
+  "requested_action": "Produce TECHNICAL_REVIEW: exists / modify / new; components; complexity; dependencies; blockers.",
+  "dependencies": [],
+  "related_files": [
+    "voice-agent/system-prompt.md",
+    "voice-agent/README.md"
+  ],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

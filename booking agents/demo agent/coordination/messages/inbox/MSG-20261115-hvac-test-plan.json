@@ -1,0 +1,35 @@
+{
+  "id": "MSG-20261115-hvac-test-plan",
+  "sender": "testing",
+  "recipient": "coordinator",
+  "created_at": "2026-11-15T16:22:00-08:00",
+  "type": "TEST_RESULT",
+  "subject": "Validation scenarios for HVAC after-hours intake (stub)",
+  "priority": "P2",
+  "task_id": "TASK-HVAC-001",
+  "background": "No HVAC emergency feature implemented; scenarios are proposed only. Do not mark PASS.",
+  "evidence": [
+    "retell-pet-grooming-qa/AGENTS.md"
+  ],
+  "requested_action": "Track proposed scenarios until feature exists; keep status BLOCKED for execution.",
+  "dependencies": [
+    "MSG-20261115-hvac-tech-review"
+  ],
+  "related_files": [
+    "retell-pet-grooming-qa/tests/cases.json"
+  ],
+  "status": "BLOCKED",
+  "ack": {
+    "agent": "testing",
+    "at": "2026-11-15T16:22:00-08:00",
+    "note": "Seeded as blocked test plan — feature not implemented"
+  },
+  "resolution": {
+    "summary": "Proposed scenarios: after-hours greeting, urgency triage, callback capture, escalation failure honesty, no false booking confirmation. Execution BLOCKED until feature ships.",
+    "at": "2026-11-15T16:22:00-08:00",
+    "blocker": "After-hours HVAC intake not implemented",
+    "evidence": [
+      "coordination/shared-context/verified-features.md"
+    ]
+  }
+}

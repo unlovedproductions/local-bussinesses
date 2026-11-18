@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "prospect_id": "PROSPECT-20261115-valley-hvac",
+    "generated_at": "2026-11-15T16:25:25-08:00",
+    "sales_stage": "Discovery",
+    "verification_status": "PROPOSED",
+    "note": "Local export only \u2014 not pushed to ERPNext"
+  },
+  "Lead": {
+    "lead_name": "Alex Rivera",
+    "company_name": "Valley Air Demo HVAC",
+    "email_id": null,
+    "mobile_no": null,
+    "source": "local-market-research-synthetic",
+    "territory": "Taft / Kern County (demo)",
+    "industry": "HVAC",
+    "notes": "SYNTHETIC SAMPLE. After-hours emergency missed-call pain hypothesis. Not a real contact."
+  },
+  "Opportunity": {
+    "title": "AI voice after-hours emergency intake",
+    "opportunity_amount": 2500,
+    "probability": 20,
+    "sales_stage": "Discovery",
+    "expected_closing": null,
+    "next_action": "Await technical feasibility from voice-development; keep ERPNext sync blocked",
+    "items": [
+      "AI voice receptionist",
+      "After-hours emergency intake workflow"
+    ],
+    "verified_capabilities": [
+      {
+        "capability": "Cal.com availability check + book via Retell demo path",
+        "status": "VERIFIED",
+        "evidence": "coordination/shared-context/verified-features.md"
+      },
+      {
+        "capability": "After-hours HVAC emergency intake workflow",
+        "status": "PROPOSED",
+        "evidence": "MSG-20261115-hvac-feature-request sample evaluation"
+      }
+    ]
+  },
+  "Customer": null,
+  "Contact": null
+}

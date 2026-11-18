@@ -1,0 +1,63 @@
+{
+  "id": "PROSPECT-20261115-valley-hvac",
+  "created_at": "2026-11-15T16:10:00-08:00",
+  "updated_at": "2026-11-15T16:25:25-08:00",
+  "created_by": "market-research",
+  "verification_status": "PROPOSED",
+  "sales_stage": "Discovery",
+  "lead": {
+    "lead_name": "Alex Rivera",
+    "organization": "Valley Air Demo HVAC",
+    "email": null,
+    "phone": null,
+    "source": "local-market-research-synthetic",
+    "territory": "Taft / Kern County (demo)",
+    "industry": "HVAC",
+    "notes": "SYNTHETIC SAMPLE. After-hours emergency missed-call pain hypothesis. Not a real contact."
+  },
+  "opportunity": {
+    "title": "AI voice after-hours emergency intake",
+    "opportunity_amount": 2500,
+    "probability": 20,
+    "sales_stage": "Discovery",
+    "expected_closing": null,
+    "next_action": "Await technical feasibility from voice-development; keep ERPNext sync blocked",
+    "items": [
+      "AI voice receptionist",
+      "After-hours emergency intake workflow"
+    ]
+  },
+  "party": null,
+  "communications": [
+    {
+      "at": "2026-11-15T16:10:00-08:00",
+      "channel": "internal-research",
+      "summary": "Seeded synthetic prospect for coordination + CRM staging verification"
+    }
+  ],
+  "product_interest": [
+    "after-hours emergency call intake",
+    "callback capture"
+  ],
+  "verified_capabilities": [
+    {
+      "capability": "Cal.com availability check + book via Retell demo path",
+      "status": "VERIFIED",
+      "evidence": "coordination/shared-context/verified-features.md"
+    },
+    {
+      "capability": "After-hours HVAC emergency intake workflow",
+      "status": "PROPOSED",
+      "evidence": "MSG-20261115-hvac-feature-request sample evaluation"
+    }
+  ],
+  "related_files": [
+    "research/local-market-intelligence/findings/2026-11-15-hvac-after-hours.md",
+    "research/local-market-intelligence/prospects/PROSPECT-20261115-valley-hvac-notes.md"
+  ],
+  "erpnext_sync": {
+    "status": "EXPORTED",
+    "last_export_at": "2026-11-15T16:25:25-08:00",
+    "blocker": "ERPNext site not configured \u2014 export local only"
+  }
+}

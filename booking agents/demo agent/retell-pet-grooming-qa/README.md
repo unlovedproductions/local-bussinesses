@@ -62,3 +62,7 @@ python scripts/create_zip.py
 Produces `retell-pet-grooming-qa.zip` (also copied next to this folder).
 
 See `docs/` for Retell setup, Cal.com sandbox, playbook, troubleshooting, and security.
+
+## Workspace docs
+
+Coordination + recovery docs live at workspace root: [`../docs/DOCUMENTATION_INDEX.md`](../docs/DOCUMENTATION_INDEX.md).
