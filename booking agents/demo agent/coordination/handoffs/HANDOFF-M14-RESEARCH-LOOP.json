@@ -1,0 +1,32 @@
+{
+  "id": "HANDOFF-M14-RESEARCH-LOOP",
+  "sender": "market-research",
+  "recipient": "voice-development",
+  "project_id": "ai-voice-booking-agents",
+  "domain_id": "voice_agent_network",
+  "related_task": null,
+  "related_message": null,
+  "created_at": "2026-11-18T10:02:30-08:00",
+  "subject": "M14 research-to-dev loop",
+  "background": "Acceptance harness \u2014 synthetic",
+  "evidence": [],
+  "requested_action": "Acknowledge sample feature evaluation request",
+  "priority": "P3",
+  "dependencies": [],
+  "required_permissions": [],
+  "affected_files": [],
+  "artifact_refs": [],
+  "status": "COMPLETED",
+  "ack": {
+    "agent": "voice-development",
+    "at": "2026-11-18T10:02:30-08:00",
+    "note": ""
+  },
+  "resolution": {
+    "summary": "Synthetic evaluation recorded for harness",
+    "at": "2026-11-18T10:02:30-08:00",
+    "evidence": [
+      "scripts/uan/run_m5_m14_acceptance.py"
+    ]
+  }
+}

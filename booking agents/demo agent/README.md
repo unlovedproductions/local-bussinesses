@@ -20,7 +20,7 @@ Help authorized operators and AI agents:
 |---|---|---|
 | Browser Retell web call → Cal.com availability/book/list/get | Configured (live E2E needs credentials) | [`voice-agent/README.md`](voice-agent/README.md) |
 | Autonomous voice QA auditor + Streamlit dashboard | Implemented | [`retell-pet-grooming-qa/README.md`](retell-pet-grooming-qa/README.md) |
-| Repo-bus multi-agent coordination (UAN-CORE M1–M4) | Implemented (activation via poll) | [`coordination/README.md`](coordination/README.md), [`docs/uan/`](docs/uan/) |
+| Repo-bus multi-agent coordination (UAN-CORE M1–M14) | Partially operational (poll + CLI ops) | [`coordination/README.md`](coordination/README.md), [`docs/uan/master-system-specification.md`](docs/uan/master-system-specification.md) |
 | ERPNext CRM live sync | BLOCKED | [`coordination/crm-staging/`](coordination/crm-staging/) |
 | Reschedule / cancel booking tools | Not attached | `voice-agent/README.md` |
 

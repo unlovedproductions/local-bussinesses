@@ -1,0 +1,14 @@
+id: voice_audit
+name: Audit existing voice agent
+inputs: [agent_ref, evidence_mode]
+specialists: [voice-development, testing, documentation]
+permissions: [read_prompts, read_qa_runs]
+human_approval: false
+steps:
+  - Review voice-agent/README.md and verification.md
+  - Run QA validate/preflight when credentials allow
+  - Classify evidence SYNTHETIC|SIMULATED|INTEGRATION_TEST|RECORDED_CALL|HUMAN_EVALUATED|PRODUCTION_OBSERVED
+  - Record findings via coord task/handoff
+  - DOC_IMPACT if claims or runbooks change
+completion: Structured findings with evidence paths; no fabricated metrics
+documentation_impact: conditional

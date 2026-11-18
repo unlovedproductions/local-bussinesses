@@ -1,0 +1,27 @@
+name: Demo Agent Docs & Coordination
+
+on:
+  push:
+    paths:
+      - "booking agents/demo agent/**"
+  pull_request:
+    paths:
+      - "booking agents/demo agent/**"
+
+jobs:
+  docs-and-coord:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: booking agents/demo agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Documentation drift checks
+        run: python3 scripts/documentation/check_docs.py
+      - name: Coordination unit tests
+        run: python3 coordination/scripts/test_coord.py
+      - name: UAN M5-M14 acceptance harness
+        run: python3 scripts/uan/run_m5_m14_acceptance.py

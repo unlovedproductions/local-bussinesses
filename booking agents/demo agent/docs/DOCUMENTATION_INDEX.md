@@ -26,6 +26,11 @@
 | UAN agents | [uan/agent-registry.md](uan/agent-registry.md) |
 | UAN execution | [uan/execution-architecture.md](uan/execution-architecture.md) |
 | UAN communication | [uan/communication-protocol.md](uan/communication-protocol.md) |
+| UAN memory | [uan/memory-architecture.md](uan/memory-architecture.md) |
+| UAN security/approvals | [uan/security-approvals.md](uan/security-approvals.md) |
+| UAN voice eval | [uan/voice-evaluation-framework.md](uan/voice-evaluation-framework.md) |
+| UAN master spec | [uan/master-system-specification.md](uan/master-system-specification.md) |
+| UAN M5–M14 acceptance | [uan/acceptance-checklist-m5-m14.md](uan/acceptance-checklist-m5-m14.md) |
 
 Demo SoT: [`../voice-agent/README.md`](../voice-agent/README.md)  
 QA SoT: [`../retell-pet-grooming-qa/README.md`](../retell-pet-grooming-qa/README.md)  

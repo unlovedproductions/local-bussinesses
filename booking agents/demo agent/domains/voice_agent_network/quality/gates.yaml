@@ -1,0 +1,37 @@
+version: 1
+gates:
+  - id: G1
+    name: Requirements Validation
+    required: true
+  - id: G2
+    name: Architecture Review
+    required: false
+  - id: G3
+    name: Functional Validation
+    required: true
+  - id: G4
+    name: Conversation Quality
+    required: true
+  - id: G5
+    name: Security and Privacy
+    required: true
+  - id: G6
+    name: Regression Testing
+    required: true
+  - id: G7
+    name: Independent Review
+    required_when: consequential_change
+  - id: G8
+    name: Documentation Integrity
+    required_when: material_doc_impact
+  - id: G9
+    name: Recovery Impact
+    required_when: infra_or_backup_change
+  - id: G10
+    name: Release Readiness
+    required: true
+  - id: G11
+    name: Human Approval
+    required_when: production_deploy
+results: [PASS, CONDITIONAL, FAIL, UNKNOWN]
+rule: Critical FAIL or missing mandatory test blocks release readiness.

@@ -1,0 +1,11 @@
+id: prompt_review
+name: Review system prompts
+inputs: [prompt_path]
+specialists: [voice-development, testing]
+permissions: [read_prompts]
+steps:
+  - Diff against domains/voice_agent_network/prompts/versions baseline if present
+  - Score clarity, hierarchy, tool-use, safety, recovery
+  - Propose candidate version without overwriting production prompt
+completion: Review note + optional candidate under prompts/versions/
+documentation_impact: true

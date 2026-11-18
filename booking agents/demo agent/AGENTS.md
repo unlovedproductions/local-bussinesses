@@ -71,7 +71,13 @@ python3 coordination/scripts/coord.py plan --objective "test integration calenda
 python3 coordination/scripts/coord.py inbox --agent documentation
 python3 coordination/scripts/coord.py task-list --status READY
 python3 coordination/scripts/coord.py handoff-list --open-only
+python3 coordination/scripts/coord.py memory-status
+python3 coordination/scripts/coord.py integrations
+python3 coordination/scripts/coord.py workflows
+python3 coordination/scripts/coord.py ops
+python3 coordination/scripts/coord.py recovery-status
 python3 scripts/documentation/check_docs.py
+python3 scripts/uan/run_m5_m14_acceptance.py
 ```
 
 Operating guide: [coordination/README.md](coordination/README.md)  

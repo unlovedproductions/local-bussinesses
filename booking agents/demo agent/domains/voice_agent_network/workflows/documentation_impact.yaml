@@ -1,0 +1,12 @@
+id: documentation_impact
+name: Documentation impact review
+inputs: [change_id]
+specialists: [documentation]
+permissions: [edit_docs]
+steps:
+  - Receive DOC_IMPACT / DOCUMENTATION_REQUEST
+  - Diff code/config evidence
+  - Update authorized docs; run check_docs.py
+  - Update registry statuses; escalate disputes
+completion: Doc task closed with check_docs evidence
+documentation_impact: true

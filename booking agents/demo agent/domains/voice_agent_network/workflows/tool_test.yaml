@@ -1,0 +1,11 @@
+id: tool_test
+name: Test Cal.com tool calls
+inputs: [mode]
+specialists: [integrations, testing]
+permissions: [calendar_read]
+steps:
+  - Prefer stub/readonly harness without live writes unless approved
+  - Exercise availability/book/list/get paths documented in voice-agent
+  - Record pass/fail with evidence
+completion: Tool reliability notes; label simulation vs live
+documentation_impact: conditional

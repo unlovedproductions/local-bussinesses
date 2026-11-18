@@ -1,0 +1,13 @@
+id: release_readiness
+name: Evaluate release readiness
+inputs: [version]
+specialists: [coordinator, testing, documentation]
+permissions: [read_all_workspace]
+human_approval: true
+steps:
+  - Evaluate gates in quality/gates.yaml
+  - Require documentation integrity for material changes
+  - Block on critical FAIL or missing mandatory tests
+  - Request explicit human approval before production Retell/Cal.com changes
+completion: Release readiness report with gate results
+documentation_impact: true

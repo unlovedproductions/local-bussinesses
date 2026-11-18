@@ -23,7 +23,10 @@
 | coordination/README.md | Bus SoT | coordinator | agents | INTERNAL | VERIFIED | 2026-11-15 | bus changes | ADR-001 |
 | docs/uan/* | UAN-CORE specs | coordinator + documentation | agents | INTERNAL | NEEDS_REVIEW | 2026-11-18 | bus/commander changes | ADR-002 |
 | coordination/config/uan.json | UAN runtime config | coordinator | agents | INTERNAL | VERIFIED | 2026-11-18 | aliases/routes | coord.py |
-| domains/voice_agent_network/domain.yaml | VOICE-AIN metadata | coordinator | agents | INTERNAL | DRAFT | 2026-11-18 | domain pack | docs/uan |
+| domains/voice_agent_network/domain.yaml | VOICE-AIN metadata | coordinator | agents | INTERNAL | NEEDS_REVIEW | 2026-11-18 | domain pack | docs/uan |
+| coordination/config/integrations.json | Integration registry | coordinator | agents | INTERNAL | VERIFIED | 2026-11-18 | approvals | security-approvals |
+| docs/uan/master-system-specification.md | Master UAN spec | coordinator + documentation | agents | INTERNAL | NEEDS_REVIEW | 2026-11-18 | milestones | acceptance |
+| docs/uan/memory-architecture.md | Memory plane | documentation | agents | INTERNAL | VERIFIED | 2026-11-18 | supermemory | memory README |
 
 Statuses: VERIFIED | NEEDS_REVIEW | DRAFT | OUTDATED | BLOCKED. Do not mark VERIFIED without evidence.
 
@@ -56,3 +59,8 @@ Updated: 2026-11-18.
 - `docs/uan/architecture-gap-analysis.md`
 - `docs/uan/core-architecture.md`
 - `coordination/config/uan.json`
+- `coordination/config/integrations.json`
+- `docs/uan/memory-architecture.md`
+- `docs/uan/master-system-specification.md`
+- `docs/uan/security-approvals.md`
+- `docs/uan/voice-evaluation-framework.md`

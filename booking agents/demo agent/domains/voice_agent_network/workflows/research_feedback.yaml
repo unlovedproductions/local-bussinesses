@@ -1,0 +1,12 @@
+id: research_feedback
+name: Market research to development loop
+inputs: [location]
+specialists: [market-research, voice-development, integrations, documentation]
+permissions: [research_public]
+steps:
+  - Retrieve verified capabilities from shared-context
+  - Research prospects; prepare-prospect; never invent leads
+  - FEATURE_REQUEST / TECHNICAL_REVIEW handoffs
+  - Update commercial docs only for verified capabilities
+completion: Prospect packages + handoffs; ERPNext sync remains blocked unless authorized
+documentation_impact: conditional

@@ -1,0 +1,11 @@
+id: regression
+name: Run QA regression suite
+inputs: [suite]
+specialists: [testing]
+permissions: [run_qa_local]
+steps:
+  - cd retell-pet-grooming-qa && python -m unittest discover -s tests -p 'test_*.py'
+  - Optionally scripts/run_regression.py when configured
+  - Attach results to task result.evidence
+completion: Test counts and failures; do not claim live call pass without runs
+documentation_impact: false

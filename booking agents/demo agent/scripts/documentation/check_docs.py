@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -32,8 +33,13 @@ REQUIRED = [
     "docs/uan/existing-system-inventory.md",
     "docs/uan/architecture-gap-analysis.md",
     "docs/uan/core-architecture.md",
+    "docs/uan/memory-architecture.md",
+    "docs/uan/voice-evaluation-framework.md",
+    "docs/uan/security-approvals.md",
     "coordination/agents/documentation.md",
     "coordination/config/uan.json",
+    "coordination/config/integrations.json",
+    "domains/voice_agent_network/domain.yaml",
 ]
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
@@ -57,6 +63,8 @@ ENV_PREFIXES = (
     "BUSINESS_",
     "CASES_",
     "SANDBOX_",
+    "UAN_",
+    "ERP",
 )
 ENV_SUFFIXES = (
     "_DIR",
@@ -72,6 +80,7 @@ ENV_SUFFIXES = (
     "_MODEL",
     "_SECONDS",
     "_USD",
+    "_CONCURRENT",
 )
 ENV_IGNORE = {
     "INTERNAL",
@@ -101,6 +110,8 @@ ENV_IGNORE = {
     "ID",
     "YES",
     "NO",
+    "UAN",
+    "MCP",
 }
 
 
@@ -161,7 +172,7 @@ def run_checks(root: Path) -> tuple[list[str], list[str]]:
             example_names.add(line.split("=", 1)[0].strip())
         documented = set(ENV_NAME_RE.findall(cfg.read_text(encoding="utf-8", errors="replace")))
         documented_env = {n for n in documented if n not in ENV_IGNORE and "_" in n}
-        for name in sorted(documented_env - example_names - {"DR_EXPORT_DIR"}):
+        for name in sorted(documented_env - example_names - {"DR_EXPORT_DIR", "UAN_MAX_CONCURRENT"}):
             if looks_like_env(name):
                 errors.append(f"CONFIGURATION_REFERENCE env not in .env.example: {name}")
     else:
@@ -173,6 +184,40 @@ def run_checks(root: Path) -> tuple[list[str], list[str]]:
         for name in ("validate.py", "preflight.py", "run_smoke.py", "setup.py"):
             if name in text and not (qa_scripts / name).is_file():
                 warnings.append(f"README mentions missing script: {name}")
+
+    # Drift: documented QA unit test command vs presence
+    testing_guide = docs / "development" / "TESTING_GUIDE.md"
+    if testing_guide.is_file():
+        ttext = testing_guide.read_text(encoding="utf-8", errors="replace")
+        if "unittest" in ttext and not (root / "retell-pet-grooming-qa" / "tests").is_dir():
+            errors.append("TESTING_GUIDE references unittest but tests/ missing")
+
+    # UAN config JSON validity
+    for rel in (
+        "coordination/config/uan.json",
+        "coordination/config/integrations.json",
+    ):
+        path = root / rel
+        if path.is_file():
+            try:
+                json.loads(path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                errors.append(f"invalid JSON {rel}: {exc}")
+
+    # Domain workflows referenced exist
+    domain = root / "domains" / "voice_agent_network" / "domain.yaml"
+    if domain.is_file():
+        text = domain.read_text(encoding="utf-8", errors="replace")
+        for match in re.findall(r"workflows/[\w.-]+\.yaml", text):
+            if not (root / "domains" / "voice_agent_network" / match).is_file():
+                errors.append(f"domain.yaml references missing {match}")
+
+    # Recovery readiness honesty markers
+    recovery = docs / "recovery" / "RECOVERY_READINESS.md"
+    if recovery.is_file():
+        rtext = recovery.read_text(encoding="utf-8", errors="replace")
+        if "BLOCKED" not in rtext and "NOT_TESTED" not in rtext and "UNTESTED" not in rtext:
+            warnings.append("RECOVERY_READINESS lacks BLOCKED/UNTESTED markers")
 
     for base in (docs, root / "coordination"):
         if not base.exists():

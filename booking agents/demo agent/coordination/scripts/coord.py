@@ -17,6 +17,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import ops_ext
+
 KNOWN_AGENTS = frozenset(
     {
         "coordinator",
@@ -1365,6 +1367,20 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("attempts", help="List execution attempt records")
     p.add_argument("--task", default="")
     p.set_defaults(func=cmd_attempts)
+
+    ops_ext.register(
+        sub,
+        {
+            "workspace_root": workspace_root,
+            "coord_root": coord_root,
+            "load_json": load_json,
+            "write_json": write_json,
+            "die": die,
+            "resolve_agent": resolve_agent,
+            "max_concurrent": max_concurrent,
+            "KNOWN_AGENTS": KNOWN_AGENTS,
+        },
+    )
 
     return parser
 

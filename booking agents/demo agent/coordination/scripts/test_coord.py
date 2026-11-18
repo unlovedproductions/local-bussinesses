@@ -527,6 +527,68 @@ class CoordTests(unittest.TestCase):
                 for path in (COORD / "tasks" / "attempts").glob(f"ATT-{tid}-*.json"):
                     path.unlink(missing_ok=True)
 
+    def test_q_integrations_and_ops(self) -> None:
+        proc = run_coord(["integrations"])
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        data = json.loads(proc.stdout)
+        ids = {i["id"] for i in data["integrations"]}
+        self.assertIn("retell-ai", ids)
+        self.assertIn("erpnext", ids)
+        mem = run_coord(["memory-status"])
+        self.assertEqual(mem.returncode, 0, mem.stderr)
+        self.assertTrue(json.loads(mem.stdout)["semantic_memory"]["config_present"])
+        ops = run_coord(["ops"])
+        self.assertEqual(ops.returncode, 0, ops.stderr)
+        self.assertEqual(json.loads(ops.stdout)["domain_id"], "voice_agent_network")
+        wf = run_coord(["workflows"])
+        self.assertEqual(wf.returncode, 0, wf.stderr)
+        self.assertGreaterEqual(json.loads(wf.stdout)["count"], 8)
+
+    def test_r_rejected_cannot_enable(self) -> None:
+        registry = COORD / "config" / "integrations.json"
+        original = registry.read_text(encoding="utf-8")
+        proposal = {
+            "id": "test-tool-unit",
+            "name": "Unit Test Tool",
+            "provider": "example",
+            "purpose": "unit test",
+            "status": "REJECTED",
+            "essential": False,
+            "agents": ["coordinator"],
+            "permissions": [],
+            "data_accessed": [],
+            "auth": "none",
+            "costs": "none",
+            "notes": "ephemeral",
+            "proposed_by": "coordinator",
+        }
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as tmp:
+            json.dump(proposal, tmp)
+            tmp_path = tmp.name
+        try:
+            self.assertEqual(
+                run_coord(["integration-propose", "--file", tmp_path]).returncode,
+                0,
+            )
+            bad = run_coord(
+                [
+                    "integration-set-status",
+                    "--id",
+                    "test-tool-unit",
+                    "--status",
+                    "ENABLED",
+                    "--agent",
+                    "coordinator",
+                ]
+            )
+            self.assertNotEqual(bad.returncode, 0)
+            self.assertIn("rejected", bad.stderr.lower())
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
+            registry.write_text(original, encoding="utf-8")
+            for path in (COORD / "approvals" / "records").glob("APR-test-tool-unit-*.json"):
+                path.unlink(missing_ok=True)
+
 
 if __name__ == "__main__":
     unittest.main()

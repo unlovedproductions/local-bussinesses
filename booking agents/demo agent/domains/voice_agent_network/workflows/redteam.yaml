@@ -1,0 +1,11 @@
+id: redteam
+name: Independent security conversation review
+inputs: [scope]
+specialists: [testing, coordinator]
+permissions: [read_prompts]
+steps:
+  - Prompt injection / unauthorized tool-use review
+  - Privacy and escalation checks
+  - Decision APPROVE|APPROVE_WITH_CONDITIONS|REQUEST_MORE_TESTING|REJECT
+completion: Independent decision record under coordination/decisions or handoff
+documentation_impact: conditional

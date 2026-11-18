@@ -1,7 +1,7 @@
 domain_id: voice_agent_network
 name: Voice Agent Intelligence Network
 short_name: VOICE-AIN
-version: 0.1.0
+version: 0.2.0
 mission: >
   Audit, improve, test, document, and commercially qualify the Retell + Cal.com
   voice booking product using the Universal Multi-Agent Network core.
@@ -28,12 +28,19 @@ uan_aliases:
   "40": integrations
   "50": testing
   "70": documentation
+workflows:
+  - workflows/voice_audit.yaml
+  - workflows/prompt_review.yaml
+  - workflows/tool_test.yaml
+  - workflows/regression.yaml
+  - workflows/redteam.yaml
+  - workflows/release_readiness.yaml
+  - workflows/research_feedback.yaml
+  - workflows/documentation_impact.yaml
+quality_gates: quality/gates.yaml
+evaluations: evaluations/framework.md
 memory_scope: project
-quality_gates:
-  - requirements
-  - functional
-  - documentation_integrity
-  - human_approval_for_production
 notes:
-  - Domain pack metadata only in M1-M4; full evaluation workflows are later milestones.
+  - Provider adapters are the existing QA adapters + Retell/Cal.com dashboards — do not duplicate.
   - Do not invent audio/STT metrics without evidence.
+  - Production deploy requires human approval (Gate 11).

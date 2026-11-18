@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination/schemas/integration.schema.json",
+  "title": "IntegrationRecord",
+  "type": "object",
+  "required": ["id", "name", "provider", "purpose", "status"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "name": { "type": "string" },
+    "provider": { "type": "string" },
+    "purpose": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "PROPOSED",
+        "APPROVED_FOR_INSTALL",
+        "INSTALLED",
+        "AWAITING_AUTHORIZATION",
+        "AUTHORIZED",
+        "ENABLED",
+        "DISABLED",
+        "REJECTED"
+      ]
+    },
+    "essential": { "type": "boolean" },
+    "agents": { "type": "array", "items": { "type": "string" } },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "data_accessed": { "type": "array", "items": { "type": "string" } },
+    "auth": { "type": "string" },
+    "costs": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

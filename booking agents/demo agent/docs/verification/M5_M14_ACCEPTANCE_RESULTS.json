@@ -1,0 +1,51 @@
+{
+  "suite": "M5-M14",
+  "overall": "PASS",
+  "results": [
+    {
+      "id": "coord_unit",
+      "result": "PASS"
+    },
+    {
+      "id": "docs_drift",
+      "result": "PASS"
+    },
+    {
+      "id": "m5_memory_status",
+      "result": "PASS"
+    },
+    {
+      "id": "m6_integrations",
+      "result": "PASS"
+    },
+    {
+      "id": "m6_approval_enforcement",
+      "result": "PASS"
+    },
+    {
+      "id": "m7_workflows",
+      "result": "PASS"
+    },
+    {
+      "id": "m9_recovery_status",
+      "result": "PASS"
+    },
+    {
+      "id": "m13_ops",
+      "result": "PASS"
+    },
+    {
+      "id": "m14_research_dev_loop",
+      "result": "PASS"
+    },
+    {
+      "id": "m14_doc_routing",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "No live Retell/Cal.com calls executed",
+    "Supermemory MCP write verified separately in session; not from this script",
+    "DR_EXPORT_DIR / secondary mirror still operator-owned"
+  ]
+}

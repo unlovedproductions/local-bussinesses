@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-11-18T10:02:30-08:00",
+  "integrations": [
+    {
+      "id": "retell-ai",
+      "name": "Retell AI",
+      "provider": "Retell",
+      "purpose": "Voice agent web/PSTN calls for demo receptionist",
+      "status": "AUTHORIZED",
+      "essential": true,
+      "agents": [
+        "voice-development",
+        "testing",
+        "integrations"
+      ],
+      "permissions": [
+        "voice_calls",
+        "agent_config_read"
+      ],
+      "data_accessed": [
+        "call_transcripts",
+        "agent_prompts"
+      ],
+      "auth": "API key in local .env (never git)",
+      "costs": "provider usage",
+      "notes": "Production prompt changes require human approval"
+    },
+    {
+      "id": "calcom",
+      "name": "Cal.com",
+      "provider": "Cal.com",
+      "purpose": "Availability, book, list, get bookings",
+      "status": "AUTHORIZED",
+      "essential": true,
+      "agents": [
+        "integrations",
+        "voice-development",
+        "testing"
+      ],
+      "permissions": [
+        "calendar_read",
+        "calendar_write_demo"
+      ],
+      "data_accessed": [
+        "booking_records"
+      ],
+      "auth": "API key in local .env",
+      "costs": "free tier for demo",
+      "notes": "Reschedule/cancel tools not attached"
+    },
+    {
+      "id": "supermemory",
+      "name": "Supermemory",
+      "provider": "Supermemory / Cursor MCP",
+      "purpose": "Semantic project memory across sessions",
+      "status": "ENABLED",
+      "essential": false,
+      "agents": [
+        "coordinator",
+        "documentation",
+        "all"
+      ],
+      "permissions": [
+        "memory_read",
+        "memory_write_controlled"
+      ],
+      "data_accessed": [
+        "engineering_lessons"
+      ],
+      "auth": "Cursor MCP OAuth",
+      "costs": "per Cursor/Supermemory plan",
+      "notes": "Verified retrieve+write 2026-11-18; not task-state authority"
+    },
+    {
+      "id": "erpnext",
+      "name": "ERPNext CRM",
+      "provider": "ERPNext",
+      "purpose": "Lead/Opportunity sync from prospect staging",
+      "status": "DISABLED",
+      "essential": false,
+      "agents": [
+        "market-research",
+        "integrations"
+      ],
+      "permissions": [
+        "crm_write"
+      ],
+      "data_accessed": [
+        "prospect_packages"
+      ],
+      "auth": "ERPNEXT_URL + API key/secret",
+      "costs": "self-hosted/site",
+      "notes": "Live sync BLOCKED until site+dry-run; local export only"
+    },
+    {
+      "id": "ollama-judge",
+      "name": "Ollama QA Judge",
+      "provider": "Ollama",
+      "purpose": "Local LLM judge for QA auditor",
+      "status": "AUTHORIZED",
+      "essential": false,
+      "agents": [
+        "testing"
+      ],
+      "permissions": [
+        "local_inference"
+      ],
+      "data_accessed": [
+        "qa_transcripts"
+      ],
+      "auth": "local process",
+      "costs": "local compute",
+      "notes": "Optional; configured in QA .env"
+    }
+  ]
+}
