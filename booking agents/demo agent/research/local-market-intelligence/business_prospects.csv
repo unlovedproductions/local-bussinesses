@@ -1,0 +1,31 @@
+rank,name,industry,phone,city,state,website_or_source,priority,product_fit,notes,verification,research_date
+1,Going Mutts Pet Grooming,pet_grooming,(661) 833-3647,Bakersfield,CA,https://goingmuttsgrooming.com/,P0,high,Same vertical as demo,PUBLIC_WEB,2026-11-18
+2,The Pawsitive Salon,pet_grooming,(661) 479-7771,Bakersfield,CA,https://www.pawsitivebk.com/,P0,high,Online booking + phone,PUBLIC_WEB,2026-11-18
+3,The PetStyling Company,pet_grooming,(661) 398-9400,Bakersfield,CA,https://thepetstylingco.com/,P0,high,Local salon,PUBLIC_WEB,2026-11-18
+4,DashHound Pet Grooming,pet_grooming,(661) 469-3274,Bakersfield,CA,http://www.dashhoundsalon.com/,P0,high,Strong ratings,PUBLIC_WEB,2026-11-18
+5,Doggie Do's Pet Salon,pet_grooming,(661) 397-9937,Bakersfield,CA,https://groomer.io/booking/doggie-dos,P1,high,Local salon,PUBLIC_WEB,2026-11-18
+6,Comfort Cuts Pet Salon,pet_grooming,(661) 447-8404,Bakersfield,CA,public listings,P1,high,Local salon,PUBLIC_WEB,2026-11-18
+7,Sudzy Paws Pet Grooming,pet_grooming,(661) 322-7297,Bakersfield,CA,public listings,P1,medium,Local salon,PUBLIC_WEB,2026-11-18
+8,Clean Paws Dog Grooming,pet_grooming,(661) 834-4946,Bakersfield,CA,public listings,P1,medium,Local salon,PUBLIC_WEB,2026-11-18
+9,Stine Veterinary Hospital,veterinary,(661) 398-7121,Bakersfield,CA,https://www.stinevet.com/,P0,high,Appointments + online book,PUBLIC_WEB,2026-11-18
+10,Oaks Pet Hospital,veterinary,(661) 221-5829,Bakersfield,CA,https://oakspethospital.net/,P0,high,Appointment clinic,PUBLIC_WEB,2026-11-18
+11,Rosedale Veterinary Hospital,veterinary,(661) 588-9630,Bakersfield,CA,https://www.rosedalevet.com/,P0,high,Limited hours missed calls,PUBLIC_WEB,2026-11-18
+12,Stiern Veterinary Hospital,veterinary,(661) 327-5571,Bakersfield,CA,https://www.stiernveterinaryhospital.com/,P1,high,Appointment hospital,PUBLIC_WEB,2026-11-18
+13,Smile Studios Dentistry,dental,(661) 587-7645,Bakersfield,CA,https://www.smilestudiosdentistry.com/,P0,high,Appointment-heavy,PUBLIC_WEB,2026-11-18
+14,Southwest Family Dentistry,dental,(661) 833-0101,Bakersfield,CA,https://www.southwestdentistry.com/,P0,high,Multi-provider office,PUBLIC_WEB,2026-11-18
+15,Apollonia Dental Gosford,dental,(661) 831-9024,Bakersfield,CA,https://www.apolloniadental.com/,P1,high,Location 1,PUBLIC_WEB,2026-11-18
+16,Apollonia Dental Hageman,dental,(661) 829-6927,Bakersfield,CA,https://www.apolloniadental.com/,P1,high,Location 2,PUBLIC_WEB,2026-11-18
+17,Rock Doc Dentistry,dental,(661) 836-6651,Bakersfield,CA,https://rockdocdentistrybakersfield.com/,P1,high,Online + phone,PUBLIC_WEB,2026-11-18
+18,Riar Dental Arts,dental,(661) 832-1877,Bakersfield,CA,https://www.riarbakersfielddentist.com/,P1,high,Appointment office,PUBLIC_WEB,2026-11-18
+19,Palmer Heating and Air,hvac,(661) 889-0990,Bakersfield,CA,https://palmerair661.com/,P1,medium,Emergency mentioned; custom work for dispatch,PUBLIC_WEB,2026-11-18
+20,Central California Air,hvac,(661) 577-5018,Bakersfield,CA,https://centralcaliforniaair.com/,P1,medium,Local HVAC,PUBLIC_WEB,2026-11-18
+21,Premier AC & Heating,hvac,(661) 543-7237,Bakersfield,CA,https://www.premierac1.com/,P1,medium,Local HVAC,PUBLIC_WEB,2026-11-18
+22,Xceptional Heating & Air,hvac,(661) 808-6021,Bakersfield,CA,http://callxceptional.com/,P1,medium,Strong reviews,PUBLIC_WEB,2026-11-18
+23,All Climate Air Inc.,hvac,(661) 321-0620,Bakersfield,CA,http://allclimateair.com/,P2,medium,High review volume,PUBLIC_WEB,2026-11-18
+24,Greer's Banner Air,hvac,(661) 795-2779,Bakersfield,CA,https://www.bannerair.com/,P2,medium,Emergency HVAC page,PUBLIC_WEB,2026-11-18
+25,Forward Bound Plumbing,plumbing,(661) 464-1557,Bakersfield,CA,https://www.payless-plumbing.com/,P1,medium,24/7 emergency,PUBLIC_WEB,2026-11-18
+26,Bakersfield Plumbing Company,plumbing,(661) 397-2093,Bakersfield,CA,https://bakersfieldplumbingcompany.com/,P1,medium,Confirm phone on site,PUBLIC_WEB,2026-11-18
+27,A-1 Plumbing,plumbing,(661) 376-3327,Bakersfield,CA,https://www.a-1-plumbing.com/,P1,medium,24/7,PUBLIC_WEB,2026-11-18
+28,Rescue Hero Plumbing,plumbing,(661) 587-8260,Bakersfield,CA,https://rescueheroplumbing.com/,P1,medium,24/7,PUBLIC_WEB,2026-11-18
+29,The Plumbing Doc,plumbing,(661) 462-9774,Bakersfield,CA,https://www.plumbingdoc.net/,P2,medium,24/7,PUBLIC_WEB,2026-11-18
+30,Precision Plumbing and Drain,plumbing,(661) 706-1038,Bakersfield,CA,https://www.precisionpnd.com/,P2,medium,24/7,PUBLIC_WEB,2026-11-18
