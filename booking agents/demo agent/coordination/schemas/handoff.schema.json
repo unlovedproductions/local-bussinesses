@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination/schemas/handoff.schema.json",
+  "title": "UanHandoff",
+  "type": "object",
+  "required": [
+    "id",
+    "sender",
+    "recipient",
+    "project_id",
+    "domain_id",
+    "created_at",
+    "subject",
+    "background",
+    "requested_action",
+    "priority",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^HANDOFF-[A-Za-z0-9._-]+$" },
+    "sender": {
+      "type": "string",
+      "enum": [
+        "coordinator",
+        "market-research",
+        "voice-development",
+        "integrations",
+        "testing",
+        "documentation"
+      ]
+    },
+    "recipient": {
+      "type": "string",
+      "enum": [
+        "coordinator",
+        "market-research",
+        "voice-development",
+        "integrations",
+        "testing",
+        "documentation"
+      ]
+    },
+    "project_id": { "type": "string" },
+    "domain_id": { "type": "string" },
+    "related_task": { "type": ["string", "null"] },
+    "related_message": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "subject": { "type": "string", "minLength": 1 },
+    "background": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "requested_action": { "type": "string" },
+    "priority": { "type": "string", "enum": ["P0", "P1", "P2", "P3"] },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "required_permissions": { "type": "array", "items": { "type": "string" } },
+    "affected_files": { "type": "array", "items": { "type": "string" } },
+    "artifact_refs": { "type": "array", "items": { "type": "string" } },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "ACKNOWLEDGED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "BLOCKED",
+        "REJECTED",
+        "CANCELLED"
+      ]
+    },
+    "ack": {
+      "type": ["object", "null"],
+      "properties": {
+        "agent": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
+        "note": { "type": "string" }
+      }
+    },
+    "resolution": {
+      "type": ["object", "null"],
+      "properties": {
+        "summary": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
+        "evidence": { "type": "array", "items": { "type": "string" } },
+        "blocker": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

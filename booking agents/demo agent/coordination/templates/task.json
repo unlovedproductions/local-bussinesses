@@ -1,0 +1,19 @@
+{
+  "id": "TASK-YYYYMMDD-slug",
+  "objective": "what must be done",
+  "owner": "voice-development",
+  "created_by": "coordinator",
+  "created_at": "2026-11-18T00:00:00-08:00",
+  "updated_at": "2026-11-18T00:00:00-08:00",
+  "priority": "P2",
+  "status": "PENDING",
+  "domain_id": "voice_agent_network",
+  "capabilities": [],
+  "dependencies": [],
+  "related_files": [],
+  "acceptance": "",
+  "verification": "",
+  "documentation_impact": null,
+  "idempotency_key": null,
+  "result": null
+}

@@ -29,7 +29,11 @@ REQUIRED = [
     "docs/agents/DOCUMENTATION_AGENT.md",
     "docs/templates/DOCUMENTATION_IMPACT.md",
     "docs/verification/INITIAL_DOCUMENTATION_AUDIT.md",
+    "docs/uan/existing-system-inventory.md",
+    "docs/uan/architecture-gap-analysis.md",
+    "docs/uan/core-architecture.md",
     "coordination/agents/documentation.md",
+    "coordination/config/uan.json",
 ]
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")

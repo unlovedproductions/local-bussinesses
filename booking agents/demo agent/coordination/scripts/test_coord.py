@@ -312,6 +312,221 @@ class CoordTests(unittest.TestCase):
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("BLOCKED", proc.stderr)
 
+    def test_m_uan_register_aliases(self) -> None:
+        proc = run_coord(["register"])
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("documentation", proc.stdout)
+        self.assertIn("70", proc.stdout)
+        self.assertIn("max_concurrent_specialists", proc.stdout)
+
+    def test_n_plan_and_task_lifecycle(self) -> None:
+        records = COORD / "tasks" / "records"
+        attempts = COORD / "tasks" / "attempts"
+        created: list[Path] = []
+        claim_paths: list[Path] = []
+        try:
+            plan = run_coord(
+                [
+                    "plan",
+                    "--objective",
+                    "documentation recovery release readiness",
+                    "--dispatch",
+                    "--priority",
+                    "P2",
+                ]
+            )
+            self.assertEqual(plan.returncode, 0, plan.stderr)
+            payload = json.loads(plan.stdout)
+            self.assertIn("documentation", payload["recommended_agents"])
+            self.assertTrue(payload["documentation_impact"])
+            self.assertGreaterEqual(len(payload["created_tasks"]), 1)
+            for tid in payload["created_tasks"]:
+                path = records / f"{tid}.json"
+                created.append(path)
+                claim_paths.append(COORD / "tasks" / "claims" / f"{tid}.json")
+                self.assertTrue(path.exists())
+            tid = payload["created_tasks"][0]
+            path = records / f"{tid}.json"
+            owner = json.loads(path.read_text(encoding="utf-8"))["owner"]
+            start = run_coord(
+                ["task-transition", "--id", tid, "--agent", owner, "--status", "RUNNING"]
+            )
+            self.assertEqual(start.returncode, 0, start.stderr)
+            done = run_coord(
+                [
+                    "task-transition",
+                    "--id",
+                    tid,
+                    "--agent",
+                    owner,
+                    "--status",
+                    "COMPLETED",
+                    "--summary",
+                    "harness completion",
+                    "--evidence",
+                    "coordination/scripts/test_coord.py",
+                    "--confidence",
+                    "VERIFIED",
+                ]
+            )
+            self.assertEqual(done.returncode, 0, done.stderr)
+            task = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(task["status"], "COMPLETED")
+            att = run_coord(["attempts", "--task", tid])
+            self.assertEqual(att.returncode, 0, att.stderr)
+            self.assertGreaterEqual(json.loads(att.stdout)["count"], 1)
+        finally:
+            task_ids = {p.stem for p in created}
+            for p in created + claim_paths:
+                if p.exists():
+                    p.unlink()
+            for path in attempts.glob("ATT-*.json"):
+                try:
+                    data = json.loads(path.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    continue
+                if data.get("task_id") in task_ids:
+                    path.unlink(missing_ok=True)
+
+    def test_o_handoff_lifecycle(self) -> None:
+        hid = "HANDOFF-TEST-001"
+        path = COORD / "handoffs" / f"{hid}.json"
+        if path.exists():
+            path.unlink()
+        try:
+            create = run_coord(
+                [
+                    "handoff-create",
+                    "--id",
+                    hid,
+                    "--sender",
+                    "coordinator",
+                    "--recipient",
+                    "documentation",
+                    "--subject",
+                    "test handoff",
+                    "--requested-action",
+                    "ack and close",
+                    "--background",
+                    "harness",
+                    "--priority",
+                    "P3",
+                ]
+            )
+            self.assertEqual(create.returncode, 0, create.stderr)
+            ack = run_coord(
+                [
+                    "handoff-transition",
+                    "--id",
+                    hid,
+                    "--agent",
+                    "documentation",
+                    "--status",
+                    "ACKNOWLEDGED",
+                    "--note",
+                    "harness ack",
+                ]
+            )
+            self.assertEqual(ack.returncode, 0, ack.stderr)
+            complete = run_coord(
+                [
+                    "handoff-transition",
+                    "--id",
+                    hid,
+                    "--agent",
+                    "documentation",
+                    "--status",
+                    "IN_PROGRESS",
+                ]
+            )
+            self.assertEqual(complete.returncode, 0, complete.stderr)
+            done = run_coord(
+                [
+                    "handoff-transition",
+                    "--id",
+                    hid,
+                    "--agent",
+                    "documentation",
+                    "--status",
+                    "COMPLETED",
+                    "--summary",
+                    "done",
+                    "--evidence",
+                    "coordination/scripts/test_coord.py",
+                ]
+            )
+            self.assertEqual(done.returncode, 0, done.stderr)
+            data = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(data["status"], "COMPLETED")
+            self.assertEqual(data["ack"]["agent"], "documentation")
+        finally:
+            if path.exists():
+                path.unlink()
+
+    def test_p_concurrency_limit(self) -> None:
+        records = COORD / "tasks" / "records"
+        claims = COORD / "tasks" / "claims"
+        created: list[str] = []
+        env = {"UAN_MAX_CONCURRENT": "1"}
+        try:
+            for i, agent in enumerate(("voice-development", "testing")):
+                tid = f"TASK-TEST-CONC-{i}"
+                created.append(tid)
+                proc = run_coord(
+                    [
+                        "task-create",
+                        "--id",
+                        tid,
+                        "--objective",
+                        f"concurrency {i}",
+                        "--created-by",
+                        "coordinator",
+                        "--owner",
+                        agent,
+                        "--status",
+                        "READY",
+                        "--priority",
+                        "P3",
+                    ],
+                    env=env,
+                )
+                self.assertEqual(proc.returncode, 0, proc.stderr)
+            first = run_coord(
+                [
+                    "task-transition",
+                    "--id",
+                    created[0],
+                    "--agent",
+                    "voice-development",
+                    "--status",
+                    "RUNNING",
+                ],
+                env=env,
+            )
+            self.assertEqual(first.returncode, 0, first.stderr)
+            second = run_coord(
+                [
+                    "task-transition",
+                    "--id",
+                    created[1],
+                    "--agent",
+                    "testing",
+                    "--status",
+                    "RUNNING",
+                ],
+                env=env,
+            )
+            self.assertNotEqual(second.returncode, 0)
+            self.assertIn("concurrency limit", second.stderr)
+        finally:
+            for tid in created:
+                for folder in (records, claims):
+                    p = folder / f"{tid}.json"
+                    if p.exists():
+                        p.unlink()
+                for path in (COORD / "tasks" / "attempts").glob(f"ATT-{tid}-*.json"):
+                    path.unlink(missing_ok=True)
+
 
 if __name__ == "__main__":
     unittest.main()

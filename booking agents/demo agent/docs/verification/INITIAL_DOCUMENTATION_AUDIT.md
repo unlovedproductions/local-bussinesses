@@ -60,3 +60,16 @@ Read-only inspection of workspace tree, `AGENTS.md`, `coordination/`, `voice-age
 ## Remediation priorities
 
 Follow plan P0–P8 in this implementation pass. Do not overwrite Retell prompts, QA safety defaults, or the coordination bus.
+
+## UAN follow-on audit (2026-11-18)
+
+| Finding | Status | Evidence |
+|---|---|---|
+| Docs/coordination on GitHub remote | VERIFIED (commit `9d1e207`) | Parent `main...origin/main` |
+| `docs/uan/` inventory + gap analysis | ADDED this pass | `docs/uan/*` |
+| Agent 70 duplicate risk | NONE — keep `documentation` | registry |
+| Universal Commander code | ADDED as `coord.py plan` on existing bus | ADR-002 |
+| Recovery readiness stale remote claim | CORRECTED | `RECOVERY_READINESS.md` |
+| Secondary DR / durable export | Still BLOCKED pending operator | Backup inventory |
+
+See `docs/uan/existing-system-inventory.md` and `docs/uan/architecture-gap-analysis.md` for authoritative UAN inventory.

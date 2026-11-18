@@ -20,9 +20,15 @@
 | Integrations | [integrations/VOICE_AI.md](integrations/VOICE_AI.md) |
 | Docs agent | [agents/DOCUMENTATION_AGENT.md](agents/DOCUMENTATION_AGENT.md) |
 | Verification | [verification/DOCUMENTATION_TEST_REPORT.md](verification/DOCUMENTATION_TEST_REPORT.md) |
+| UAN inventory | [uan/existing-system-inventory.md](uan/existing-system-inventory.md) |
+| UAN gaps | [uan/architecture-gap-analysis.md](uan/architecture-gap-analysis.md) |
+| UAN core | [uan/core-architecture.md](uan/core-architecture.md) |
+| UAN agents | [uan/agent-registry.md](uan/agent-registry.md) |
+| UAN execution | [uan/execution-architecture.md](uan/execution-architecture.md) |
+| UAN communication | [uan/communication-protocol.md](uan/communication-protocol.md) |
 
 Demo SoT: [`../voice-agent/README.md`](../voice-agent/README.md)  
 QA SoT: [`../retell-pet-grooming-qa/README.md`](../retell-pet-grooming-qa/README.md)  
 Coordination SoT: [`../coordination/README.md`](../coordination/README.md)
 
-Updated: 2026-11-18.
+Updated: 2026-11-18 (UAN M1–M4).

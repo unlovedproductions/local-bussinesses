@@ -2,14 +2,17 @@
 
 **Selected:** Hybrid Option B (repository bus) primary + Option A (Cursor Task) secondary + Option C (MCP memory) deferred + ERPNext staging (sync deferred).
 
+**UAN-CORE (2026-11-18):** Bus evolved in place (ADR-002). Config `config/uan.json`. Commander = `coordinator`. No parallel `src/uan/` orchestrator.
+
 ## Decision
 
 | Option | Verdict | Reason |
 |---|---|---|
 | A — Native Cursor only | Rejected as primary | No cross-session message delivery |
 | B — Repository-based | **Selected** | Works across chats/sessions via git files; no new services |
-| C — MCP communication | Deferred | Supermemory/Adapter unauthenticated |
+| C — MCP communication | Deferred | Supermemory available; not task authority |
 | D — External orchestration | Rejected | Unnecessary operational overhead |
+| Parallel UAN runtime | Rejected | Would duplicate bus |
 | ERPNext live sync | Deferred / BLOCKED | No site installed; stage packages now |
 
 ## Delivery honesty
@@ -25,18 +28,19 @@ Ordinary JSON/Markdown files do not provide strong atomic locks. Duplicate claim
 ```mermaid
 flowchart TB
   subgraph agents [Logical Agent Roles]
-    Coord[ProjectCoordinator]
-    Market[MarketResearch]
-    Voice[VoiceDevelopment]
-    Integ[Integrations]
-    QA[TestingQA]
-    Docs[Documentation]
+    Coord[Agent00_Commander]
+    Market[Agent11_MarketResearch]
+    Voice[Agent10_20_VoiceDev]
+    Integ[Agent40_Integrations]
+    QA[Agent50_Testing]
+    Docs[Agent70_Documentation]
   end
 
-  subgraph coordLayer [coordination repo bus]
+  subgraph coordLayer [coordination repo bus UAN]
     Registry[agents/registry]
     Inbox[messages/inbox]
-    Tasks[tasks]
+    Tasks[tasks/records]
+    Handoffs[handoffs/json]
     Knowledge[shared-context]
     Decisions[decisions]
     CrmStaging[crm-staging/prospects]

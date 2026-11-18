@@ -1,18 +1,21 @@
 ---
-description: Multi-agent coordination bus — poll inbox at session start
+description: Multi-agent UAN coordination bus — poll inbox at session start
 alwaysApply: true
 ---
 
-# Coordination
+# Coordination (UAN-CORE on repo bus)
 
-- Before substantive work, identify your logical agent role from root `AGENTS.md`.
+- Before substantive work, identify your logical agent role from root `AGENTS.md` (UAN aliases OK: 00, 11, 70, …).
 - Poll assigned messages: `python3 coordination/scripts/coord.py inbox --agent <id>`.
+- Also check: `task-list --owner <id>` and `handoff-list --recipient <id> --open-only`.
 - Acknowledge before acting; complete/block with evidence via the CLI.
-- Claim tasks before editing shared coordination or another agent's owned paths.
-- Treat `coordination/` as the cross-session bus — not real-time chat.
+- Claim / transition tasks before editing shared coordination or another agent's owned paths.
+- Treat `coordination/` as the cross-session bus — not real-time chat. File writes do not start agents.
+- Commander: `coord.py plan --objective "..."`; `--dispatch` creates READY tasks only (max 3 concurrent specialists by default).
 - ERPNext live sync is BLOCKED; use `crm-staging/` prepare/export only.
 - Never fabricate acknowledgments, passes, or CRM sync success.
 - Do not modify Retell production prompts or live calendars without explicit approval.
 - Prefer smallest safe change; preserve `retell-pet-grooming-qa` safety defaults.
 - Material changes to code, prompts, integrations, env vars, deployment, recovery, or agent roles require a documentation impact assessment (`docs/templates/DOCUMENTATION_IMPACT.md`) and/or `DOC_IMPACT` / `DOCUMENTATION_REQUEST` to `documentation`.
 - Documentation agent owns doc integrity only — not production architecture approval or release authority.
+- Do not install new MCP/plugins without approval; do not reinstall Supermemory.

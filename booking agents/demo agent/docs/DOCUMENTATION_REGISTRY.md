@@ -21,6 +21,9 @@
 | voice-agent/README.md | Demo SoT | voice-development | eng | INTERNAL | VERIFIED (prior) | 2026-11-08 | Retell/Cal.com | verification.md |
 | retell-pet-grooming-qa/README.md | QA SoT | testing | eng | INTERNAL | VERIFIED (prior) | 2026-11-11 | QA scripts | docs/ |
 | coordination/README.md | Bus SoT | coordinator | agents | INTERNAL | VERIFIED | 2026-11-15 | bus changes | ADR-001 |
+| docs/uan/* | UAN-CORE specs | coordinator + documentation | agents | INTERNAL | NEEDS_REVIEW | 2026-11-18 | bus/commander changes | ADR-002 |
+| coordination/config/uan.json | UAN runtime config | coordinator | agents | INTERNAL | VERIFIED | 2026-11-18 | aliases/routes | coord.py |
+| domains/voice_agent_network/domain.yaml | VOICE-AIN metadata | coordinator | agents | INTERNAL | DRAFT | 2026-11-18 | domain pack | docs/uan |
 
 Statuses: VERIFIED | NEEDS_REVIEW | DRAFT | OUTDATED | BLOCKED. Do not mark VERIFIED without evidence.
 
@@ -49,3 +52,7 @@ Updated: 2026-11-18.
 - `docs/verification/INITIAL_DOCUMENTATION_AUDIT.md`
 - `docs/verification/DOCUMENTATION_TEST_REPORT.md`
 - `docs/verification/DOCUMENTATION_HEALTH_REPORT.md`
+- `docs/uan/existing-system-inventory.md`
+- `docs/uan/architecture-gap-analysis.md`
+- `docs/uan/core-architecture.md`
+- `coordination/config/uan.json`

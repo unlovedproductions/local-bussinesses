@@ -9,7 +9,9 @@
 
 ## Current priorities
 
-1. Keep coordination bus operational (inbox/tasks/knowledge).
+1. Keep UAN repo-bus operational (inbox/tasks/handoffs/plan).
 2. Preserve demo voice + QA safety posture.
-3. Evaluate commercially driven feature requests (sample: HVAC after-hours).
-4. Maintain ERPNext-ready prospect staging; do not fake CRM sync.
+3. Operator activation: durable DR export + optional secondary mirror.
+4. Evaluate commercially driven feature requests (sample: HVAC after-hours).
+5. Maintain ERPNext-ready prospect staging; do not fake CRM sync.
+6. Later: VOICE-AIN evaluation workflows (M7/M10) without duplicating the bus.

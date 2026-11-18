@@ -1,0 +1,39 @@
+domain_id: voice_agent_network
+name: Voice Agent Intelligence Network
+short_name: VOICE-AIN
+version: 0.1.0
+mission: >
+  Audit, improve, test, document, and commercially qualify the Retell + Cal.com
+  voice booking product using the Universal Multi-Agent Network core.
+scope:
+  - Existing Retell web-call demo (voice-agent/)
+  - Independent QA auditor (retell-pet-grooming-qa/)
+  - Local market research feedback loop
+  - Documentation and recovery assurance
+supported_platforms:
+  - Retell AI (web call; PSTN optional)
+  - Cal.com (availability/book/list/get)
+agent_ids:
+  - coordinator
+  - market-research
+  - voice-development
+  - integrations
+  - testing
+  - documentation
+uan_aliases:
+  "00": coordinator
+  "10": voice-development
+  "11": market-research
+  "20": voice-development
+  "40": integrations
+  "50": testing
+  "70": documentation
+memory_scope: project
+quality_gates:
+  - requirements
+  - functional
+  - documentation_integrity
+  - human_approval_for_production
+notes:
+  - Domain pack metadata only in M1-M4; full evaluation workflows are later milestones.
+  - Do not invent audio/STT metrics without evidence.

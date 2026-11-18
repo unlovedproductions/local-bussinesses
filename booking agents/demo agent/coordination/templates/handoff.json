@@ -1,0 +1,22 @@
+{
+  "id": "HANDOFF-YYYYMMDD-slug",
+  "sender": "market-research",
+  "recipient": "voice-development",
+  "project_id": "ai-voice-booking-agents",
+  "domain_id": "voice_agent_network",
+  "related_task": null,
+  "related_message": null,
+  "created_at": "2026-11-18T00:00:00-08:00",
+  "subject": "short subject",
+  "background": "context",
+  "evidence": [],
+  "requested_action": "what recipient must do",
+  "priority": "P2",
+  "dependencies": [],
+  "required_permissions": [],
+  "affected_files": [],
+  "artifact_refs": [],
+  "status": "PROPOSED",
+  "ack": null,
+  "resolution": null
+}

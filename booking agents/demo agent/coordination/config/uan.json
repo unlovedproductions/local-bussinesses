@@ -1,0 +1,56 @@
+{
+  "system_version": "3.0",
+  "uan_core_version": "0.1.0",
+  "domain_pack": "VOICE-AIN",
+  "domain_id": "voice_agent_network",
+  "max_concurrent_specialists": 3,
+  "execution_model": "repo_bus_primary_cursor_task_secondary",
+  "notes": [
+    "String agent IDs remain authoritative for CLI and schemas.",
+    "UAN numeric aliases are convenience labels only.",
+    "Writing a handoff or task file does not start another Cursor session.",
+    "Cursor Task tool is same-session secondary dispatch only."
+  ],
+  "aliases": {
+    "00": "coordinator",
+    "agent-00": "coordinator",
+    "11": "market-research",
+    "agent-11": "market-research",
+    "10": "voice-development",
+    "agent-10": "voice-development",
+    "20": "voice-development",
+    "agent-20": "voice-development",
+    "40": "integrations",
+    "agent-40": "integrations",
+    "50": "testing",
+    "agent-50": "testing",
+    "70": "documentation",
+    "agent-70": "documentation"
+  },
+  "capability_routes": {
+    "architecture": ["voice-development", "integrations"],
+    "prompt": ["voice-development"],
+    "audio": ["voice-development", "testing"],
+    "integration": ["integrations"],
+    "test": ["testing"],
+    "security": ["testing", "coordinator"],
+    "research": ["market-research"],
+    "documentation": ["documentation"],
+    "recovery": ["documentation", "coordinator"],
+    "release": ["coordinator", "testing", "documentation"],
+    "crm": ["market-research", "integrations"]
+  },
+  "documentation_impact_triggers": [
+    "application_behavior",
+    "voice_prompts",
+    "apis",
+    "integrations",
+    "env_vars",
+    "infrastructure",
+    "security",
+    "agent_coordination",
+    "deployment",
+    "client_configuration",
+    "recovery"
+  ]
+}
