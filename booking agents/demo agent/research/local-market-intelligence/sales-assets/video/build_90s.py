@@ -65,6 +65,8 @@ async def _synth_edge(text: str, mp3: Path) -> None:
 
     communicate = edge_tts.Communicate(text, VOICE, rate=RATE)
     await communicate.save(str(mp3))
+    if not mp3.exists() or mp3.stat().st_size < 500:
+        raise RuntimeError(f"edge-tts wrote empty audio for {mp3.name}")
 
 
 def _synth_gtts(text: str, mp3: Path) -> None:
@@ -73,20 +75,37 @@ def _synth_gtts(text: str, mp3: Path) -> None:
     gTTS(text, lang="en").save(str(mp3))
 
 
-async def synth() -> list[dict]:
+async def _synth_edge_retry(text: str, mp3: Path, attempts: int = 4) -> None:
+    last: Exception | None = None
+    for i in range(attempts):
+        try:
+            await _synth_edge(text, mp3)
+            return
+        except Exception as exc:  # noqa: BLE001 — retry transient 403 / empty audio
+            last = exc
+            wait = 1.5 * (i + 1)
+            print(f"  edge-tts attempt {i + 1}/{attempts} failed ({exc}); retry in {wait:.1f}s")
+            await asyncio.sleep(wait)
+    assert last is not None
+    raise last
+
+
+async def synth(*, require_edge: bool = True) -> list[dict]:
     AUDIO.mkdir(parents=True, exist_ok=True)
     manifest = []
-    engine = "edge-tts"
     for sid, text in SCENES:
         mp3 = AUDIO / f"{sid}.mp3"
         wav = AUDIO / f"{sid}.wav"
+        engine = "edge-tts"
         try:
-            if engine == "edge-tts":
-                await _synth_edge(text, mp3)
-            else:
-                _synth_gtts(text, mp3)
+            await _synth_edge_retry(text, mp3)
         except Exception as exc:
-            print(f"edge-tts failed ({exc}); falling back to gTTS")
+            if require_edge:
+                raise RuntimeError(
+                    f"edge-tts failed for {sid} after retries ({exc}). "
+                    "Refusing mixed gTTS voice. Re-run later or pass require_edge=False."
+                ) from exc
+            print(f"edge-tts failed for {sid} ({exc}); using gTTS for this scene only")
             engine = "gtts"
             _synth_gtts(text, mp3)
         run(
@@ -104,9 +123,13 @@ async def synth() -> list[dict]:
                 "duration_s": hold,
                 "text": text,
                 "engine": engine,
+                "voice": VOICE if engine == "edge-tts" else "gtts-en",
             }
         )
         print(f"{sid}: speech={speech:.2f}s hold={hold:.2f}s ({engine})")
+    engines = {m["engine"] for m in manifest}
+    if engines != {"edge-tts"} and require_edge:
+        raise RuntimeError(f"Expected all edge-tts scenes, got {engines}")
     (WORK / "timeline.json").write_text(json.dumps({"scenes": manifest}, indent=2))
     return manifest
 
@@ -266,7 +289,8 @@ def mux(webm: Path, vo: Path, bed: Path, mp4: Path, total: float) -> None:
 
 async def main() -> None:
     WORK.mkdir(parents=True, exist_ok=True)
-    manifest = await synth()
+    require_edge = "--allow-gtts" not in sys.argv
+    manifest = await synth(require_edge=require_edge)
     vo, total = build_vo(manifest)
     print(f"total timeline {total:.2f}s")
     bed = make_bed(total, AUDIO / "bed.wav")
