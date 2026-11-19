@@ -16,17 +16,20 @@
 
 **Do not claim as shipped:** HVAC-style emergency dispatch, cancel/reschedule tools on the demo receptionist, ERPNext live CRM sync.
 
-**Ask:** Owner or office manager who owns phones / front desk / missed calls. Goal: book a live 3-minute demo or a callback with decision-maker present.
+**Ask:** Owner or office manager who owns phones / front desk / missed calls.  
+**Preferred close (no live demo):** cell number + send 90-sec recording / one-pager → book a **20-minute setup visit**.  
+**Fallback:** scheduled Retell web demo later — never cold into Test Audio on their shop Wi‑Fi.  
+Full playbook: [`sell-without-live-demo.md`](./sell-without-live-demo.md).
 
 ---
 
-## Universal 60-second script (grooming)
+## Universal 60-second script (grooming) — no live demo
 
 1. **Who / why:** “Hi — I’m Jeremy with Unloved Productions here in Kern County.”
 2. **Hook:** “We build an AI phone receptionist for local groomers so when you’re elbows-deep in a dog, the phone still gets answered, checked against the calendar, and booked.”
-3. **Proof:** “I can show a real 3-minute demo that checks availability and books into Cal.com — same path we run for a Taft grooming demo.”
+3. **Proof (async):** “I’m not asking you to sit through a tech demo right now. I have a 90-second recording of the agent booking a real calendar slot — or a one-pager that shows the same beats.”
 4. **Ask:** “Who handles front-desk and missed calls there — is that you?”
-5. **Close:** “Got 3 minutes this week for a web-call demo, or should I come by between [day] and [day]?”
+5. **Close:** “What’s the best cell to text the clip / page? If it matches your phone problem, we do a 20-minute setup visit — not a Zoom theater.”
 
 **If gatekeeper:** “No pitch on the floor — just need the person who decides on phones and scheduling. What’s the best time to reach them?”
 
@@ -34,9 +37,11 @@
 
 **If “we use voicemail / callback”:** “That’s what we’re replacing. Every callback you make is a slot that could already be on the calendar — or a lead sitting in a list when you’re full.”
 
-**If “how much?”:** “Depends on volume and calendar setup. First step is the 3-minute demo so you see it book a real slot. Then we quote. I won’t invent a number before we see your phone flow.”
+**If “how much?”:** “Depends on volume and calendar setup. I quote after a setup visit. First you get the recording and one-pager free. I won’t invent a monthly number on this call.”
 
-**If “not interested”:** “Fair. If missed calls or no-shows ever become the bottleneck, keep the number. Thanks for the time.”
+**If “I need to see it live”:** “Fair — we can schedule a live session later. Most owners decide from the clip. Let’s start there so you’re not stuck in a browser demo mid-day.”
+
+**If “not interested”:** “Fair. If missed calls ever become the bottleneck, keep the number. Thanks for the time.”
 
 ---
 
@@ -63,7 +68,7 @@ Don’t attack Square. Position as **phone layer on top of what they already hav
 “We have a Square booking page.” → “Keep it. This is for callers — first-timers, reschedules, and anyone who won’t fill a form while you’re mid-groom.”
 
 ### Ask
-3-minute Retell web demo this week with owner or front-desk lead on the call.
+Cell number → text recording / one-pager → 20-minute setup visit. Live Retell only if they insist later.
 
 ---
 
@@ -90,7 +95,7 @@ Compliment the stack → sell the hole it doesn’t cover.
 “Our portal is enough.” → “Portal is for planners. Callers are impulse and urgency. You paid for a great booking site — this keeps the phone from dumping those into voicemail.”
 
 ### Ask
-Demo focused on: call while “calendar full” → lead capture; call with open slot → book.
+Text both beats in the recording (full → lead, open → book). Close on setup visit, not a live dual-call.
 
 ---
 
@@ -117,7 +122,7 @@ Closed Fri/Sat (if still true) = unpaid marketing. Every Saturday caller is a Mo
 “Walk-ins are fine; we’re not a call center.” → “You shouldn’t be. That’s the point — the agent takes the booking call so groomers stay on dogs.”
 
 ### Ask
-Confirm decision-maker; offer demo that books a sample Cal.com slot while they watch.
+Leave one-pager (closed-day angle). Text clip. Setup visit on a day they’re open.
 
 ---
 
@@ -144,7 +149,7 @@ Discover calendar complexity (mobile vs shop). Sell one voice front door; be hon
 “We already have Moego / Groomore.” → “Keep it. Clients who book online are covered. Clients who call — and mobile clients who call while you’re on the road — aren’t.”
 
 ### Ask
-Demo + 5 discovery questions: one calendar or two? Who answers today? After-hours policy?
+Paper: five discovery questions (one calendar or two, who answers, after-hours). Text clip. Setup visit maps mobile vs shop.
 
 ---
 
@@ -171,7 +176,7 @@ Don’t fight the “call us first” policy — automate it.
 “We want to talk to new clients ourselves.” → “You still can for special cases. The agent can collect pet info, vaccine reminder, and preferred times, then you confirm — or it books the standard Zoom Groom / Bath and Brush slots you define.”
 
 ### Ask
-Demo using a “new customer” call path; offer to map their intake questions into the agent script after they see the booking work.
+One-pager on “new clients must call.” Text clip of intake → book/lead. Setup visit maps their questions into the script.
 
 ---
 
@@ -183,11 +188,14 @@ Demo using a “new customer” call path; offer to map their intake questions i
 4. Doggie Do’s (Oak St)  
 5. Pawsitive (19th St / downtown) — save for when you want the “you already book online” conversation fresh  
 
+Carry: printed one-pagers, Cal.com screenshot on your phone, link/QR to recording once it exists.  
 Log each outcome in `coordination/crm-staging/` via `prepare-prospect` (ERPNext sync still blocked).
 
-## After a yes
+## After a yes (no live demo required)
 
-1. Schedule Retell web-call demo (decision-maker present).  
-2. Confirm calendar system (Cal.com, Square, Moego, Groomer.io, Google Calendar, other).  
-3. Do **not** collect passwords in the call.  
-4. File prospect notes under `research/local-market-intelligence/prospects/` if they advance.
+1. Send recording + one-pager the same day.  
+2. Book **20-minute setup visit** (decision-maker present).  
+3. Confirm calendar system (Cal.com, Square, Moego, Groomer.io, Google Calendar, other).  
+4. Do **not** collect passwords on the call or visit until you have a written pilot path.  
+5. Optional later: scheduled Retell session for skeptics who still want live.  
+6. File prospect notes under `research/local-market-intelligence/prospects/` if they advance.
