@@ -42,21 +42,16 @@ If you don’t have the recording yet, substitute:
 
 ## Proof stack (ranked — pick what you can use today)
 
-### A. Best async proof (build once, reuse)
+### A. Best async proof (shipped)
 
-**90-second screen + voice recording** of Retell Test Audio + Cal.com Bookings side by side (follow `voice-agent/DEMO.md`).
+**Clip:** [`sales-assets/videos/voice-agent-90s.mp4`](./sales-assets/videos/voice-agent-90s.mp4)  
+**One-pager:** [`sales-assets/one-pager.html`](./sales-assets/one-pager.html)
 
-Show:
+Motion explainer of the booking path (answer → intake → real availability → book / lead). On-screen label: *Demo · Simulated salon*. Fictional demo salon; real booking tools. Your greeting and calendar replace these.
 
-1. Greeting (“Taft Grooming Demo… Unloved Productions”)  
-2. Service + pet details  
-3. Real availability returned  
-4. “Yes, book it”  
-5. Matching row appear in Cal.com  
+Send the MP4 via text/email after every conversation. Print the one-pager for walk-ins. Do **not** require them to open Retell.
 
-Caption on the video: *Fictional demo salon. Real booking tools. Your greeting and calendar replace these.*
-
-Send via text/email after every conversation. Do **not** require them to open Retell.
+Optional later upgrade: screen-record the live Retell + Cal.com path from `voice-agent/DEMO.md` and swap the file.
 
 ### B. Usable today with no new assets
 

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Voice agent 90s demo</title>
+<style>
+  :root {
+    --ink: #1c241f;
+    --soft: #3d4741;
+    --muted: #6a746d;
+    --paper: #f4f1ea;
+    --panel: #fffcf7;
+    --line: #d5cec2;
+    --forest: #1f4a3a;
+    --forest-2: #2d5f4b;
+    --accent: #c45c2a;
+    --ok: #1f6b4a;
+    --font: "Segoe UI", system-ui, sans-serif;
+    --display: Georgia, "Noto Serif", serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; font-family: var(--font); color: var(--ink); background: var(--paper); }
+  .stage { position: relative; width: 1920px; height: 1080px; background:
+    radial-gradient(900px 500px at 12% 0%, #e8efe9 0%, transparent 60%),
+    radial-gradient(700px 400px at 100% 100%, #efe4d6 0%, transparent 55%),
+    var(--paper);
+  }
+  .demo-tag {
+    position: absolute; top: 28px; right: 36px; z-index: 20;
+    background: var(--forest); color: #f4f7f5; font-size: 14px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 8px 14px; border-radius: 999px; font-weight: 700;
+  }
+  .scene {
+    position: absolute; inset: 0; display: none; flex-direction: column;
+    justify-content: center; padding: 72px 96px; opacity: 0;
+  }
+  .scene.on { display: flex; opacity: 1; }
+  h1 { font-family: var(--display); font-size: 64px; line-height: 1.08; color: var(--forest); max-width: 1400px; }
+  h2 { font-family: var(--display); font-size: 42px; color: var(--forest); margin-bottom: 18px; }
+  .lede { font-size: 28px; color: var(--soft); margin-top: 18px; max-width: 1200px; line-height: 1.35; }
+  .caption {
+    position: absolute; left: 96px; right: 96px; bottom: 48px;
+    background: rgba(31,74,58,0.92); color: #f4f7f5; padding: 16px 22px; border-radius: 12px;
+    font-size: 24px; line-height: 1.3;
+  }
+  .brand { position: absolute; left: 96px; top: 36px; font-size: 18px; color: var(--muted); letter-spacing: 0.04em; }
+  .brand strong { color: var(--forest); }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 28px;
+    min-height: 220px;
+  }
+  .card .n { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .card strong { display: block; font-size: 28px; margin-bottom: 10px; color: var(--forest); }
+  .card p { font-size: 22px; color: var(--soft); line-height: 1.35; }
+  .phone {
+    width: 520px; background: #111814; border-radius: 36px; padding: 22px; color: #eef5f1;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  }
+  .phone .bar { height: 18px; opacity: 0.35; margin-bottom: 18px; text-align: center; font-size: 12px; }
+  .bubble {
+    background: #24352d; border-radius: 16px; padding: 16px 18px; margin: 12px 0; font-size: 22px; line-height: 1.35;
+  }
+  .bubble.user { background: #2f5d4a; margin-left: 48px; }
+  .bubble.agent { margin-right: 48px; }
+  .row { display: flex; gap: 48px; align-items: center; }
+  .cal {
+    flex: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+  }
+  .slot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; margin-top: 12px;
+    font-size: 22px; background: #fff;
+  }
+  .slot.pick { border-color: var(--forest); background: #e8f2ec; }
+  .slot .go { color: var(--ok); font-weight: 700; }
+  .confirm {
+    background: #e8f2ec; border: 2px solid var(--ok); border-radius: 16px; padding: 28px; max-width: 900px;
+  }
+  .confirm h3 { font-size: 30px; color: var(--ok); margin-bottom: 12px; }
+  .confirm p { font-size: 24px; color: var(--soft); margin: 6px 0; }
+  .lead {
+    background: #fff8f4; border: 2px solid var(--accent); border-radius: 16px; padding: 28px; max-width: 900px;
+  }
+  .lead h3 { font-size: 30px; color: var(--accent); margin-bottom: 12px; }
+  .end-card { text-align: left; }
+  .end-card .cta {
+    display: inline-block; margin-top: 28px; background: var(--forest); color: #fff;
+    padding: 16px 28px; border-radius: 12px; font-size: 26px; font-weight: 700;
+  }
+  .fine { margin-top: 22px; font-size: 20px; color: var(--muted); max-width: 1100px; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="brand"><strong>Unloved Productions</strong> · AI phone receptionist</div>
+  <div class="demo-tag">Demo · Simulated salon</div>
+
+  <section class="scene" id="s0">
+    <h1>Your phone can book<br>while you work</h1>
+    <p class="lede">An AI receptionist answers, checks real availability, and books the appointment — or takes a lead when you’re full.</p>
+  </section>
+
+  <section class="scene" id="s1">
+    <h2>The calls that die today</h2>
+    <div class="cards">
+      <div class="card"><div class="n">Busy</div><strong>Mid-service</strong><p>You’re with a client. The phone still rings.</p></div>
+      <div class="card"><div class="n">Closed</div><strong>After hours</strong><p>Good customers call when you’re closed.</p></div>
+      <div class="card"><div class="n">Full</div><strong>Booked out</strong><p>Voicemail doesn’t put them on a waitlist.</p></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <h2>The agent answers</h2>
+    <div class="row">
+      <div class="phone">
+        <div class="bar">Incoming · AI receptionist</div>
+        <div class="bubble agent">Hi, you’ve reached Taft Grooming Demo, a demonstration by Unloved Productions. I’m an automated booking assistant. How can I help?</div>
+        <div class="bubble user">I’d like a small-dog bath and brush.</div>
+      </div>
+      <p class="lede" style="margin:0;max-width:700px;">Clear greeting. Your business name and script replace the demo lines.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="s3">
+    <h2>It asks the questions you approve</h2>
+    <div class="row">
+      <div class="phone">
+        <div class="bar">Intake</div>
+        <div class="bubble agent">What’s your pet’s name and about how much do they weigh?</div>
+        <div class="bubble user">Pepper — about twelve pounds.</div>
+        <div class="bubble agent">Any special handling I should know about?</div>
+        <div class="bubble user">No — she’s easy.</div>
+      </div>
+      <p class="lede" style="margin:0;max-width:700px;">Pet details, contact info, service — only the intake you approve.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <h2>It checks real calendar availability</h2>
+    <div class="row">
+      <div class="cal">
+        <h3 style="font-size:26px;color:var(--forest);margin-bottom:8px;">Open times returned</h3>
+        <div class="slot">Thursday 10:00 AM <span>Available</span></div>
+        <div class="slot pick">Thursday 2:30 PM <span class="go">Selected</span></div>
+        <div class="slot">Friday 11:00 AM <span>Available</span></div>
+      </div>
+      <p class="lede" style="margin:0;max-width:640px;">Slots come from the connected calendar. The agent does not invent times.</p>
+    </div>
+  </section>
+
+  <section class="scene" id="s5">
+    <h2>Then it books</h2>
+    <div class="confirm">
+      <h3>Booking confirmed</h3>
+      <p><strong>Service:</strong> Small-Dog Bath and Brush</p>
+      <p><strong>Pet:</strong> Pepper · 12 lb</p>
+      <p><strong>When:</strong> Thursday 2:30 PM</p>
+      <p><strong>Calendar:</strong> Appointment created on the connected schedule</p>
+    </div>
+    <p class="lede">Caller hears the confirmation. You see it on the calendar.</p>
+  </section>
+
+  <section class="scene" id="s6">
+    <h2>If you’re full — it takes a lead</h2>
+    <div class="lead">
+      <h3>Lead captured</h3>
+      <p>Name, phone, pet, preferred days — saved for callback.</p>
+      <p>No fake appointments. No invented openings.</p>
+    </div>
+    <p class="lede">Online booking stays for planners. This covers the people who still call.</p>
+  </section>
+
+  <section class="scene" id="s7">
+    <div class="end-card">
+      <h1>Next step: a 20-minute setup visit</h1>
+      <p class="lede">We map your phone flow and calendar, then run a paid pilot.</p>
+      <div class="cta">Jeremy Howell · (661) 768-8545</div>
+      <p class="fine">Taft Grooming Demo is fictional. Booking tools are real. Your greeting and calendar replace these. Not ads. Not a promise of new customers. Not emergency dispatch.</p>
+    </div>
+  </section>
+
+  <div class="caption" id="cap"></div>
+</div>
+<script>
+  const scenes = [
+    { id: "s0", dur: 8.0, cap: "Your phone can book while you work." },
+    { id: "s1", dur: 10.0, cap: "Busy, closed, or booked out — those calls often hit voicemail." },
+    { id: "s2", dur: 12.0, cap: "The AI receptionist answers with your approved greeting." },
+    { id: "s3", dur: 12.0, cap: "It asks only the intake questions you approve." },
+    { id: "s4", dur: 14.0, cap: "It checks real calendar availability — not invented times." },
+    { id: "s5", dur: 14.0, cap: "With approval, it books the appointment on your calendar." },
+    { id: "s6", dur: 10.0, cap: "If you’re full, it captures a lead for callback." },
+    { id: "s7", dur: 10.0, cap: "Watch the clip. Then book a 20-minute setup visit." },
+  ];
+  const total = scenes.reduce((s, x) => s + x.dur, 0);
+  window.__demo = {
+    total,
+    start() {
+      const cap = document.getElementById("cap");
+      let i = 0;
+      const show = () => {
+        document.querySelectorAll(".scene").forEach((el) => el.classList.remove("on"));
+        if (i >= scenes.length) return;
+        const sc = scenes[i];
+        document.getElementById(sc.id).classList.add("on");
+        cap.textContent = sc.cap;
+        setTimeout(() => { i += 1; show(); }, sc.dur * 1000);
+      };
+      show();
+    },
+  };
+</script>
+</body>
+</html>
