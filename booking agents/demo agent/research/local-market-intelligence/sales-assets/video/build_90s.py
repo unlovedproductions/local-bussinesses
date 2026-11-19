@@ -17,15 +17,16 @@ VOICE = "en-US-AndrewNeural"
 RATE = "-5%"
 
 # Keep total near 90s; holds include short pause after speech.
+# Spoken VO only. Avoid ambiguous TTS words: "lead" (metal) and mangled "Jeremy".
 SCENES = [
-    ("s0", "Your phone can book while you work. An AI receptionist answers, checks real availability, and books the appointment — or takes a lead when you're full."),
+    ("s0", "Your phone can book while you work. An AI receptionist answers, checks real availability, and books the appointment — or takes their info for a call back when you're full."),
     ("s1", "Those calls die when you're mid-service, after hours, or booked out. Voicemail doesn't put them on the calendar."),
     ("s2", "The agent answers with your approved greeting. This clip uses a fictional demo salon from Unloved Productions."),
     ("s3", "It asks only the intake questions you approve — pet details, contact info, and the service they want."),
     ("s4", "Then it checks real calendar availability and offers open times. It does not invent slots."),
     ("s5", "When the caller confirms, it books the appointment. They hear the confirmation. You see it on the calendar."),
-    ("s6", "If you're full, it captures a lead for callback instead of inventing an opening."),
-    ("s7", "Next step: a twenty-minute setup visit. We map your phone flow and calendar, then run a paid pilot. Call Jeremy at six six one, seven six eight, eight five four five."),
+    ("s6", "If you're full, it captures their contact for a call back instead of inventing an opening."),
+    ("s7", "Next step: a twenty-minute setup visit. We map your phone flow and calendar, then run a paid pilot. Call Unloved Productions at six six one, seven six eight, eight five four five."),
 ]
 
 # Target ~90s; holds expand automatically to speech + 0.45s.
